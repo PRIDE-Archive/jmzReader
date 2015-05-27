@@ -87,6 +87,10 @@ public class Ms2Query implements Spectrum {
      * 1-based index of the spectrum in the file.
      */
     private Integer index;
+    /**
+     * MGF allows user tags in the format USER[NN] like USER01, USER02
+     */
+    private Map<Integer, String> userTags = new HashMap<Integer, String>();
 
     /**
      * Default constructor generating an empty Ms2Query
@@ -131,10 +135,14 @@ public class Ms2Query implements Spectrum {
 
             // check if it's a property
             Matcher attributeMatcher = MgfFile.attributePattern.matcher(line);
+            boolean matchesAttributePattern = false;
+            if (inAttributeSection) {
+                matchesAttributePattern = attributeMatcher.find();
+            }
 
-            if (inAttributeSection && attributeMatcher.find()) {
+            if (matchesAttributePattern) {
                 if (attributeMatcher.groupCount() != 2)
-                    throw new JMzReaderException("Invalid attribute line encountered in MS2 query.");
+                    throw new JMzReaderException("Invalid attribute line encountered in MS2 query: " + line);
 
                 String name = attributeMatcher.group(1);
                 String value = attributeMatcher.group(2);
@@ -144,8 +152,13 @@ public class Ms2Query implements Spectrum {
             } else {
                 Matcher peakMatcher = peakPattern.matcher(line);
 
-                if (!peakMatcher.find() || peakMatcher.groupCount() != 2)
-                    throw new JMzReaderException("Invalid line encountered in MS2 query: " + line);
+                if (!peakMatcher.find() || peakMatcher.groupCount() != 2) {
+                    // simply ignore these lines
+                    //if (inAttributeSection)
+                        continue;
+
+                    //throw new JMzReaderException("Invalid peak line encountered in MS2 query: " + line);
+                }
 
                 // add the peak
                 addPeak(Double.parseDouble(peakMatcher.group(1)), Double.parseDouble(peakMatcher.group(2)));
@@ -206,8 +219,13 @@ public class Ms2Query implements Spectrum {
             } else {
                 peptideMass = Double.parseDouble(value);
             }
-        } else
-            throw new JMzReaderException("Unknown peptide property '" + name + "' encountered");
+        }
+        else if (name != null && name.startsWith("USER")) {
+            Integer index = Integer.parseInt(name.substring("USER".length()));
+            userTags.put(index, value);
+        }
+
+        // if the tag is not known, simply ignore it
     }
 
     /**
@@ -363,6 +381,14 @@ public class Ms2Query implements Spectrum {
         this.peptideIntensity = peptideIntensity;
     }
 
+    public Map<Integer, String> getUserTags() {
+        return userTags;
+    }
+
+    public void setUserTags(Map<Integer, String> userTags) {
+        this.userTags = userTags;
+    }
+
     @Override
     public String toString() {
         String query = "BEGIN IONS\n";
@@ -430,7 +456,10 @@ public class Ms2Query implements Spectrum {
                 Integer charge = Integer.parseInt(chargeState);
                 return charge;
             } else {
-                Integer charge = Integer.parseInt(chargeState.replace("+", ""));
+                String modifiedChargeState = chargeState.replace("+", "");
+                if (modifiedChargeState.endsWith(".0"))
+                    modifiedChargeState = modifiedChargeState.substring(0, modifiedChargeState.length() - 2);
+                Integer charge = Integer.parseInt(modifiedChargeState);
                 return charge;
             }
         } catch (Exception e) {
@@ -470,6 +499,16 @@ public class Ms2Query implements Spectrum {
             paramGroup.addParam(new UserParam("Fragment mass tolerance unit", toleranceUnit.toString()));
         if (instrument != null)
             paramGroup.addParam(new UserParam("Instrument", instrument));
+        if (sequenceQualifiers != null && sequenceQualifiers.size() == 1)
+            paramGroup.addParam(new UserParam("Sequence", sequenceQualifiers.get(0)));
+
+        for (Integer userIndex : userTags.keySet()) {
+            String userIndexString = String.valueOf(userIndex);
+            if (userIndex < 10)
+                userIndexString = "0" + userIndexString;
+
+            paramGroup.addParam(new UserParam("USER" + userIndexString, userTags.get(userIndex)));
+        }
 
         return paramGroup;
     }
