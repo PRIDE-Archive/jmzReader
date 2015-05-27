@@ -1053,7 +1053,7 @@ public class MgfFile implements JMzReader {
         }
     }
 
-    private class Ms2QueryIterator implements Iterator<Ms2Query>, Iterable<Ms2Query> {
+    public class Ms2QueryIterator implements Iterator<Ms2Query>, Iterable<Ms2Query> {
         /**
          * Either the index in the elements of in the array of the source file.
          */
@@ -1069,7 +1069,7 @@ public class MgfFile implements JMzReader {
          *
          * @throws FileNotFoundException
          */
-        public Ms2QueryIterator() throws FileNotFoundException {
+        protected Ms2QueryIterator() throws FileNotFoundException {
 
         }
 
