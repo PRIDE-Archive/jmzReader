@@ -92,11 +92,13 @@ public class Ms2Query implements Spectrum {
      */
     private Map<Integer, String> userTags = new HashMap<Integer, String>();
 
+    private final boolean disableCommentSupport;
+
     /**
      * Default constructor generating an empty Ms2Query
      */
-    public Ms2Query() {
-
+    public Ms2Query(boolean disableCommentSupport) {
+        this.disableCommentSupport = disableCommentSupport;
     }
 
     /**
@@ -105,7 +107,8 @@ public class Ms2Query implements Spectrum {
      *
      * @param mgfQuery
      */
-    public Ms2Query(String mgfQuery, int index) throws JMzReaderException {
+    public Ms2Query(String mgfQuery, int index, boolean disableCommentSupport) throws JMzReaderException {
+        this.disableCommentSupport = disableCommentSupport;
         this.index = index;
 
         // process the mgf section line by line
@@ -116,7 +119,8 @@ public class Ms2Query implements Spectrum {
             String line = lines[nLineNumber].trim();
 
             // remove comments from the line
-            line = line.replaceAll(MgfFile.mgfCommentRegex, line);
+            if (!disableCommentSupport)
+                line = line.replaceAll(MgfFile.mgfCommentRegex, line);
 
             // ignore empty lines
             if (line.length() < 1)
@@ -150,18 +154,24 @@ public class Ms2Query implements Spectrum {
                 // save the attribute
                 saveAttribute(name, value);
             } else {
-                Matcher peakMatcher = peakPattern.matcher(line);
+                //Matcher peakMatcher = peakPattern.matcher(line);
+                //String[] fields = line.split("\\s+");
+                int indexSpace = line.indexOf(' ');
 
-                if (!peakMatcher.find() || peakMatcher.groupCount() != 2) {
-                    // simply ignore these lines
-                    //if (inAttributeSection)
-                        continue;
-
-                    //throw new JMzReaderException("Invalid peak line encountered in MS2 query: " + line);
+                if (indexSpace >= 0) {
+                    addPeak(Double.parseDouble(line.substring(0, indexSpace)), Double.parseDouble(line.substring(indexSpace + 1)));
                 }
+                // if no index could be found, use the more expensive split function
+                else {
+                    String[] fields = line.split("\\s+");
+                    if (fields.length != 2) {
+                        // simply ignore malformatted lines
+                        continue;
+                    }
 
-                // add the peak
-                addPeak(Double.parseDouble(peakMatcher.group(1)), Double.parseDouble(peakMatcher.group(2)));
+                    // add the peak
+                    addPeak(Double.parseDouble(fields[0]), Double.parseDouble(fields[1]));
+                }
 
                 inAttributeSection = false;
             }

@@ -383,7 +383,7 @@ public class TestMgfFile extends TestCase {
     public void testSetMs2Queries() {
         Ms2Query query;
         try {
-            query = new Ms2Query("BEGIN IONS\nPEPMASS=406.283\n145.119100 8\n217.142900 75\n409.221455 11\n438.314735 46\n567.400183 24\nEND IONS\n", 1);
+            query = new Ms2Query("BEGIN IONS\nPEPMASS=406.283\n145.119100 8\n217.142900 75\n409.221455 11\n438.314735 46\n567.400183 24\nEND IONS\n", 1, false);
 
             ArrayList<Ms2Query> queries = new ArrayList<Ms2Query>();
             queries.add(query);
