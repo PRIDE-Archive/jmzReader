@@ -117,7 +117,7 @@ public class MzXMLFileTest extends TestCase {
 	}
 
 	public void testGetScanCount() {
-		assertEquals(9181, mzxmlFile.getMS1ScanCount() + mzxmlFile.getMS2ScanCount());
+		assertEquals(6449, mzxmlFile.getMS1ScanCount() + mzxmlFile.getMS2ScanCount());
 	}
 
 	public void testGetScanIterator() {
@@ -141,7 +141,7 @@ public class MzXMLFileTest extends TestCase {
 			assertEquals(new Long(2), s.getMsLevel());
 		}
 		
-		assertEquals(9181, scanCount);
+		assertEquals(6449, scanCount);
 	}
 	
 	public void testGetSpectrumIterator() {
@@ -156,7 +156,7 @@ public class MzXMLFileTest extends TestCase {
 			count++;
 		}
 		
-		assertEquals(9181, count);
+		assertEquals(6449, count);
 	}
 
 	public void testConvertPeaksToMap() {
@@ -177,7 +177,7 @@ public class MzXMLFileTest extends TestCase {
 		List<Long> scanNumbers = mzxmlFile.getScanNumbers();
 		
 		assertNotNull(scanNumbers);
-		assertEquals(9181, scanNumbers.size());
+		assertEquals(6449, scanNumbers.size());
 	}
 	
 	public void testGetScanByNum() {
