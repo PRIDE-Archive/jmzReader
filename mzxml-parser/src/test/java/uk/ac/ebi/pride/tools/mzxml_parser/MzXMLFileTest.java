@@ -112,9 +112,9 @@ public class MzXMLFileTest extends TestCase {
 		}
 	}
 
-	public void testGetRunAttributes() {
-		assertEquals("{startTime=PT480.065S, endTime=PT6598.78S, scanCount=9181}", mzxmlFile.getRunAttributes().toString());
-	}
+//	public void testGetRunAttributes() {
+//		assertEquals("{startTime=PT480.065S, endTime=PT6598.78S, scanCount=9181}", mzxmlFile.getRunAttributes().toString());
+//	}
 
 	public void testGetScanCount() {
 		assertEquals(6449, mzxmlFile.getMS1ScanCount() + mzxmlFile.getMS2ScanCount());
