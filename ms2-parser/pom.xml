@@ -3,7 +3,7 @@
 
 	<groupId>uk.ac.ebi.pride.tools</groupId>
 	<artifactId>ms2-parser</artifactId>
-	<version>1.2.3-SNAPSHOT</version>
+	<version>1.2.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>ms2-parser</name>
@@ -101,12 +101,12 @@
 		<dependency>
 			<groupId>uk.ac.ebi.pride.tools</groupId>
 			<artifactId>jmzreader</artifactId>
-			<version>1.2.1-SNAPSHOT</version>
+			<version>1.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>uk.ac.ebi.pride.tools</groupId>
 			<artifactId>braf</artifactId>
-			<version>1.2.2-SNAPSHOT</version>
+			<version>1.2.2</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>

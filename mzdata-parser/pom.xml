@@ -3,7 +3,7 @@
 
 	<groupId>uk.ac.ebi.pride.tools</groupId>
 	<artifactId>mzdata-parser</artifactId>
-	<version>1.2.2-SNAPSHOT</version>
+	<version>1.2.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>mzdata-parser</name>
@@ -133,12 +133,12 @@
         <dependency>
             <groupId>psidev.psi.tools</groupId>
             <artifactId>xxindex</artifactId>
-            <version>0.15-SNAPSHOT</version>
+            <version>0.15</version>
         </dependency>
         <dependency>
             <groupId>uk.ac.ebi.pride.tools</groupId>
             <artifactId>jmzreader</artifactId>
-            <version>1.2.1-SNAPSHOT</version>
+            <version>1.2.1</version>
         </dependency>
     </dependencies>
 
@@ -174,19 +174,19 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-	<distributionManagement>
-		<repository>
-			<id>ebi-repo</id>
-			<name>EBI Repository</name>
-			<url>scp://lobster.ebi.ac.uk/homes/maven/public_html/m2repo</url>
-		</repository>
-		<snapshotRepository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>ebi-repo-snapshots</id>
-			<name>EBI Snapshots Repository</name>
-			<url>scp://lobster.ebi.ac.uk/homes/maven/public_html/m2repo_snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
+    <distributionManagement>
+        <!-- EBI repo -->
+        <repository>
+            <id>nexus-ebi-repo</id>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo</url>
+        </repository>
+        <!-- EBI SNAPSHOT repo -->
+        <snapshotRepository>
+            <id>nexus-ebi-repo-snapshots</id>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 
     <scm>
     	<connection>scm:svn:https://jmzreader.googlecode.com/svn/parser/mzdata-parser/trunk</connection>
