@@ -141,7 +141,8 @@ public class MgfFile implements JMzReader {
     /**
      * Indicates whether the parser will fail on unknown tags
      */
-    private boolean allowCustomTags = false;
+    private boolean allowCustomTags = DEFAULT_ALLOW_CUSTOM_TAGS;
+    private static final boolean DEFAULT_ALLOW_CUSTOM_TAGS = false;
     /**
      * If this option is set, comments are not removed
      * from MGF files. This speeds up parsing considerably
@@ -416,9 +417,14 @@ public class MgfFile implements JMzReader {
      *
      * @param file  The mgf file
      * @param index An ArrayList holding the
+     * @param allowCustomTags If set to true the parser will not fail if
+     *                        unsupported tags are encountered in the MGF file.
+     *                        Otherwise an Exception is thrown.
      * @throws JMzReaderException
      */
-    public MgfFile(File file, List<IndexElement> index) throws JMzReaderException {
+    public MgfFile(File file, List<IndexElement> index, boolean allowCustomTags) throws JMzReaderException {
+        setAllowCustomTags(allowCustomTags);
+
         // open the file
         try {
             // save the file
@@ -477,6 +483,20 @@ public class MgfFile implements JMzReader {
         } catch (IOException e) {
             throw new JMzReaderException("Failed to read from mgf file.", e);
         }
+    }
+
+    /**
+     * Creates the mgf file object from an existing
+     * mgf file with a pre-parsed index of ms2 spectra.
+     * The index must hold the offsets of all "BEGIN IONS"
+     * lines in the order they appear in the file.
+     *
+     * @param file  The mgf file
+     * @param index An ArrayList holding the
+     * @throws JMzReaderException
+     */
+    public MgfFile(File file, List<IndexElement> index) throws JMzReaderException {
+        this(file, index, DEFAULT_ALLOW_CUSTOM_TAGS);
     }
 
     public List<String> getAccessions() {
