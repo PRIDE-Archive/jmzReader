@@ -182,8 +182,8 @@ public class Ms2Spectrum implements Spectrum {
 		for (int i = nOffset; i < lines.length; i++) {
 			String[] fields = lines[i].split("\\s+");
 			
-			// every line must contain two fields
-			if (fields.length != 2){
+			// every line must contain at least two fields
+			if (fields.length < 2){
                 if(!(fields.length == 1 && fields[0].equalsIgnoreCase(""))){
                     throw new JMzReaderException("Invalid peak line found: '" + lines[i] + "'");
                 }
