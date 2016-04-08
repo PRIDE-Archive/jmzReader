@@ -123,11 +123,6 @@
             <id>nexus-ebi-snapshot-repo</id>
             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-snapshots/</url>
         </repository>
-        <repository>
-            <id>springsource-repo</id>
-            <name>SpringSource Repository</name>
-            <url>http://repo.springsource.org/release</url>
-        </repository>
     </repositories>
 
     <!-- Overwrites the previous repositories-->
