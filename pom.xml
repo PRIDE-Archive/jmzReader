@@ -118,6 +118,7 @@
                 <configuration>
                     <goals>deploy</goals>
                     <autoVersionSubmodules>false</autoVersionSubmodules>
+                    <remoteTagging>true</remoteTagging>
                 </configuration>
             </plugin>
         </plugins>
