@@ -99,23 +99,55 @@
 		</dependency>
 	</dependencies>
 
-    <distributionManagement>
-        <!-- EBI repo -->
-        <repository>
-            <id>nexus-ebi-repo</id>
-            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo</url>
-        </repository>
-        <!-- EBI SNAPSHOT repo -->
-        <snapshotRepository>
-            <id>nexus-ebi-repo-snapshots</id>
-            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+	<repositories>
+		<repository>
+			<id>nexus-ebi-repo-old</id>
+			<url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
+		</repository>
+		<repository>
+			<id>nexus-ebi-release-repo</id>
+			<url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-repo/</url>
+		</repository>
+		<repository>
+			<id>nexus-ebi-snapshot-repo</id>
+			<url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-snapshots/</url>
+		</repository>
+		<repository>
+			<id>springsource-repo</id>
+			<name>SpringSource Repository</name>
+			<url>http://repo.springsource.org/release</url>
+		</repository>
 
-    <scm>
-        <connection>scm:svn:https://jmzreader.googlecode.com/svn/parser/jmzreader/trunk</connection>
-        <developerConnection>scm:svn:https://jmzreader.googlecode.com/svn/parser/jmzreader/trunk</developerConnection>
-        <url>https://jmzreader.googlecode.com/svn/parser/jmzreader/trunk</url>
-    </scm>
+		<repository>
+			<id>JBoss</id>
+			<name>JBoss repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+		</repository>
+	</repositories>
+
+	<!-- PluginRepositores -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven2-repository.dev.java.net</id>
+			<url>http://download.java.net/maven/2</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- Overwrites the previous repositories-->
+	<distributionManagement>
+		<!-- EBI repo -->
+		<repository>
+			<id>pst-release</id>
+			<name>EBI Nexus Repository</name>
+			<url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+		</repository>
+		<!-- EBI SNAPSHOT repo -->
+		<snapshotRepository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>pst-snapshots</id>
+			<name>EBI Nexus Snapshots Repository</name>
+			<url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>

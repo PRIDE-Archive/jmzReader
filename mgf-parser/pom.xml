@@ -123,7 +123,26 @@
             <id>nexus-ebi-snapshot-repo</id>
             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-snapshots/</url>
         </repository>
+        <repository>
+            <id>springsource-repo</id>
+            <name>SpringSource Repository</name>
+            <url>http://repo.springsource.org/release</url>
+        </repository>
+
+        <repository>
+            <id>JBoss</id>
+            <name>JBoss repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
     </repositories>
+
+    <!-- PluginRepositores -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven2-repository.dev.java.net</id>
+            <url>http://download.java.net/maven/2</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <!-- Overwrites the previous repositories-->
     <distributionManagement>
@@ -141,11 +160,5 @@
             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-
-    <scm>
-         <connection>scm:svn:https://jmzreader.googlecode.com/svn/parser/mgf-parser/trunk</connection>
-         <developerConnection>scm:svn:https://jmzreader.googlecode.com/svn/parser/mgf-parser/trunk</developerConnection>
-         <url>https://jmzreader.googlecode.com/svn/parser/mgf-parser/trunk</url>
-    </scm>
 
 </project>
