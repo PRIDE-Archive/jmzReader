@@ -12,7 +12,7 @@
     <parent>
         <groupId>uk.ac.ebi.pride.tools</groupId>
         <artifactId>jmzreader-library</artifactId>
-        <version>1.2.0-SNAPSHOT</version>
+        <version>1.2.-SNAPSHOT</version>
     </parent>
 
     <name>apl peak list File Reader</name>

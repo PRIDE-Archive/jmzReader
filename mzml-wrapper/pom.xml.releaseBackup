@@ -1,77 +1,43 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>uk.ac.ebi.pride.tools</groupId>
-	<artifactId>jmzreader-library</artifactId>
-	<version>1.2.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>uk.ac.ebi.pride.tools</groupId>
+    <artifactId>mzml-wrapper</artifactId>
+    <version>1.3-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-	<name>jmzreader-library</name>
-	<description>The jmzReader library is a collection of parsers to process the most commonly used Mass Spectrometry text and xml based file formats using a single interface.</description>
-	<url>http://code.google.com/p/jmzreader/</url>
+    <parent>
+        <groupId>uk.ac.ebi.pride.tools</groupId>
+        <artifactId>jmzreader-library</artifactId>
+        <version>1.2.-SNAPSHOT</version>
+    </parent>
 
+    <name>mzml-wrapper</name>
+    <description>A wrapper class around the jmzml parser library implementing the PeakListParser interface.
+    </description>
+    <url>http://code.google.com/p/jmzreader/</url>
     <licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
 
-	<developers>
-		<developer>
-			<id>jgriss</id>
-			<name>Johannes Griss</name>
-			<email>jgriss@ebi.ac.uk</email>
-			<organization>Proteomics Services Team - EBI</organization>
-			<organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
-			<timezone>0</timezone>
-		</developer>
+    <developers>
         <developer>
-            <id>yperez</id>
-            <name>Yasset Perez-Riverol</name>
-            <email>yperez@ebi.ac.uk</email>
-            <organization>Proteomics Services Team - EBI</organization>
-            <organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
-            <timezone>0</timezone>
+            <id>jgriss</id>
+            <name>Johannes Griss</name>
+            <email>jgriss@ebi.ac.uk</email>
+            <organization>European Bioinformatics Institute</organization>
+            <organizationUrl>http://ebi.ac.uk/pride</organizationUrl>
         </developer>
-	</developers>
-
+    </developers>
     <organization>
-		<name>European Bioinformatics Institute, EBI</name>
-		<url>http://www.ebi.ac.uk/</url>
-	</organization>
-
-	<properties>
-        <junit.version>4.12</junit.version>
-        <language.level>1.7</language.level>
-        <log4j.version>1.2.17</log4j.version>
-        <xxindex.version>0.17</xxindex.version>
-        <jmzml.version>1.7.3</jmzml.version>
-        <pride-jaxb.version>1.0.14</pride-jaxb.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <maven.source.plugin.version>3.0.0</maven.source.plugin.version>
-        <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
-        <maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
-        <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-    </dependencies>
+        <name>European Bioinformatics Institute</name>
+        <url>http://www.ebi.ac.uk</url>
+    </organization>
 
     <build>
         <plugins>
@@ -118,25 +84,29 @@
                 <configuration>
                     <goals>deploy</goals>
                     <autoVersionSubmodules>false</autoVersionSubmodules>
-                    <remoteTagging>true</remoteTagging>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <modules>
-        <module>braf</module>
-        <module>jmzreader</module>
-        <module>dta-parser</module>
-        <module>mgf-parser</module>
-        <module>ms2-parser</module>
-        <module>mzdata-parser</module>
-        <module>mzml-wrapper</module>
-        <module>mzxml-parser</module>
-        <module>pkl-parser</module>
-        <module>pride-wrapper</module>
-        <module>apl-parser</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.ebi.jmzml</groupId>
+            <artifactId>jmzml</artifactId>
+            <version>${jmzml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.ebi.pride.tools</groupId>
+            <artifactId>jmzreader</artifactId>
+            <version>1.2.2-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
     <repositories>
         <repository>
@@ -188,12 +158,5 @@
             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-
-    <scm>
-        <connection>scm:git:github.com/PRIDE-Utilities/jmzReader.git</connection>
-        <developerConnection>scm:git:git@github.com:PRIDE-Utilities/jmzReader.git</developerConnection>
-        <url>https://github.com/PRIDE-Utilities/jmzReader.git</url>
-        <tag>HEAD</tag>
-    </scm>
 
 </project>

@@ -1,42 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>uk.ac.ebi.pride.utilities</groupId>
-    <artifactId>pride-wrapper</artifactId>
-    <version>1.2.0</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>uk.ac.ebi.pride.tools</groupId>
 		<artifactId>jmzreader-library</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.2.-SNAPSHOT</version>
 	</parent>
 
-    <licenses>
-        <license>
-            <name>Apache 2</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
+	<groupId>uk.ac.ebi.pride.tools</groupId>
+	<artifactId>dta-parser</artifactId>
+	<version>1.2.3-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-    <developers>
-        <developer>
-            <id>rwang</id>
-            <name>Rui Wang</name>
-            <email>rwang@ebi.ac.uk</email>
-            <organization>European Bioinformatics Institute</organization>
-            <organizationUrl>http://ebi.ac.uk/pride</organizationUrl>
-        </developer>
-    </developers>
+	<name>dta-parser</name>
+	<description>
+        A parser library for dta peak list files. This library supports two options:
+        1.) A directory containing a single dta file for every spectrum and
+        2.) a single file containing multiple concatenated dta files (must be sperated by an empty line).
+    </description>
+	<url>http://code.google.com/p/jmzreader/</url>
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
 
-    <organization>
-        <name>European Bioinformatics Institute</name>
-        <url>http://www.ebi.ac.uk</url>
-    </organization>
+	<developers>
+		<developer>
+			<id>jgriss</id>
+			<name>Johannes Griss</name>
+			<email>jgriss@ebi.ac.uk</email>
+			<organization>European Bioinformatics Institute</organization>
+			<organizationUrl>http://ebi.ac.uk/pride</organizationUrl>
+		</developer>
+	</developers>
+	<organization>
+		<name>European Bioinformatics Institute</name>
+		<url>http://www.ebi.ac.uk/pride</url>
+	</organization>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<build>
 		<plugins>
@@ -100,11 +108,6 @@
 			<artifactId>jmzreader</artifactId>
 			<version>1.2.2-SNAPSHOT</version>
 		</dependency>
-        <dependency>
-            <groupId>uk.ac.ebi.pride.jaxb</groupId>
-            <artifactId>pride-jaxb</artifactId>
-            <version>${pride-jaxb.version}</version>
-        </dependency>
 		<dependency>
 			<groupId>uk.ac.ebi.pride.tools</groupId>
 			<artifactId>braf</artifactId>
@@ -164,6 +167,5 @@
 			<url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-
 
 </project>
