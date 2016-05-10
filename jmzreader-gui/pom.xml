@@ -6,7 +6,7 @@
 	<version>1.2.9-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>jmzReader GUI</name>
+	<name>jmzReader GUI (Deprecated, please check Pride inspector to visualize the data) </name>
 	<description>
         A simple program to view peak lists based on the PeakListParser interface and the associated libraries.
         The jmzReader GUI supports DTA, MS2, MGF, mzXML and PKL files.

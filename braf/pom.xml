@@ -6,6 +6,12 @@
 	<version>1.2.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
+    <parent>
+        <groupId>uk.ac.ebi.pride.tools</groupId>
+        <artifactId>jmzreader-library</artifactId>
+        <version>1.2.-SNAPSHOT</version>
+    </parent>
+
 	<name>BufferedRandomAccessFile</name>
 	<description>This is an optimized version of the RandomAccessFile class as described by Nick Zhang on JavaWorld.com. The article can be found at http://www.javaworld.com/javaworld/javatips/jw-javatip26.html</description>
 	<url>https://github.com/PRIDE-Utilities/jmzReader</url>
@@ -26,71 +32,75 @@
 			<organization>European Bioinformatics Institute</organization>
 			<organizationUrl>http://ebi.ac.uk/pride</organizationUrl>
 		</developer>
+        <developer>
+            <id>yperez</id>
+            <name>Yasset Perez-Riverol</name>
+            <email>yperez@ebi.ac.uk</email>
+            <organization>Proteomics Services Team - EBI</organization>
+            <organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
+            <timezone>0</timezone>
+        </developer>
 	</developers>
 	<organization>
 		<name>European Bioinformatics Institute</name>
 		<url>http://www.ebi.ac.uk</url>
 	</organization>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>3.8.1</junit.version>
-	</properties>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.1.2</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.7</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.2.1</version>
-				<configuration>
-					<goals>deploy</goals>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${language.level}</source>
+                    <target>${language.level}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven.release.plugin.version}</version>
+                <configuration>
+                    <goals>deploy</goals>
+                    <autoVersionSubmodules>false</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
+            <version>${junit.version}</version>
 		</dependency>
 	</dependencies>
 
