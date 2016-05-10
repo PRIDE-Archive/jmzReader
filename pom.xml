@@ -156,4 +156,11 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <scm>
+        <connection>scm:git:github.com/PRIDE-Utilities/jmzReader.git</connection>
+        <developerConnection>scm:git:git@github.com:PRIDE-Utilities/jmzReader.git</developerConnection>
+        <url>https://github.com/PRIDE-Utilities/jmzReader.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
 </project>
