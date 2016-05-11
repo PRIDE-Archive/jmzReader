@@ -57,11 +57,11 @@
 		<plugins>
 
 			<plugin>
-				<!-- you can use this plugin to generate the jaxb object model from the 
-					schema and binding files specified below. Note: this will need an explicit 
-					maven goal call, since it is not intergrated into the standard mvn lifecycle. 
-					The goal to use is: org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.7.3:generate 
-					NOTE: the code generation may overwrite existing classes, so care should 
+				<!-- you can use this plugin to generate the jaxb object model from the
+					schema and binding files specified below. Note: this will need an explicit
+					maven goal call, since it is not intergrated into the standard mvn lifecycle.
+					The goal to use is: org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.7.3:generate
+					NOTE: the code generation may overwrite existing classes, so care should
 					be taken with files that were manually modified. -->
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
@@ -133,12 +133,6 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>psidev.psi.tools</groupId>
 			<artifactId>xxindex</artifactId>

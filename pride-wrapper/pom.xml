@@ -6,7 +6,7 @@
 
     <groupId>uk.ac.ebi.pride.tools</groupId>
     <artifactId>pride-wrapper</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.3-SNAPSHOT</version>
 
 	<parent>
 		<groupId>uk.ac.ebi.pride.tools</groupId>
@@ -86,12 +86,6 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>uk.ac.ebi.pride.tools</groupId>
 			<artifactId>jmzreader</artifactId>

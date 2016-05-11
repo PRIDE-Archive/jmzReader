@@ -93,14 +93,6 @@
         </plugins>
     </build>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-		</dependency>
-	</dependencies>
-
 	<repositories>
 		<repository>
 			<id>nexus-ebi-repo-old</id>

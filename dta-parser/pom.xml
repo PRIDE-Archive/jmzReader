@@ -95,12 +95,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>uk.ac.ebi.pride.tools</groupId>
 			<artifactId>jmzreader</artifactId>
 			<version>1.2.2-SNAPSHOT</version>
