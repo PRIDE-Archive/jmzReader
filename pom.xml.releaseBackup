@@ -9,7 +9,7 @@
 
 	<name>jmzreader-library</name>
 	<description>The jmzReader library is a collection of parsers to process the most commonly used Mass Spectrometry text and xml based file formats using a single interface.</description>
-	<url>https://github.com/PRIDE-Utilities/jmzReader</url>
+	<url>http://code.google.com/p/jmzreader/</url>
 
     <licenses>
 		<license>
@@ -88,9 +88,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven.source.plugin.version}</version>
-                <configuration>
-                        <attach>false</attach>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
