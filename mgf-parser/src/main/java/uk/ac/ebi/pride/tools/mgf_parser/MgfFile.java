@@ -76,7 +76,7 @@ public class MgfFile implements JMzReader {
     /**
      * Regex to capture mgf comments in mgf files.
      */
-    public static final String mgfCommentRegex = "[#;!/].*";
+    public static final String mgfCommentRegex = "^[#;!/].*";
     /**
      * Regex to recognize a attribute and extract its name and value
      */
