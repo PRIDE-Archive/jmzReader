@@ -2,13 +2,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>jmzreader</artifactId>
-	<version>1.2.3-SNAPSHOT</version>
+	<version>1.2.3</version>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>uk.ac.ebi.pride.tools</groupId>
 		<artifactId>jmzreader-library</artifactId>
-		<version>1.2.2-SNAPSHOT</version>
+		<version>1.2.2</version>
 	</parent>
 
 	<name>jMzReader core library</name>

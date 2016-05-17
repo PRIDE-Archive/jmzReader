@@ -3,7 +3,7 @@
 
 	<groupId>uk.ac.ebi.pride.tools</groupId>
 	<artifactId>jmzreader-library</artifactId>
-	<version>1.2.2-SNAPSHOT</version>
+	<version>1.2.2</version>
 	<packaging>pom</packaging>
 
 	<name>jmzreader-library</name>
@@ -208,7 +208,7 @@
         <connection>scm:git:github.com/PRIDE-Utilities/jmzReader.git</connection>
         <developerConnection>scm:git:git@github.com:PRIDE-Utilities/jmzReader.git</developerConnection>
         <url>https://github.com/PRIDE-Utilities/jmzReader.git</url>
-        <tag>HEAD</tag>
+        <tag>jmzreader-library-1.2.2</tag>
     </scm>
 
 </project>
