@@ -32,6 +32,7 @@
             <organizationUrl>http://ebi.ac.uk/pride</organizationUrl>
         </developer>
     </developers>
+
     <organization>
         <name>European Bioinformatics Institute</name>
         <url>http://www.ebi.ac.uk</url>
