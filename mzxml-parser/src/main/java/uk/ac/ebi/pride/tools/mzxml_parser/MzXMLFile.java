@@ -875,7 +875,7 @@ public class MzXMLFile implements JMzReader {
 
     @Override
     public Spectrum getSpectrumById(String id) throws JMzReaderException {
-        System.out.println(id);
+        // System.out.println(id);
         // get the scan object
         try {
             Scan scan = getScanByStringNum(id);
