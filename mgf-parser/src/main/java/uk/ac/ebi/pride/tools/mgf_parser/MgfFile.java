@@ -141,7 +141,14 @@ public class MgfFile implements JMzReader {
     /**
      * Indicates whether the parser will fail on unknown tags
      */
-    private boolean allowCustomTags = false;
+    private boolean allowCustomTags = DEFAULT_ALLOW_CUSTOM_TAGS;
+    private static final boolean DEFAULT_ALLOW_CUSTOM_TAGS = false;
+    /**
+     * If this option is set, comments are not removed
+     * from MGF files. This speeds up parsing considerably
+     * but causes problems if MGF files do contain comments.
+     */
+    private boolean disableCommentSupport = false;
 
     /**
      * Process a given attribute line and saves the variable
@@ -256,6 +263,17 @@ public class MgfFile implements JMzReader {
         }
     }
 
+    public static Spectrum getIndexedSpectrum(File sourcefile, IndexElement indexElement, boolean disableCommentSupport) throws JMzReaderException {
+        // make sure the parameters are set
+        if (sourcefile == null)
+            throw new JMzReaderException("Required parameter sourcefile must not be null.");
+        if (indexElement == null)
+            throw new JMzReaderException("Required parameter indexElement must not be null.");
+
+        // load the spectrum from the file
+        return loadIndexedQueryFromFile(sourcefile, indexElement, 1, disableCommentSupport);
+    }
+
     /**
      * Loads a (MS2) spectrum from an MGF file who's
      * position in the file is already known.
@@ -266,14 +284,7 @@ public class MgfFile implements JMzReader {
      * @throws JMzReaderException
      */
     public static Spectrum getIndexedSpectrum(File sourcefile, IndexElement indexElement) throws JMzReaderException {
-        // make sure the parameters are set
-        if (sourcefile == null)
-            throw new JMzReaderException("Required parameter sourcefile must not be null.");
-        if (indexElement == null)
-            throw new JMzReaderException("Required parameter indexElement must not be null.");
-
-        // load the spectrum from the file
-        return loadIndexedQueryFromFile(sourcefile, indexElement, 1);
+        return loadIndexedQueryFromFile(sourcefile, indexElement, 1, false);
     }
 
     /**
@@ -406,9 +417,14 @@ public class MgfFile implements JMzReader {
      *
      * @param file  The mgf file
      * @param index An ArrayList holding the
+     * @param allowCustomTags If set to true the parser will not fail if
+     *                        unsupported tags are encountered in the MGF file.
+     *                        Otherwise an Exception is thrown.
      * @throws JMzReaderException
      */
-    public MgfFile(File file, List<IndexElement> index) throws JMzReaderException {
+    public MgfFile(File file, List<IndexElement> index, boolean allowCustomTags) throws JMzReaderException {
+        setAllowCustomTags(allowCustomTags);
+
         // open the file
         try {
             // save the file
@@ -467,6 +483,20 @@ public class MgfFile implements JMzReader {
         } catch (IOException e) {
             throw new JMzReaderException("Failed to read from mgf file.", e);
         }
+    }
+
+    /**
+     * Creates the mgf file object from an existing
+     * mgf file with a pre-parsed index of ms2 spectra.
+     * The index must hold the offsets of all "BEGIN IONS"
+     * lines in the order they appear in the file.
+     *
+     * @param file  The mgf file
+     * @param index An ArrayList holding the
+     * @throws JMzReaderException
+     */
+    public MgfFile(File file, List<IndexElement> index) throws JMzReaderException {
+        this(file, index, DEFAULT_ALLOW_CUSTOM_TAGS);
     }
 
     public List<String> getAccessions() {
@@ -793,7 +823,7 @@ public class MgfFile implements JMzReader {
      * @return
      * @oaram index The query's 1-based index in the MGF file. This index is stored in the returned Ms2Query object.
      */
-    private static Ms2Query loadIndexedQueryFromFile(File file, IndexElement indexElement, int index) throws JMzReaderException {
+    private static Ms2Query loadIndexedQueryFromFile(File file, IndexElement indexElement, int index, boolean disableCommentSupport) throws JMzReaderException {
         RandomAccessFile accFile = null;
         try {
             accFile = new RandomAccessFile(file, "r");
@@ -806,7 +836,7 @@ public class MgfFile implements JMzReader {
             accFile.read(byteBuffer);
             String ms2Buffer = new String(byteBuffer);
             // create the query
-            Ms2Query query = new Ms2Query(ms2Buffer, index);
+            Ms2Query query = new Ms2Query(ms2Buffer, index, disableCommentSupport);
 
             return query;
         } catch (FileNotFoundException e) {
@@ -837,7 +867,7 @@ public class MgfFile implements JMzReader {
         // read the indexed element
         IndexElement indexElement = index.get(nQueryIndex);
 
-        return loadIndexedQueryFromFile(sourceFile, indexElement, nQueryIndex + 1);
+        return loadIndexedQueryFromFile(sourceFile, indexElement, nQueryIndex + 1, disableCommentSupport);
     }
 
     /**
@@ -1217,5 +1247,9 @@ public class MgfFile implements JMzReader {
 
     public void setAllowCustomTags(boolean allowCustomTags) {
         this.allowCustomTags = allowCustomTags;
+    }
+
+    public void setDisableCommentSupport(boolean disableCommentSupport) {
+        this.disableCommentSupport = disableCommentSupport;
     }
 }
