@@ -1,16 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>uk.ac.ebi.pride.tools</groupId>
 	<artifactId>jmzreader-library</artifactId>
-	<version>1.1</version>
+	<version>1.2.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>jmzreader-library</name>
 	<description>The jmzReader library is a collection of parsers to process the most commonly used Mass Spectrometry text and xml based file formats using a single interface.</description>
-	<url>http://code.google.com/p/jmzreader/</url>
-	<licenses>
+	<url>https://github.com/PRIDE-Utilities/jmzReader</url>
+
+    <licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
@@ -27,24 +27,188 @@
 			<organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
 			<timezone>0</timezone>
 		</developer>
+        <developer>
+            <id>yperez</id>
+            <name>Yasset Perez-Riverol</name>
+            <email>yperez@ebi.ac.uk</email>
+            <organization>Proteomics Services Team - EBI</organization>
+            <organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
+            <timezone>0</timezone>
+        </developer>
 	</developers>
-	<organization>
+
+    <organization>
 		<name>European Bioinformatics Institute, EBI</name>
 		<url>http://www.ebi.ac.uk/</url>
 	</organization>
 
-	<modules>
-		<module>braf</module>
-		<module>jmzreader</module>
-		<module>dta-parser</module>
-		<module>mgf-parser</module>
-		<module>ms2-parser</module>
-		<module>mzdata-parser</module>
-		<module>mzml-wrapper</module>
-		<module>mzxml-parser</module>
-		<module>pkl-parser</module>
-		<module>jmzreader-gui</module>
+	<properties>
+        <junit.version>4.12</junit.version>
+        <language.level>1.7</language.level>
+        <log4j.version>1.2.17</log4j.version>
+        <xxindex.version>0.17</xxindex.version>
+        <jmzml.version>1.7.3</jmzml.version>
+        <pride-jaxb.version>1.0.14</pride-jaxb.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.source.plugin.version>3.0.0</maven.source.plugin.version>
+        <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
+        <maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
+        <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+        <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
+        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${language.level}</source>
+                    <target>${language.level}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven.release.plugin.version}</version>
+                <configuration>
+                    <goals>deploy</goals>
+                    <autoVersionSubmodules>false</autoVersionSubmodules>
+                    <remoteTagging>true</remoteTagging>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven.deploy.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>braf</module>
+        <module>jmzreader</module>
+        <module>dta-parser</module>
+        <module>mgf-parser</module>
+        <module>ms2-parser</module>
+        <module>mzdata-parser</module>
+        <module>mzml-wrapper</module>
+        <module>mzxml-parser</module>
+        <module>pkl-parser</module>
         <module>pride-wrapper</module>
+        <module>apl-parser</module>
     </modules>
+
+    <repositories>
+        <repository>
+            <id>nexus-ebi-repo-old</id>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
+        </repository>
+        <repository>
+            <id>nexus-ebi-release-repo</id>
+            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-repo/</url>
+        </repository>
+        <repository>
+            <id>nexus-ebi-snapshot-repo</id>
+            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-snapshots/</url>
+        </repository>
+        <repository>
+            <id>springsource-repo</id>
+            <name>SpringSource Repository</name>
+            <url>http://repo.springsource.org/release</url>
+        </repository>
+
+        <repository>
+            <id>JBoss</id>
+            <name>JBoss repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+
+    <!-- PluginRepositores -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven2-repository.dev.java.net</id>
+            <url>http://download.java.net/maven/2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <!-- Overwrites the previous repositories-->
+    <distributionManagement>
+        <!-- EBI repo -->
+        <repository>
+            <id>pst-release</id>
+            <name>EBI Nexus Repository</name>
+            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+        </repository>
+        <!-- EBI SNAPSHOT repo -->
+        <snapshotRepository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>pst-snapshots</id>
+            <name>EBI Nexus Snapshots Repository</name>
+            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:git:github.com/PRIDE-Utilities/jmzReader.git</connection>
+        <developerConnection>scm:git:git@github.com:PRIDE-Utilities/jmzReader.git</developerConnection>
+        <url>https://github.com/PRIDE-Utilities/jmzReader.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
 </project>

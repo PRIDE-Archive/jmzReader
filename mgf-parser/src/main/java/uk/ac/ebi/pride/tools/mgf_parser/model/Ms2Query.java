@@ -119,6 +119,7 @@ public class Ms2Query implements Spectrum {
             String line = lines[nLineNumber].trim();
 
             // remove comments from the line
+            //TODO Check if the comment are inside BEGIN/ENDS IONS because comments are not allowed between  BEGIN/ENDS IONS by the specification
             if (!disableCommentSupport)
                 line = line.replaceAll(MgfFile.mgfCommentRegex, line);
 

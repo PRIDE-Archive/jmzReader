@@ -76,11 +76,11 @@ public class MgfFile implements JMzReader {
     /**
      * Regex to capture mgf comments in mgf files.
      */
-    public static final String mgfCommentRegex = "[#;!/].*";
+    public static final String mgfCommentRegex = "^[#;!/].*";
     /**
      * Regex to recognize a attribute and extract its name and value
      */
-    public static final Pattern attributePattern = Pattern.compile("(\\w+)=(.*)\\s*");
+    public static final Pattern attributePattern = Pattern.compile("(\\w+)\\s*=(.*)\\s*");
 
     /**
      * ---------- OPTIONAL PARAMETERS THAT CAN BE SET IN A MGF FILE --------------

@@ -11,7 +11,7 @@ public class BrafTest extends TestCase {
 	private final int BUF_SIZE = 1024 * 1000;
 	
 	protected void setUp() throws Exception {
-		URL testFile = getClass().getClassLoader().getResource("41390_MERGED.mgf");
+		URL testFile = getClass().getClassLoader().getResource("small.mgf");
 		URL smallFileUrl = getClass().getClassLoader().getResource("testFile");
         assertNotNull("Error loading mgf test file", testFile);
         
