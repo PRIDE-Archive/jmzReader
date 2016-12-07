@@ -46,9 +46,9 @@
         <junit.version>4.12</junit.version>
         <language.level>1.7</language.level>
         <log4j.version>1.2.17</log4j.version>
-        <xxindex.version>0.17</xxindex.version>
-        <jmzml.version>1.7.3</jmzml.version>
-        <pride-jaxb.version>1.0.14</pride-jaxb.version>
+        <xxindex.version>0.18</xxindex.version>
+        <jmzml.version>1.7.7</jmzml.version>
+        <pride-jaxb.version>1.0.16</pride-jaxb.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <maven.source.plugin.version>3.0.0</maven.source.plugin.version>
@@ -155,10 +155,6 @@
 
     <repositories>
         <repository>
-            <id>nexus-ebi-repo-old</id>
-            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
-        </repository>
-        <repository>
             <id>nexus-ebi-release-repo</id>
             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-repo/</url>
         </repository>
@@ -171,11 +167,14 @@
             <name>SpringSource Repository</name>
             <url>http://repo.springsource.org/release</url>
         </repository>
-
         <repository>
             <id>JBoss</id>
             <name>JBoss repository</name>
             <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>sammoa-group</id>
+            <url>http://maven.nuiton.org/nexus/content/repositories/sammoa-group/</url>
         </repository>
     </repositories>
 
