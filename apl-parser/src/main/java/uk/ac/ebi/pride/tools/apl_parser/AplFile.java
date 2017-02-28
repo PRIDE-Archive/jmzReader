@@ -1,6 +1,7 @@
 package uk.ac.ebi.pride.tools.apl_parser;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.pride.tools.apl_parser.model.PeakList;
 import uk.ac.ebi.pride.tools.braf.BufferedRandomAccessFile;
 import uk.ac.ebi.pride.tools.jmzreader.JMzReader;
@@ -21,7 +22,7 @@ import java.util.regex.Pattern;
  */
 public class AplFile implements JMzReader {
 
-    public static final Logger logger = Logger.getLogger(AplFile.class);
+    public static final Logger logger = LoggerFactory.getLogger(AplFile.class);
 
     public String getFormat() {
         return "Andromeda peaklist file";

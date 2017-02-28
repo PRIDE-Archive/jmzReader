@@ -5,18 +5,15 @@
 	<artifactId>jmzreader-library</artifactId>
 	<version>1.2.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
 	<name>jmzreader-library</name>
 	<description>The jmzReader library is a collection of parsers to process the most commonly used Mass Spectrometry text and xml based file formats using a single interface.</description>
 	<url>https://github.com/PRIDE-Utilities/jmzReader</url>
 
-    <licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+    <parent>
+        <groupId>uk.ac.ebi.pride.architectural</groupId>
+        <artifactId>pride-core</artifactId>
+        <version>1.0.1</version>
+    </parent>
 
 	<developers>
 		<developer>
@@ -53,6 +50,10 @@
 	</organization>
 
 	<properties>
+        <!-- Logging capabilities -->
+        <uk.ac.ebi.pride.architectural-pride-logging.version>1.0.0</uk.ac.ebi.pride.architectural-pride-logging.version>
+        <!-- TDD -->
+        <uk.ac.ebi.pride.architectural-pride-tdd.version>1.0.3</uk.ac.ebi.pride.architectural-pride-tdd.version>
         <junit.version>4.12</junit.version>
         <language.level>1.7</language.level>
         <log4j.version>1.2.17</log4j.version>
@@ -72,15 +73,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <groupId>uk.ac.ebi.pride.architectural</groupId>
+            <artifactId>pride-logging</artifactId>
+            <type>pom</type>
+            <version>${uk.ac.ebi.pride.architectural-pride-logging.version}</version>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
+            <groupId>uk.ac.ebi.pride.architectural</groupId>
+            <artifactId>pride-tdd</artifactId>
+            <type>pom</type>
+            <version>${uk.ac.ebi.pride.architectural-pride-tdd.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

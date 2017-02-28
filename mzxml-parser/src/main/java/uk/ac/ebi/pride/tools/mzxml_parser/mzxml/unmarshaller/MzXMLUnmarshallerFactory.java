@@ -8,7 +8,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.sax.SAXSource;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 
 import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.model.ModelConstants;
@@ -17,7 +18,7 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.model.MzXmlElement;
 
 
 public class MzXMLUnmarshallerFactory {
-    private static final Logger logger = Logger.getLogger(MzXMLUnmarshallerFactory.class);
+    private static final Logger logger = LoggerFactory.getLogger(MzXMLUnmarshallerFactory.class);
 
     private static MzXMLUnmarshallerFactory instance = new MzXMLUnmarshallerFactory();
     private static JAXBContext jc = null;
