@@ -54,9 +54,7 @@
         <uk.ac.ebi.pride.architectural-pride-logging.version>1.0.0</uk.ac.ebi.pride.architectural-pride-logging.version>
         <!-- TDD -->
         <uk.ac.ebi.pride.architectural-pride-tdd.version>1.0.3</uk.ac.ebi.pride.architectural-pride-tdd.version>
-        <junit.version>4.12</junit.version>
         <language.level>1.7</language.level>
-        <log4j.version>1.2.17</log4j.version>
         <xxindex.version>0.18</xxindex.version>
         <jmzml.version>1.7.7</jmzml.version>
         <pride-jaxb.version>1.0.16</pride-jaxb.version>
