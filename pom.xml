@@ -70,6 +70,8 @@
         <uk.ac.ebi.jmzml-jmzml.version>1.7.7</uk.ac.ebi.jmzml-jmzml.version>
         <jmzml.version>1.7.7</jmzml.version>
         <pride-jaxb.version>1.0.16</pride-jaxb.version>
+        <!-- Maven plugins versions -->
+        <org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>0.13.1</org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>
 
     </properties>
 
