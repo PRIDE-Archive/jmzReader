@@ -54,18 +54,9 @@
         <uk.ac.ebi.pride.architectural-pride-logging.version>1.0.0</uk.ac.ebi.pride.architectural-pride-logging.version>
         <!-- TDD -->
         <uk.ac.ebi.pride.architectural-pride-tdd.version>1.0.3</uk.ac.ebi.pride.architectural-pride-tdd.version>
-        <language.level>1.7</language.level>
         <xxindex.version>0.18</xxindex.version>
         <jmzml.version>1.7.7</jmzml.version>
         <pride-jaxb.version>1.0.16</pride-jaxb.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <maven.source.plugin.version>3.0.0</maven.source.plugin.version>
-        <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
-        <maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
-        <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-        <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
-        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
 
     </properties>
 
@@ -90,17 +81,7 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <source>${language.level}</source>
-                    <target>${language.level}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>${maven.source.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -113,24 +94,7 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven.javadoc.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>${maven.release.plugin.version}</version>
                 <configuration>
                     <goals>deploy</goals>
                     <autoVersionSubmodules>false</autoVersionSubmodules>
@@ -140,12 +104,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven.dependency.plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven.deploy.plugin.version}</version>
             </plugin>
         </plugins>
     </build>
