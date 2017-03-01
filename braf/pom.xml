@@ -13,15 +13,6 @@
 
 	<name>BufferedRandomAccessFile</name>
 	<description>This is an optimized version of the RandomAccessFile class as described by Nick Zhang on JavaWorld.com. The article can be found at http://www.javaworld.com/javaworld/javatips/jw-javatip26.html</description>
-	<url>https://github.com/PRIDE-Utilities/jmzReader</url>
-	<licenses>
-		<license>
-			<name>Apache 2</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-			<comments>A business-friendly OSS license</comments>
-		</license>
-	</licenses>
 
 	<developers>
 		<developer>
@@ -40,9 +31,4 @@
             <timezone>0</timezone>
         </developer>
 	</developers>
-	<organization>
-		<name>European Bioinformatics Institute</name>
-		<url>http://www.ebi.ac.uk</url>
-	</organization>
-
 </project>
