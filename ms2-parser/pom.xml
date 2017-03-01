@@ -10,7 +10,7 @@
 		<artifactId>jmzreader-library</artifactId>
 		<version>1.2.6-SNAPSHOT</version>
 	</parent>
-	
+
 	<name>ms2-parser</name>
 	<description>A parser library for the .ms2 file format.</description>
 

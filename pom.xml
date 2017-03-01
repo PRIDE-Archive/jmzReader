@@ -66,6 +66,7 @@
         <uk.ac.ebi.pride.tools-mzdata-parser.version>1.2.7-SNAPSHOT</uk.ac.ebi.pride.tools-mzdata-parser.version>
         <uk.ac.ebi.pride.tools-mzml-wrapper.version>1.3.4-SNAPSHOT</uk.ac.ebi.pride.tools-mzml-wrapper.version>
         <uk.ac.ebi.pride.tools-pride-wrapper.version>1.2.7-SNAPSHOT</uk.ac.ebi.pride.tools-pride-wrapper.version>
+        <psidev.psi.tools-xxindex.version>0.18</psidev.psi.tools-xxindex.version>
         <xxindex.version>0.18</xxindex.version>
         <jmzml.version>1.7.7</jmzml.version>
         <pride-jaxb.version>1.0.16</pride-jaxb.version>
