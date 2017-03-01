@@ -44,11 +44,6 @@
         </developer>
 	</developers>
 
-    <organization>
-		<name>European Bioinformatics Institute, EBI</name>
-		<url>http://www.ebi.ac.uk/</url>
-	</organization>
-
 	<properties>
         <!-- Logging capabilities -->
         <uk.ac.ebi.pride.architectural-pride-logging.version>1.0.0</uk.ac.ebi.pride.architectural-pride-logging.version>
