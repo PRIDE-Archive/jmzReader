@@ -17,15 +17,6 @@
         1.) A directory containing a single dta file for every spectrum and
         2.) a single file containing multiple concatenated dta files (must be sperated by an empty line).
     </description>
-	<url>http://code.google.com/p/jmzreader/</url>
-	<licenses>
-		<license>
-			<name>Apache 2</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-			<comments>A business-friendly OSS license</comments>
-		</license>
-	</licenses>
 
 	<developers>
 		<developer>
@@ -36,15 +27,6 @@
 			<organizationUrl>http://ebi.ac.uk/pride</organizationUrl>
 		</developer>
 	</developers>
-	<organization>
-		<name>European Bioinformatics Institute</name>
-		<url>http://www.ebi.ac.uk/pride</url>
-	</organization>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 
 	<dependencies>
 		<dependency>
@@ -56,8 +38,6 @@
 			<groupId>uk.ac.ebi.pride.tools</groupId>
 			<artifactId>braf</artifactId>
 			<version>1.2.8-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
