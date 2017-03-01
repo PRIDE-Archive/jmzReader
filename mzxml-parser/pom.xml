@@ -93,7 +93,7 @@
 		<dependency>
 			<groupId>psidev.psi.tools</groupId>
 			<artifactId>xxindex</artifactId>
-			<version>${xxindex.version}</version>
+			<version>${psidev.psi.tools-xxindex.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>uk.ac.ebi.pride.tools</groupId>
