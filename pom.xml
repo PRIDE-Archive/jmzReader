@@ -68,8 +68,7 @@
         <uk.ac.ebi.pride.tools-pride-wrapper.version>1.2.7-SNAPSHOT</uk.ac.ebi.pride.tools-pride-wrapper.version>
         <psidev.psi.tools-xxindex.version>0.18</psidev.psi.tools-xxindex.version>
         <uk.ac.ebi.jmzml-jmzml.version>1.7.7</uk.ac.ebi.jmzml-jmzml.version>
-        <jmzml.version>1.7.7</jmzml.version>
-        <pride-jaxb.version>1.0.16</pride-jaxb.version>
+        <uk.ac.ebi.pride.jaxb-pride-jaxb.version>1.0.16</uk.ac.ebi.pride.jaxb-pride-jaxb.version>
         <!-- Maven plugins versions -->
         <org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>0.13.1</org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>
 

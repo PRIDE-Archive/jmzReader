@@ -13,7 +13,7 @@
 
 	<name>pkl-parser</name>
     <description>A parser library for the pkl file format.</description>
-    
+
     <developers>
         <developer>
             <id>jgriss</id>
@@ -36,6 +36,4 @@
             <version>${uk.ac.ebi.pride.tools-braf.version}</version>
         </dependency>
 	</dependencies>
-
-
 </project>
