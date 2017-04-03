@@ -56,7 +56,7 @@
         <uk.ac.ebi.pride.tools-pkl-parser.version>1.2.7-SNAPSHOT</uk.ac.ebi.pride.tools-pkl-parser.version>
         <uk.ac.ebi.pride.tools-dta-parser.version>1.2.7-SNAPSHOT</uk.ac.ebi.pride.tools-dta-parser.version>
         <uk.ac.ebi.pride.tools-ms2-parser.version>1.2.8-SNAPSHOT</uk.ac.ebi.pride.tools-ms2-parser.version>
-        <uk.ac.ebi.pride.tools-mgf-parser.version>1.3.11-SNAPSHOT</uk.ac.ebi.pride.tools-mgf-parser.version>
+        <uk.ac.ebi.pride.tools-mgf-parser.version>1.3.12-SNAPSHOT</uk.ac.ebi.pride.tools-mgf-parser.version>
         <uk.ac.ebi.pride.tools-mzxml-parser.version>1.3.10-SNAPSHOT</uk.ac.ebi.pride.tools-mzxml-parser.version>
         <uk.ac.ebi.pride.tools-mzdata-parser.version>1.2.7-SNAPSHOT</uk.ac.ebi.pride.tools-mzdata-parser.version>
         <uk.ac.ebi.pride.tools-mzml-wrapper.version>1.3.4-SNAPSHOT</uk.ac.ebi.pride.tools-mzml-wrapper.version>
