@@ -21,13 +21,13 @@ public enum MzXmlElement {
     private static final Set<String> xpaths;
 
     static {
-        xpaths = new HashSet<String>();
+        xpaths = new HashSet<>();
         for (MzXmlElement xpath : values()) {
             xpaths.add(xpath.getXpath());
         }
     }
 
-    private MzXmlElement(String xpath, @SuppressWarnings("rawtypes") Class clazz) {
+    MzXmlElement(String xpath, @SuppressWarnings("rawtypes") Class clazz) {
         this.xpath = xpath;
         this.type = clazz;
     }

@@ -201,7 +201,7 @@ public class Plate
      */
     public List<Spot> getSpot() {
         if (spot == null) {
-            spot = new ArrayList<Spot>();
+            spot = new ArrayList<>();
         }
         return this.spot;
     }

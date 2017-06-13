@@ -117,7 +117,7 @@ public class DataProcessing
      */
     public List<Serializable> getProcessingOperationAndComment() {
         if (processingOperationAndComment == null) {
-            processingOperationAndComment = new ArrayList<Serializable>();
+            processingOperationAndComment = new ArrayList<>();
         }
         return this.processingOperationAndComment;
     }

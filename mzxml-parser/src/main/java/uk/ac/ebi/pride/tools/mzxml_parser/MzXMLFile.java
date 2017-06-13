@@ -139,7 +139,7 @@ public class MzXMLFile implements JMzReader {
             return;
 
         // initialize the map
-        numToIndexMap = new HashMap<Long, IndexElement>(level1ScanIndexes.size() + level2ScanIndexes.size());
+        numToIndexMap = new HashMap<>(level1ScanIndexes.size() + level2ScanIndexes.size());
 
         for (IndexElement indexElement : level1ScanIndexes) {
             // get the attributes
@@ -184,7 +184,7 @@ public class MzXMLFile implements JMzReader {
         // process the file line by line
         try {
             // initialize the run attributes
-            HashMap<String, String> foundAttributes = new HashMap<String, String>();
+            HashMap<String, String> foundAttributes = new HashMap<>();
 
             // go to the beginning of element
             access.seek(indexElement.getStart());
@@ -194,26 +194,26 @@ public class MzXMLFile implements JMzReader {
 
             access.read(headerBuffer);
 
-            String headerString = new String(headerBuffer);
+            StringBuilder headerString = new StringBuilder(new String(headerBuffer));
 
             // make sure the whole header was retrieved
-            while (!headerString.contains(">")) {
+            while (!headerString.toString().contains(">")) {
                 // read another header string
                 access.seek(indexElement.getStart() + headerString.length());
 
                 access.read(headerBuffer);
 
-                headerString += new String(headerBuffer);
+                headerString.append(new String(headerBuffer));
             }
 
             // remove all new line characters
-            headerString = headerString.replace("\n", "");
+            headerString = new StringBuilder(headerString.toString().replace("\n", ""));
 
             // remove everything after the first ">"
-            headerString = headerString.substring(0, headerString.indexOf('>') + 1);
+            headerString = new StringBuilder(headerString.substring(0, headerString.toString().indexOf('>') + 1));
 
             // parse the line
-            Matcher matcher = xmlAttributePattern.matcher(headerString);
+            Matcher matcher = xmlAttributePattern.matcher(headerString.toString());
 
             while (matcher.find()) {
                 String name = matcher.group(1);
@@ -239,7 +239,7 @@ public class MzXMLFile implements JMzReader {
         // process the file line by line
         try {
             // initialize the run attributes
-            runAttributes = new HashMap<String, String>();
+            runAttributes = new HashMap<>();
 
             // go to the beginning of the file
             access.seek(0);
@@ -297,7 +297,7 @@ public class MzXMLFile implements JMzReader {
      */
     private void buildMsNIndexes() throws MzXMLParsingException {
         // initialize the index
-        msNScans = new HashMap<Integer, List<IndexElement>>();
+        msNScans = new HashMap<>();
 
         for (IndexElement element : level1ScanIndexes) {
             // get the attributes
@@ -310,7 +310,7 @@ public class MzXMLFile implements JMzReader {
             Integer msLevel = Integer.parseInt(attributes.get("msLevel"));
 
             if (!msNScans.containsKey(msLevel))
-                msNScans.put(msLevel, new ArrayList<IndexElement>(1));
+                msNScans.put(msLevel, new ArrayList<>(1));
 
             msNScans.get(msLevel).add(element);
         }
@@ -326,7 +326,7 @@ public class MzXMLFile implements JMzReader {
             Integer msLevel = Integer.parseInt(attributes.get("msLevel"));
 
             if (!msNScans.containsKey(msLevel))
-                msNScans.put(msLevel, new ArrayList<IndexElement>(1));
+                msNScans.put(msLevel, new ArrayList<>(1));
 
             msNScans.get(msLevel).add(element);
         }
@@ -420,9 +420,8 @@ public class MzXMLFile implements JMzReader {
      * @throws MzXMLParsingException
      */
     public List<ParentFile> getParentFile() throws MzXMLParsingException {
-        List<ParentFile> parentFiles = unmarshalList(MzXmlElement.PARENT_FILE);
 
-        return parentFiles;
+        return unmarshalList(MzXmlElement.PARENT_FILE);
     }
 
     /**
@@ -432,9 +431,8 @@ public class MzXMLFile implements JMzReader {
      * @throws MzXMLParsingException
      */
     public List<MsInstrument> getMsInstrument() throws MzXMLParsingException {
-        List<MsInstrument> instruments = unmarshalList(MzXmlElement.MS_INSTRUMENT);
 
-        return instruments;
+        return unmarshalList(MzXmlElement.MS_INSTRUMENT);
     }
 
     /**
@@ -444,9 +442,8 @@ public class MzXMLFile implements JMzReader {
      * @throws MzXMLParsingException
      */
     public List<DataProcessing> getDataProcessing() throws MzXMLParsingException {
-        List<DataProcessing> dataProcessings = unmarshalList(MzXmlElement.DATA_PROCESSING);
 
-        return dataProcessings;
+        return unmarshalList(MzXmlElement.DATA_PROCESSING);
     }
 
     /**
@@ -527,7 +524,7 @@ public class MzXMLFile implements JMzReader {
             values = new double[floats.capacity()];
 
             for (int index = 0; index < floats.capacity(); index++)
-                values[index] = new Double(floats.get(index));
+                values[index] = (double) floats.get(index);
         }
 
         // make sure there's an even number of values (2 for every peak)
@@ -535,7 +532,7 @@ public class MzXMLFile implements JMzReader {
             throw new MzXMLParsingException("Different number of m/z and intensity values encountered in peak list.");
 
         // create the Map
-        HashMap<Double, Double> peakList = new HashMap<Double, Double>(values.length / 2);
+        HashMap<Double, Double> peakList = new HashMap<>(values.length / 2);
 
         for (int peakIndex = 0; peakIndex < values.length - 1; peakIndex += 2) {
             // get the two value
@@ -577,9 +574,8 @@ public class MzXMLFile implements JMzReader {
 
         // unmarshal the scan object
         try {
-            Scan scan = unmarshaller.unmarshal(snipplet, MzXmlElement.SCAN_LEVEL1);
 
-            return scan;
+            return unmarshaller.unmarshal(snipplet, MzXmlElement.SCAN_LEVEL1);
         } catch (Exception e) {
             throw new MzXMLParsingException("Failed to unmarshl Scan object.", e);
         }
@@ -616,7 +612,7 @@ public class MzXMLFile implements JMzReader {
      */
     public List<Long> getScanNumbers() {
         // initialize the return variable
-        ArrayList<Long> scanNumbers = new ArrayList<Long>(numToIndexMap.keySet());
+        ArrayList<Long> scanNumbers = new ArrayList<>(numToIndexMap.keySet());
         Collections.sort(scanNumbers);
 
         return scanNumbers;
@@ -636,7 +632,7 @@ public class MzXMLFile implements JMzReader {
             List<IndexElement> parentFileIndex = index.getElements(element.getXpath());
 
             // initialize the list of parent files
-            ArrayList<T> objects = new ArrayList<T>(parentFileIndex.size());
+            ArrayList<T> objects = new ArrayList<>(parentFileIndex.size());
 
             for (IndexElement indexElement : parentFileIndex) {
                 // read the xml snipplet
@@ -676,9 +672,8 @@ public class MzXMLFile implements JMzReader {
             String xmlSnipplet = readSnipplet(parentFileIndex.get(0));
 
             // unmarshal the object
-            T object = unmarshaller.unmarshal(xmlSnipplet, element);
 
-            return object;
+            return unmarshaller.unmarshal(xmlSnipplet, element);
         } catch (Exception e) {
             throw new MzXMLParsingException("Failed to unmarshall mzXML object.", e);
         }
@@ -710,8 +705,7 @@ public class MzXMLFile implements JMzReader {
             access.read(bytes);
 
             // create and return the string
-            String snipplet = new String(bytes);
-            return snipplet;
+            return new String(bytes);
 
         } catch (IOException e) {
             throw new MzXMLParsingException("Failed to read from mzXML file.", e);
@@ -805,10 +799,7 @@ public class MzXMLFile implements JMzReader {
             // get the indexes
             if (msLevel == 0)
                 indexes = index.getElements(MzXmlElement.SCAN_LEVEL1.getXpath());
-            else if (msNScans.containsKey(msLevel))
-                indexes = msNScans.get(msLevel);
-            else
-                indexes = Collections.EMPTY_LIST;
+            else indexes = msNScans.getOrDefault(msLevel, Collections.EMPTY_LIST);
         }
 
         @Override
@@ -826,9 +817,8 @@ public class MzXMLFile implements JMzReader {
                 String snipplet = readSnipplet(indexElement);
 
                 // unmarshal the scan object from the snipplet
-                Scan scan = unmarshaller.unmarshal(snipplet, MzXmlElement.SCAN_LEVEL1); // doesn't really matter which scan we use
 
-                return scan;
+                return unmarshaller.unmarshal(snipplet, MzXmlElement.SCAN_LEVEL1);
             } catch (Exception e) {
                 throw new RuntimeException("Failed to parse spectrum: " + e.getMessage(), e);
             }
@@ -864,8 +854,8 @@ public class MzXMLFile implements JMzReader {
     @Override
     public List<String> getSpectraIds() {
         // just convert the stored "nums" from Long to String
-        List<Long> nums = new ArrayList<Long>(getScanNumbers());
-        List<String> ids = new ArrayList<String>(nums.size());
+        List<Long> nums = new ArrayList<>(getScanNumbers());
+        List<String> ids = new ArrayList<>(nums.size());
 
         for (Long num : nums)
             ids.add(num.toString());
@@ -933,13 +923,13 @@ public class MzXMLFile implements JMzReader {
 
     @Override
     public List<Integer> getMsLevels() {
-        return new ArrayList<Integer>(msNScans.keySet());
+        return new ArrayList<>(msNScans.keySet());
     }
 
     @Override
     public Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> getIndexElementForIds() {
         Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> idToIndexMap =
-                new HashMap<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement>(numToIndexMap.size());
+                new HashMap<>(numToIndexMap.size());
 
         for (Long num : numToIndexMap.keySet()) {
             IndexElement e = numToIndexMap.get(num);
@@ -957,7 +947,7 @@ public class MzXMLFile implements JMzReader {
      * @return
      */
     private List<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> convertIndexElements(List<IndexElement> elements) {
-        List<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> convertedElements = new ArrayList<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement>(elements.size());
+        List<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> convertedElements = new ArrayList<>(elements.size());
 
         for (IndexElement e : elements) {
             int size = (int) (e.getStop() - e.getStart());
@@ -987,9 +977,8 @@ public class MzXMLFile implements JMzReader {
 
             try {
                 Scan scan = getScanByNum(num);
-                MzXMLSpectrum spec = new MzXMLSpectrum(scan);
 
-                return spec;
+                return new MzXMLSpectrum(scan);
             } catch (MzXMLParsingException e) {
                 throw new RuntimeException("Failed to parse spectrum " + num + ": " + e.getMessage(), e);
             }

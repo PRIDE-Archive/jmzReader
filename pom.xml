@@ -6,7 +6,8 @@
 	<version>1.2.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>jmzreader-library</name>
-	<description>The jmzReader library is a collection of parsers to process the most commonly used Mass Spectrometry text and xml based file formats using a single interface.</description>
+
+    <description>The jmzReader library is a collection of parsers to process the most commonly used Mass Spectrometry text and xml based file formats using a single interface.</description>
 	<url>https://github.com/PRIDE-Utilities/jmzReader</url>
 
     <parent>

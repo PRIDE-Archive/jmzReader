@@ -213,7 +213,7 @@ public class SpectrumSettings
          */
         public List<SpectrumSettings.AcqSpecification.Acquisition> getAcquisition() {
             if (acquisition == null) {
-                acquisition = new ArrayList<SpectrumSettings.AcqSpecification.Acquisition>();
+                acquisition = new ArrayList<>();
             }
             return this.acquisition;
         }

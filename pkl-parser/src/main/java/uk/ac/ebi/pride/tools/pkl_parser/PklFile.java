@@ -85,7 +85,7 @@ public class PklFile implements JMzReader {
 		// create the access object
 		BufferedRandomAccessFile reader = new BufferedRandomAccessFile(sourceFile, "r", 1024 * 1000);
 		
-		fileIndex = new HashMap<Integer, IndexElement>();
+		fileIndex = new HashMap<>();
 		
 		// process the file line by line
 		boolean emptyLineFound = true; // indicates that an empty line was enountered before
@@ -131,10 +131,9 @@ public class PklFile implements JMzReader {
 		// get the names of all .pkl files in the directory
 		String[] pklFiles = sourceFile.list(new PklFileFilter());
 		
-		filenames = new ArrayList<String>();
-		
-		for (String filename : pklFiles)
-			filenames.add(filename);
+		filenames = new ArrayList<>();
+
+		Collections.addAll(filenames, pklFiles);
 	}
 	
 	/**
@@ -178,7 +177,7 @@ public class PklFile implements JMzReader {
 			if (!(index instanceof String))
 				throw new JMzReaderException("For PKL file objects representing directories the spectrum index must be a filename");
 			
-			File specFile = new File(sourceFile.getAbsoluteFile() + File.separator + (String) index);
+			File specFile = new File(sourceFile.getAbsoluteFile() + File.separator + index);
 			
 			// create and return the spectrum
 			return new PklSpectrum(specFile);
@@ -353,11 +352,10 @@ public class PklFile implements JMzReader {
 	 * @return The list of spectrum ids.
 	 */
 	public List<String> getSpectraIds() {
-		ArrayList<String> ids = new ArrayList<String>();
+		ArrayList<String> ids = new ArrayList<>();
 		
 		if (sourceFile.isDirectory()) {
-			for (String filename : filenames)
-				ids.add(filename);
+			ids.addAll(filenames);
 		}
 		else {
 			// just return 1... n
@@ -373,7 +371,7 @@ public class PklFile implements JMzReader {
 		if (msLevel != 2)
 			return Collections.emptyList();
 		
-		List<IndexElement> index = new ArrayList<IndexElement>(fileIndex.size());
+		List<IndexElement> index = new ArrayList<>(fileIndex.size());
 		
 		for (Integer i = 1; i <= fileIndex.size(); i++) {
 			if (fileIndex.containsKey(i))
@@ -385,14 +383,14 @@ public class PklFile implements JMzReader {
 
 	@Override
 	public List<Integer> getMsLevels() {
-		List<Integer> msLevels = new ArrayList<Integer>(1);
+		List<Integer> msLevels = new ArrayList<>(1);
 		msLevels.add(2);
 		return msLevels;
 	}
 
 	@Override
 	public Map<String, IndexElement> getIndexElementForIds() {
-		Map<String, IndexElement> idToIndexMap = new HashMap<String, IndexElement>(fileIndex.size());
+		Map<String, IndexElement> idToIndexMap = new HashMap<>(fileIndex.size());
 		
 		for (Integer i = 1; i <= fileIndex.size(); i++) {
 			if (fileIndex.containsKey(i))

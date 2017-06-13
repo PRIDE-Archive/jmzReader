@@ -70,11 +70,10 @@ public class DtaFile implements JMzReader {
      * @return The list of spectrum ids.
      */
     public List<String> getSpectraIds() {
-        ArrayList<String> ids = new ArrayList<String>();
+        ArrayList<String> ids = new ArrayList<>();
 
         if (sourceFile.isDirectory()) {
-            for (String filename : filenames)
-                ids.add(filename);
+            ids.addAll(filenames);
         } else {
             // just return 1... n-1
             for (Integer id : fileIndex.keySet()) {
@@ -144,7 +143,7 @@ public class DtaFile implements JMzReader {
         // create the access object
         BufferedRandomAccessFile reader = new BufferedRandomAccessFile(sourceFile, "r", 1024 * 1000);
 
-        fileIndex = new TreeMap<Integer, IndexElement>();//HashMap<Integer, IndexElement>();
+        fileIndex = new TreeMap<>();//HashMap<Integer, IndexElement>();
 
         // process the file line by line
         boolean emptyLineFound = true;
@@ -177,10 +176,9 @@ public class DtaFile implements JMzReader {
         // get the names of all .dta files in the directory
         String[] dtaFiles = sourceFile.list(new DtaFileFilter());
 
-        filenames = new ArrayList<String>();
+        filenames = new ArrayList<>();
 
-        for (String filename : dtaFiles)
-            filenames.add(filename);
+        Collections.addAll(filenames, dtaFiles);
     }
 
     /**
@@ -204,7 +202,7 @@ public class DtaFile implements JMzReader {
             if (!(index instanceof String))
                 throw new JMzReaderException("Non-filename passed to DTA file object representing a directory. The spectrum index must be a filename.");
 
-            File specFile = new File(sourceFile.getAbsoluteFile() + File.separator + (String) index);
+            File specFile = new File(sourceFile.getAbsoluteFile() + File.separator + index);
 
             // create and return the spectrum
             return new DtaSpectrum(specFile);
@@ -278,7 +276,7 @@ public class DtaFile implements JMzReader {
             return Collections.emptyList();
 
         // create the list of index elements
-        List<IndexElement> index = new ArrayList<IndexElement>(fileIndex.size());
+        List<IndexElement> index = new ArrayList<>(fileIndex.size());
 
         for (Integer i = 1; i <= fileIndex.size(); i++)
             index.add(fileIndex.get(i));
@@ -288,7 +286,7 @@ public class DtaFile implements JMzReader {
 
     @Override
     public List<Integer> getMsLevels() {
-        List<Integer> msLevels = new ArrayList<Integer>(1);
+        List<Integer> msLevels = new ArrayList<>(1);
         msLevels.add(2);
         return msLevels;
     }
@@ -300,7 +298,7 @@ public class DtaFile implements JMzReader {
             return Collections.emptyMap();
 
         // create the map of index elements
-        Map<String, IndexElement> index = new HashMap<String, IndexElement>(fileIndex.size());
+        Map<String, IndexElement> index = new HashMap<>(fileIndex.size());
 
         for (Integer i = 1; i <= fileIndex.size(); i++)
             index.put(i.toString(), fileIndex.get(i));

@@ -57,7 +57,7 @@ public class DtaSpectrum implements Spectrum {
     public DtaSpectrum(File sourceFile) throws JMzReaderException {
         // open the file just read it in a buffer
         String line = "";
-        ArrayList<String> lines = new ArrayList<String>();
+        ArrayList<String> lines = new ArrayList<>();
 
         // save the sourcefile
         this.sourceFile = sourceFile;
@@ -88,7 +88,7 @@ public class DtaSpectrum implements Spectrum {
         // parse the string line by line
 
         String[] lines = dtaFileSection.trim().split("\n");
-        ArrayList<String> lineArray = new ArrayList<String>(lines.length);
+        ArrayList<String> lineArray = new ArrayList<>(lines.length);
 
         for (String line : lines) {
             // section should contain comment lines, they should be removed
@@ -111,7 +111,7 @@ public class DtaSpectrum implements Spectrum {
      */
     private void parseDtaSection(List<String> lines) throws JMzReaderException {
         // create the new peak list
-        peakList = new HashMap<Double, Double>();
+        peakList = new HashMap<>();
 
         // make sure there are lines to parse
         if (lines.size() < 2)
@@ -154,7 +154,7 @@ public class DtaSpectrum implements Spectrum {
      * @return The precursor's m/z value.
      */
     public Double getPrecursorMZ() {
-        return (double) (mhMass + (1.008 * (charge - 1))) / (double) charge;
+        return (mhMass + (1.008 * (charge - 1))) / (double) charge;
     }
 
     public String getId() {

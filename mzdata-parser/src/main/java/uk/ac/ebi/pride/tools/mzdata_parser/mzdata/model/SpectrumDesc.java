@@ -133,7 +133,7 @@ public class SpectrumDesc
      */
     public List<String> getComments() {
         if (comments == null) {
-            comments = new ArrayList<String>();
+            comments = new ArrayList<>();
         }
         return this.comments;
     }
@@ -197,7 +197,7 @@ public class SpectrumDesc
          */
         public List<Precursor> getPrecursor() {
             if (precursor == null) {
-                precursor = new ArrayList<Precursor>();
+                precursor = new ArrayList<>();
             }
             return this.precursor;
         }

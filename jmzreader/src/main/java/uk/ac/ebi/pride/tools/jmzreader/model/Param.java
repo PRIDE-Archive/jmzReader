@@ -13,23 +13,23 @@ public interface Param {
 	 * Returns the parameter's name.
 	 * @return The parameter's name
 	 */
-	public String getName();
+    String getName();
 	
 	/**
 	 * Return's the parameter's value.
 	 * @return The parameter's value.
 	 */
-	public String getValue();
+	String getValue();
 	
 	/**
 	 * Sets the parameter's name.
 	 * @param name The parameter's new name.
 	 */
-	public void setName(String name);
+	void setName(String name);
 	
 	/**
 	 * Sets the parameter's value.
 	 * @param value The parameter's new value.
 	 */
-	public void setValue(String value);
+	void setValue(String value);
 }

@@ -111,7 +111,7 @@ public class MzData
      */
     public List<CvLookup> getCvLookup() {
         if (cvLookup == null) {
-            cvLookup = new ArrayList<CvLookup>();
+            cvLookup = new ArrayList<>();
         }
         return this.cvLookup;
     }
@@ -396,7 +396,7 @@ public class MzData
          */
         public List<MzData.SpectrumList.Spectrum> getSpectrum() {
             if (spectrum == null) {
-                spectrum = new ArrayList<MzData.SpectrumList.Spectrum>();
+                spectrum = new ArrayList<>();
             }
             return this.spectrum;
         }

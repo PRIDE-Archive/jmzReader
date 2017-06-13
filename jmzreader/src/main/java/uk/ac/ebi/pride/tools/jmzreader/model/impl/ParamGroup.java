@@ -16,8 +16,8 @@ public class ParamGroup {
 	private List<UserParam> userParams;
 	
 	public ParamGroup() {
-		cvParams 	= new ArrayList<CvParam>();
-		userParams 	= new ArrayList<UserParam>();
+		cvParams 	= new ArrayList<>();
+		userParams 	= new ArrayList<>();
 	}
 	
 	public void addParam(Param param) {
@@ -30,22 +30,22 @@ public class ParamGroup {
 	
 	public void removeParam(Param param) {
 		if (param instanceof UserParam)
-			userParams.remove((UserParam) param);
+			userParams.remove(param);
 		
 		if (param instanceof CvParam)
-			cvParams.remove((CvParam) param);
+			cvParams.remove(param);
 	}
 	
 	public List<CvParam> getCvParams() {
-		return new ArrayList<CvParam>(cvParams);
+		return new ArrayList<>(cvParams);
 	}
 	
 	public List<UserParam> getUserParams() {
-		return new ArrayList<UserParam>(userParams);
+		return new ArrayList<>(userParams);
 	}
 	
 	public List<Param> getParams() {
-		ArrayList<Param> params = new ArrayList<Param>(cvParams);
+		ArrayList<Param> params = new ArrayList<>(cvParams);
 		params.addAll(userParams);
 		
 		return params;
@@ -58,10 +58,7 @@ public class ParamGroup {
 
         ParamGroup that = (ParamGroup) o;
 
-        if (cvParams != null ? !cvParams.equals(that.cvParams) : that.cvParams != null) return false;
-        if (userParams != null ? !userParams.equals(that.userParams) : that.userParams != null) return false;
-
-        return true;
+        return (cvParams != null ? cvParams.equals(that.cvParams) : that.cvParams == null) && (userParams != null ? userParams.equals(that.userParams) : that.userParams == null);
     }
 
     @Override

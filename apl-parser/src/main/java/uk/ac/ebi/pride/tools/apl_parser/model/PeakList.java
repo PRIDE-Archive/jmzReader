@@ -9,9 +9,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by neuhause on 11/02/14.
- */
+
 public class PeakList implements Spectrum{
 
     private static Pattern peakPattern = Pattern.compile("\\s*([0-9.]+)\\t([0-9.]+)\\s*");
@@ -104,7 +102,7 @@ public class PeakList implements Spectrum{
      */
     public void addPeak(Double mz, Double intensity) {
         if (peakList == null)
-            peakList = new HashMap<Double, Double>(1);
+            peakList = new HashMap<>(1);
 
         peakList.put(mz, intensity);
     }
@@ -125,12 +123,10 @@ public class PeakList implements Spectrum{
                 return null;
 
             if (chargeState.contains("-")) {
-                Integer charge = Integer.parseInt(chargeState);
-                return charge;
+                return Integer.parseInt(chargeState);
             }
             else {
-                Integer charge = Integer.parseInt(chargeState.replace("+", ""));
-                return charge;
+                return Integer.parseInt(chargeState.replace("+", ""));
             }
         }
         catch (Exception e) {
@@ -165,27 +161,27 @@ public class PeakList implements Spectrum{
 
     @Override
     public String toString(){
-        String query = "peaklist start\n";
+        StringBuilder query = new StringBuilder("peaklist start\n");
 
         // process the optional attribtues
         if (mz != null)
-            query += "mz=" + mz + "\n";
+            query.append("mz=").append(mz).append("\n");
         if (fragmentation != null)
-            query += "fragmentation=" + fragmentation + "\n";
+            query.append("fragmentation=").append(fragmentation).append("\n");
         if (chargeState != null)
-            query += "charge=" + chargeState + "\n";
+            query.append("charge=").append(chargeState).append("\n");
         if (header != null)
-            query += "header=" + header + "\n";
+            query.append("header=").append(header).append("\n");
 
-        List<Double> masses = new ArrayList<Double>(peakList.keySet());
+        List<Double> masses = new ArrayList<>(peakList.keySet());
         Collections.sort(masses);
 
         // process the peak list
         for (Double mz : masses)
-            query += mz + "\t" + peakList.get(mz) + "\n";
+            query.append(mz).append("\t").append(peakList.get(mz)).append("\n");
 
-        query += "peaklist end\n";
+        query.append("peaklist end\n");
 
-        return query;
+        return query.toString();
     }
 }

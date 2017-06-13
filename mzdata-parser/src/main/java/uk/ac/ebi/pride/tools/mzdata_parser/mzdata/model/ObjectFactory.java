@@ -285,7 +285,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "time", scope = SupData.class)
     public JAXBElement<Float> createSupDataTime(Float value) {
-        return new JAXBElement<Float>(_SupDataTime_QNAME, Float.class, SupData.class, value);
+        return new JAXBElement<>(_SupDataTime_QNAME, Float.class, SupData.class, value);
     }
 
     /**
@@ -294,7 +294,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "int", scope = SupData.class)
     public JAXBElement<Integer> createSupDataInt(Integer value) {
-        return new JAXBElement<Integer>(_SupDataInt_QNAME, Integer.class, SupData.class, value);
+        return new JAXBElement<>(_SupDataInt_QNAME, Integer.class, SupData.class, value);
     }
 
     /**
@@ -303,7 +303,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "string", scope = SupData.class)
     public JAXBElement<String> createSupDataString(String value) {
-        return new JAXBElement<String>(_SupDataString_QNAME, String.class, SupData.class, value);
+        return new JAXBElement<>(_SupDataString_QNAME, String.class, SupData.class, value);
     }
 
     /**
@@ -312,7 +312,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "boolean", scope = SupData.class)
     public JAXBElement<Boolean> createSupDataBoolean(Boolean value) {
-        return new JAXBElement<Boolean>(_SupDataBoolean_QNAME, Boolean.class, SupData.class, value);
+        return new JAXBElement<>(_SupDataBoolean_QNAME, Boolean.class, SupData.class, value);
     }
 
     /**
@@ -321,7 +321,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "double", scope = SupData.class)
     public JAXBElement<Double> createSupDataDouble(Double value) {
-        return new JAXBElement<Double>(_SupDataDouble_QNAME, Double.class, SupData.class, value);
+        return new JAXBElement<>(_SupDataDouble_QNAME, Double.class, SupData.class, value);
     }
 
     /**
@@ -330,7 +330,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "float", scope = SupData.class)
     public JAXBElement<Float> createSupDataFloat(Float value) {
-        return new JAXBElement<Float>(_SupDataFloat_QNAME, Float.class, SupData.class, value);
+        return new JAXBElement<>(_SupDataFloat_QNAME, Float.class, SupData.class, value);
     }
 
     /**
@@ -339,7 +339,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "URI", scope = SupData.class)
     public JAXBElement<String> createSupDataURI(String value) {
-        return new JAXBElement<String>(_SupDataURI_QNAME, String.class, SupData.class, value);
+        return new JAXBElement<>(_SupDataURI_QNAME, String.class, SupData.class, value);
     }
 
 }

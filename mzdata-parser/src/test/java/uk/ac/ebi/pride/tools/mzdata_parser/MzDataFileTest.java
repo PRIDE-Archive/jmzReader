@@ -103,7 +103,7 @@ public class MzDataFileTest extends TestCase {
 			
 			assertNotNull(s);
 			assertEquals(336 * 4, s.getIntenArrayBinary().getData().getValue().length);
-			assertEquals(new Float(1800.0), s.getSpectrumDesc().getSpectrumSettings().getSpectrumInstrument().getMzRangeStop());
+			assertEquals(1800.0f, s.getSpectrumDesc().getSpectrumSettings().getSpectrumInstrument().getMzRangeStop());
 		} catch (JMzReaderException e) {
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -131,7 +131,7 @@ public class MzDataFileTest extends TestCase {
 			
 			assertNotNull(s);
 			assertEquals(336 * 4, s.getIntenArrayBinary().getData().getValue().length);
-			assertEquals(new Float(1800.0), s.getSpectrumDesc().getSpectrumSettings().getSpectrumInstrument().getMzRangeStop());
+			assertEquals(1800.0f, s.getSpectrumDesc().getSpectrumSettings().getSpectrumInstrument().getMzRangeStop());
 		} catch (JMzReaderException e) {
 			e.printStackTrace();
 			fail(e.getMessage());

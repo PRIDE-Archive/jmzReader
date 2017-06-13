@@ -173,7 +173,7 @@ public class BufferedRandomAccessFile extends RandomAccessFile {
             }
         }
         if (lineend < 0) {
-            StringBuffer input = new StringBuffer(256);
+            StringBuilder input = new StringBuilder(256);
             int c;
             int lastC = 0;
             while (((c = read()) != -1) && (c != '\n') && (lastC != '\r')) {

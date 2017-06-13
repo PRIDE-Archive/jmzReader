@@ -23,14 +23,14 @@ public interface JMzReader {
 	 * file / directory.
 	 * @return
 	 */
-	public int getSpectraCount();
+    int getSpectraCount();
 	
 	/**
 	 * Indicates whether the given peak list
 	 * parser supports the parsing of single files.
 	 * @return
 	 */
-	public boolean acceptsFile();
+	boolean acceptsFile();
 	
 	/**
 	 * Indicates whether the given peak list
@@ -38,7 +38,7 @@ public interface JMzReader {
 	 * directories.
 	 * @return
 	 */
-	public boolean acceptsDirectory();
+	boolean acceptsDirectory();
 	
 	/**
 	 * Returns a list of Strings that hold the 
@@ -50,14 +50,14 @@ public interface JMzReader {
 	 * is used as id.
 	 * @return
 	 */
-	public List<String> getSpectraIds();
+	List<String> getSpectraIds();
 	
 	/**
 	 * Returns the spectrum with the given id.
 	 * @param id The spectrum's id.
 	 * @return A Spectrum or null in case a spectrum with the given id doesn't exist.
 	 */
-	public Spectrum getSpectrumById(String id) throws JMzReaderException;
+	Spectrum getSpectrumById(String id) throws JMzReaderException;
 	
 	/**
 	 * Returns the spectrum based on its 1-based index
@@ -68,13 +68,13 @@ public interface JMzReader {
 	 * @param index The 1-based index of the spectrum in the file.
 	 * @return A Spectrum or null in case a spectrum with the given index doesn't exist.
 	 */
-	public Spectrum getSpectrumByIndex(int index) throws JMzReaderException;
+	Spectrum getSpectrumByIndex(int index) throws JMzReaderException;
 	
 	/**
 	 * Returns an Iterator over all spectra in the file.
 	 * @return
 	 */
-	public Iterator<Spectrum> getSpectrumIterator();
+	Iterator<Spectrum> getSpectrumIterator();
 	
 	/**
 	 * Returns a list of IndexElements for the spectra
@@ -83,7 +83,7 @@ public interface JMzReader {
 	 * @param msLevel The ms level of the spectra to get the index elements for.
 	 * @return A list of IndexElementS
 	 */
-	public List<IndexElement> getMsNIndexes(int msLevel);
+	List<IndexElement> getMsNIndexes(int msLevel);
 	
 	/**
 	 * Returns a list of ms levels (as integers) found in
@@ -91,7 +91,7 @@ public interface JMzReader {
 	 * 
 	 * @return List of ms levels in the file.
 	 */
-	public List<Integer> getMsLevels();
+	List<Integer> getMsLevels();
 	
 	/**
 	 * Returns a Map containing the spectra ids as keys
@@ -99,5 +99,5 @@ public interface JMzReader {
 	 * 
 	 * @return Map with spectra ids as key and their IndexElements as values.
 	 */
-	public Map<String, IndexElement> getIndexElementForIds();
+	Map<String, IndexElement> getIndexElementForIds();
 }

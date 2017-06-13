@@ -100,7 +100,7 @@ public class Peaks
      *     byte[]
      */
     public void setValue(byte[] value) {
-        this.value = ((byte[]) value);
+        this.value = value;
     }
 
     /**

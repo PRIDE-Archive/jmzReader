@@ -122,7 +122,7 @@ public class Spectrum
      */
     public List<SupDesc> getSupDesc() {
         if (supDesc == null) {
-            supDesc = new ArrayList<SupDesc>();
+            supDesc = new ArrayList<>();
         }
         return this.supDesc;
     }
@@ -200,7 +200,7 @@ public class Spectrum
      */
     public List<MzDataObject> getSupDataArrayBinaryOrSupDataArray() {
         if (supDataArrayBinaryOrSupDataArray == null) {
-            supDataArrayBinaryOrSupDataArray = new ArrayList<MzDataObject>();
+            supDataArrayBinaryOrSupDataArray = new ArrayList<>();
         }
         return this.supDataArrayBinaryOrSupDataArray;
     }

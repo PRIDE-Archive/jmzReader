@@ -271,7 +271,7 @@ public class MsRun
      */
     public List<ParentFile> getParentFile() {
         if (parentFile == null) {
-            parentFile = new ArrayList<ParentFile>();
+            parentFile = new ArrayList<>();
         }
         return this.parentFile;
     }
@@ -300,7 +300,7 @@ public class MsRun
      */
     public List<MsInstrument> getMsInstrument() {
         if (msInstrument == null) {
-            msInstrument = new ArrayList<MsInstrument>();
+            msInstrument = new ArrayList<>();
         }
         return this.msInstrument;
     }
@@ -329,7 +329,7 @@ public class MsRun
      */
     public List<DataProcessing> getDataProcessing() {
         if (dataProcessing == null) {
-            dataProcessing = new ArrayList<DataProcessing>();
+            dataProcessing = new ArrayList<>();
         }
         return this.dataProcessing;
     }
@@ -406,7 +406,7 @@ public class MsRun
      */
     public List<Scan> getScan() {
         if (scan == null) {
-            scan = new ArrayList<Scan>();
+            scan = new ArrayList<>();
         }
         return this.scan;
     }

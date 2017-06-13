@@ -313,7 +313,7 @@ public class MsInstrument
      */
     public List<Serializable> getNameValueAndComment() {
         if (nameValueAndComment == null) {
-            nameValueAndComment = new ArrayList<Serializable>();
+            nameValueAndComment = new ArrayList<>();
         }
         return this.nameValueAndComment;
     }

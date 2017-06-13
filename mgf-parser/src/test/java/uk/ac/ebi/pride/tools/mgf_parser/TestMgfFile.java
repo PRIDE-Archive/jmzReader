@@ -43,7 +43,7 @@ public class TestMgfFile extends TestCase {
     }
 
     public void testSetAccessions() {
-        ArrayList<String> accessions = new ArrayList<String>();
+        ArrayList<String> accessions = new ArrayList<>();
         accessions.add("P12345");
         accessions.add("P12346");
 
@@ -146,7 +146,7 @@ public class TestMgfFile extends TestCase {
     }
 
     public void testSetFrames() {
-        ArrayList<Integer> frames = new ArrayList<Integer>();
+        ArrayList<Integer> frames = new ArrayList<>();
         frames.add(2);
         frames.add(4);
         frames.add(5);
@@ -332,7 +332,7 @@ public class TestMgfFile extends TestCase {
     }
 
     public void testSetUserParameter() {
-        ArrayList<String> params = new ArrayList<String>();
+        ArrayList<String> params = new ArrayList<>();
         params.add("My param");
         params.add("Another param");
 
@@ -369,7 +369,7 @@ public class TestMgfFile extends TestCase {
     }
 
     public void testSetPmfQueries() {
-        ArrayList<PmfQuery> queries = new ArrayList<PmfQuery>();
+        ArrayList<PmfQuery> queries = new ArrayList<>();
 
         queries.add(new PmfQuery(10.0, 10.0));
         queries.add(new PmfQuery(20.0, 20.0));
@@ -385,7 +385,7 @@ public class TestMgfFile extends TestCase {
         try {
             query = new Ms2Query("BEGIN IONS\nPEPMASS=406.283\n145.119100 8\n217.142900 75\n409.221455 11\n438.314735 46\n567.400183 24\nEND IONS\n", 1, false);
 
-            ArrayList<Ms2Query> queries = new ArrayList<Ms2Query>();
+            ArrayList<Ms2Query> queries = new ArrayList<>();
             queries.add(query);
 
             mgfFile.setMs2Queries(queries);

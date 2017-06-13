@@ -83,9 +83,9 @@ public class Ms2File implements JMzReader {
 	 */
 	private void indexFile() throws JMzReaderException {
 		// reset the current fileIndex
-		index = new ArrayList<IndexElement>();
+		index = new ArrayList<>();
 		// reset the current header information
-		header = new HashMap<String, String>();
+		header = new HashMap<>();
 		
 		try {
 			// open the file using a RandomFileAccess object
@@ -352,7 +352,7 @@ public class Ms2File implements JMzReader {
 
 	public List<String> getSpectraIds() {
 		// just return 1..size
-		List<String> ids = new ArrayList<String>(getSpectraCount());
+		List<String> ids = new ArrayList<>(getSpectraCount());
 		
 		for (Integer id = 1; id <= getSpectraCount(); id++)
 			ids.add(id.toString());
@@ -376,19 +376,19 @@ public class Ms2File implements JMzReader {
 		if (msLevel != 2)
 			return Collections.emptyList();
 		
-		return new ArrayList<IndexElement>(index);
+		return new ArrayList<>(index);
 	}
 
 	@Override
 	public List<Integer> getMsLevels() {
-		List<Integer> msLevels = new ArrayList<Integer>(2);
+		List<Integer> msLevels = new ArrayList<>(2);
 		msLevels.add(2);
 		return msLevels;
 	}
 
 	@Override
 	public Map<String, IndexElement> getIndexElementForIds() {
-		Map<String, IndexElement> idToIndexMap = new HashMap<String, IndexElement>(index.size());
+		Map<String, IndexElement> idToIndexMap = new HashMap<>(index.size());
 		
 		for (Integer i = 1; i <= index.size(); i++)
 			idToIndexMap.put(i.toString(), index.get(i - 1));

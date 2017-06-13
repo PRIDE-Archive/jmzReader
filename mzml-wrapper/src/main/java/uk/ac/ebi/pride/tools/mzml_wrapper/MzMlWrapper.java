@@ -37,7 +37,7 @@ public class MzMlWrapper implements JMzReader {
         CHARGE_STATE("MS:1000041"),
         MS_LEVEL("MS:1000511");
 
-        private MZML_PARAMS(String accession) {
+        MZML_PARAMS(String accession) {
             this.accession = accession;
         }
 
@@ -72,7 +72,7 @@ public class MzMlWrapper implements JMzReader {
             unmarshaller = new MzMLUnmarshaller(sourcefile);
 
             // save the spectra ids
-            spectraIds = new ArrayList<String>(unmarshaller.getSpectrumIDs());
+            spectraIds = new ArrayList<>(unmarshaller.getSpectrumIDs());
 
             //initialize spectrum maps
             initializeSpectrumMaps();
@@ -87,8 +87,8 @@ public class MzMlWrapper implements JMzReader {
         try {
             List<psidev.psi.tools.xxindex.index.IndexElement> spectra = unmarshaller.getMzMLIndexer().getIndexElements(MzMLElement.Spectrum.getXpath());
 
-            idToIndexElementMap = new HashMap<String, psidev.psi.tools.xxindex.index.IndexElement>(spectra.size());
-            msNScans = new HashMap<Integer, List<psidev.psi.tools.xxindex.index.IndexElement>>(spectra.size());
+            idToIndexElementMap = new HashMap<>(spectra.size());
+            msNScans = new HashMap<>(spectra.size());
 
             for (psidev.psi.tools.xxindex.index.IndexElement element : spectra) {
 
@@ -107,7 +107,7 @@ public class MzMlWrapper implements JMzReader {
                     }
                 }
                 if (!msNScans.containsKey(msLevel))
-                    msNScans.put(msLevel, new ArrayList<psidev.psi.tools.xxindex.index.IndexElement>());
+                    msNScans.put(msLevel, new ArrayList<>());
                 msNScans.get(msLevel).add(element);
             }
 
@@ -168,13 +168,13 @@ public class MzMlWrapper implements JMzReader {
 
     @Override
     public List<Integer> getMsLevels() {
-        return new ArrayList<Integer>(msNScans.keySet());
+        return new ArrayList<>(msNScans.keySet());
     }
 
     @Override
     public Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> getIndexElementForIds() {
         Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> idToIndex =
-                new HashMap<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement>(idToIndexElementMap.size());
+                new HashMap<>(idToIndexElementMap.size());
 
         for (String id : idToIndexElementMap.keySet()) {
             psidev.psi.tools.xxindex.index.IndexElement e = idToIndexElementMap.get(id);
@@ -194,7 +194,7 @@ public class MzMlWrapper implements JMzReader {
      */
     private List<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> convertIndexElements(List<psidev.psi.tools.xxindex.index.IndexElement> index) {
         List<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> convertedIndex =
-                new ArrayList<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement>(index.size());
+                new ArrayList<>(index.size());
 
         for (psidev.psi.tools.xxindex.index.IndexElement e : index) {
             int size = (int) (e.getStop() - e.getStart());
@@ -289,7 +289,7 @@ public class MzMlWrapper implements JMzReader {
             // simply use the first one
             PrecursorList precursorList = mzMlSpectrum.getPrecursorList();
 
-            if (precursorList == null || precursorList.getCount().intValue() < 1 || precursorList.getPrecursor().get(0).getSelectedIonList() == null) {
+            if (precursorList == null || precursorList.getCount() < 1 || precursorList.getPrecursor().get(0).getSelectedIonList() == null) {
                 mz = null;
                 intensity = null;
                 charge = null;
@@ -374,13 +374,13 @@ public class MzMlWrapper implements JMzReader {
 
             // get the values as numbers
             Number mzNumbers[] = mzArray.getBinaryDataAsNumberArray();
-            ArrayList<Double> mzValues = new ArrayList<Double>(mzNumbers.length);
+            ArrayList<Double> mzValues = new ArrayList<>(mzNumbers.length);
 
             for (Number n : mzNumbers)
                 mzValues.add(n.doubleValue());
 
             Number intenNumbers[] = intenArray.getBinaryDataAsNumberArray();
-            ArrayList<Double> intenValues = new ArrayList<Double>(intenNumbers.length);
+            ArrayList<Double> intenValues = new ArrayList<>(intenNumbers.length);
 
             for (Number n : intenNumbers)
                 intenValues.add(n.doubleValue());
@@ -390,7 +390,7 @@ public class MzMlWrapper implements JMzReader {
                 throw new JMzReaderException("Different sizes for m/z and intensity value arrays for spectrum " + id);
 
             // create the map
-            Map<Double, Double> peakList = new HashMap<Double, Double>(mzNumbers.length);
+            Map<Double, Double> peakList = new HashMap<>(mzNumbers.length);
 
             for (int i = 0; i < mzNumbers.length; i++)
                 peakList.put(mzValues.get(i), intenValues.get(i));

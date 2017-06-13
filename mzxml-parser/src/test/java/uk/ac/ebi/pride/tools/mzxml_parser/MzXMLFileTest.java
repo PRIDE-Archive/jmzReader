@@ -184,7 +184,7 @@ public class MzXMLFileTest extends TestCase {
 			assertEquals(new Long(2), scan.getMsLevel());
 			assertEquals(new Long(210), scan.getPeaksCount());
 			assertEquals("PT2160.4S", scan.getRetentionTime().toString());
-			assertEquals(new Float(6151.1), scan.getTotIonCurrent());
+			assertEquals(6151.1f, scan.getTotIonCurrent());
 			
 			assertEquals(1, scan.getPeaks().size());
 			Map<Double, Double> peakList = MzXMLFile.convertPeaksToMap(scan.getPeaks().get(0));

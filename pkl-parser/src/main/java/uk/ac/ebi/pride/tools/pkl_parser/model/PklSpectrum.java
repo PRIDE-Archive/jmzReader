@@ -61,7 +61,7 @@ public class PklSpectrum implements Spectrum {
 	public PklSpectrum(File sourceFile) throws JMzReaderException {
 		// open the file just read it in a buffer
 		String line = "";
-		ArrayList<String> lines = new ArrayList<String>();
+		ArrayList<String> lines = new ArrayList<>();
 		
 		// save the sourcefile
 		this.sourceFile = sourceFile;
@@ -92,10 +92,9 @@ public class PklSpectrum implements Spectrum {
 	public PklSpectrum(String pklFileSection, int index) throws JMzReaderException {
 		// parse the string line by line
 		String[] lines = pklFileSection.trim().split("\n");
-		ArrayList<String> lineArray = new ArrayList<String>(lines.length);
-		
-		for (String line : lines)
-			lineArray.add(line);
+		ArrayList<String> lineArray = new ArrayList<>(lines.length);
+
+		Collections.addAll(lineArray, lines);
 		
 		this.index = index;
 		
@@ -111,7 +110,7 @@ public class PklSpectrum implements Spectrum {
 	 */
 	private void parsePklSection(List<String> lines) throws JMzReaderException {
 		// create the new peak list
-		peakList = new HashMap<Double, Double>();
+		peakList = new HashMap<>();
 		
 		// make sure there are lines to parse
 		if (lines.size() < 1)
@@ -178,16 +177,16 @@ public class PklSpectrum implements Spectrum {
 	@Override
 	public String toString() {
 		// intialize the string with the header
-		String string = String.format("%3.2f\t%3.2f\t%d\n", observedMZ, observedIntensity, charge);
+		StringBuilder string = new StringBuilder(String.format("%3.2f\t%3.2f\t%d\n", observedMZ, observedIntensity, charge));
 		
-		List<Double> masses = new ArrayList<Double>(peakList.keySet());
+		List<Double> masses = new ArrayList<>(peakList.keySet());
 		Collections.sort(masses);
 		
 		// add the peaks
 		for (Double mz : masses)
-			string += String.format("%3.2f\t%3.2f\n", mz, peakList.get(mz));
+			string.append(String.format("%3.2f\t%3.2f\n", mz, peakList.get(mz)));
 		
-		return string;
+		return string.toString();
 	}
 
 	@Override

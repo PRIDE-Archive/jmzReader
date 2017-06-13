@@ -16,7 +16,6 @@ import java.util.Iterator;
 public class CustomTagTest extends TestCase {
 
     private MgfFile mgfFile;
-    private File sourceFile;
 
     protected void setUp() throws Exception {
         mgfFile = new MgfFile();
@@ -26,6 +25,7 @@ public class CustomTagTest extends TestCase {
         URL testFile = getClass().getClassLoader().getResource("custom_tags.mgf");
         assertNotNull("Error loading mgf test file", testFile);
 
+        File sourceFile;
         try {
             sourceFile = new File(testFile.toURI());
             mgfFile = new MgfFile(sourceFile, false);

@@ -65,7 +65,7 @@ public class Separation
      */
     public List<SeparationTechnique> getSeparationTechnique() {
         if (separationTechnique == null) {
-            separationTechnique = new ArrayList<SeparationTechnique>();
+            separationTechnique = new ArrayList<>();
         }
         return this.separationTechnique;
     }

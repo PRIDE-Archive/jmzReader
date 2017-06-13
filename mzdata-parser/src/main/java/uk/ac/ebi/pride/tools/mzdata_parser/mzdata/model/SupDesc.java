@@ -96,7 +96,7 @@ public class SupDesc
      */
     public List<SourceFile> getSupSourceFile() {
         if (supSourceFile == null) {
-            supSourceFile = new ArrayList<SourceFile>();
+            supSourceFile = new ArrayList<>();
         }
         return this.supSourceFile;
     }

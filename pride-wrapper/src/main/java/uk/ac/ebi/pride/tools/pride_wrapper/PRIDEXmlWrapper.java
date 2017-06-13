@@ -47,7 +47,7 @@ public class PRIDEXmlWrapper implements JMzReader {
 
     public PRIDEXmlWrapper(File file) {
         this.prideXmlReader = new PrideXmlReader(file);
-        this.spectrumIds = new ArrayList<String>(prideXmlReader.getSpectrumIds());
+        this.spectrumIds = new ArrayList<>(prideXmlReader.getSpectrumIds());
         convertIndices(prideXmlReader.getSpectrumIndices());
     }
 
@@ -58,8 +58,8 @@ public class PRIDEXmlWrapper implements JMzReader {
      * @return Map<String, IndexElement>   jmzReader index element map
      */
     private void convertIndices(Map<String, psidev.psi.tools.xxindex.index.IndexElement> rawIndices) {
-        spectrumIndices = new HashMap<String, IndexElement>();
-        msLevelIndices = new HashMap<Integer, List<IndexElement>>();
+        spectrumIndices = new HashMap<>();
+        msLevelIndices = new HashMap<>();
 
         for (Map.Entry<String, psidev.psi.tools.xxindex.index.IndexElement> rawIndex : rawIndices.entrySet()) {
             psidev.psi.tools.xxindex.index.IndexElement rawIndexElement = rawIndex.getValue();
@@ -71,11 +71,7 @@ public class PRIDEXmlWrapper implements JMzReader {
 
             // ms level
             int msLevel = prideXmlReader.getSpectrumMsLevel(rawIndex.getKey());
-            List<IndexElement> msLevelIndexElements = msLevelIndices.get(msLevel);
-            if (msLevelIndexElements == null) {
-                msLevelIndexElements = new ArrayList<IndexElement>();
-                msLevelIndices.put(msLevel, msLevelIndexElements);
-            }
+            List<IndexElement> msLevelIndexElements = msLevelIndices.computeIfAbsent(msLevel, k -> new ArrayList<>());
             msLevelIndexElements.add(indexElement);
         }
 
@@ -118,7 +114,7 @@ public class PRIDEXmlWrapper implements JMzReader {
      */
     @Override
     public List<String> getSpectraIds() {
-        return new ArrayList<String>(spectrumIds);
+        return new ArrayList<>(spectrumIds);
     }
 
     /**
@@ -167,7 +163,7 @@ public class PRIDEXmlWrapper implements JMzReader {
      */
     @Override
     public List<IndexElement> getMsNIndexes(int msLevel) {
-        return new ArrayList<IndexElement>(msLevelIndices.get(msLevel));
+        return new ArrayList<>(msLevelIndices.get(msLevel));
     }
 
     /**
@@ -177,7 +173,7 @@ public class PRIDEXmlWrapper implements JMzReader {
      */
     @Override
     public List<Integer> getMsLevels() {
-        return new ArrayList<Integer>(msLevelIndices.keySet());
+        return new ArrayList<>(msLevelIndices.keySet());
     }
 
     /**
@@ -187,7 +183,7 @@ public class PRIDEXmlWrapper implements JMzReader {
      */
     @Override
     public Map<String, IndexElement> getIndexElementForIds() {
-        return new HashMap<String, IndexElement>(spectrumIndices);
+        return new HashMap<>(spectrumIndices);
     }
 
     /**
@@ -325,8 +321,8 @@ public class PRIDEXmlWrapper implements JMzReader {
                 intenBuffer.order(ByteOrder.BIG_ENDIAN);
 
             // convert the buffers into lists
-            List<Double> mz = new ArrayList<Double>();
-            List<Double> inten = new ArrayList<Double>();
+            List<Double> mz = new ArrayList<>();
+            List<Double> inten = new ArrayList<>();
 
             int size = mzData.getPrecision().equals("32") ? 4 : 8;
             for (int i = 0; i < mzBuffer.limit(); i += size)
@@ -340,7 +336,7 @@ public class PRIDEXmlWrapper implements JMzReader {
                 throw new IllegalStateException("Different sizes encountered for intensity and m/z array (spectrum id = " + id + ")");
 
             // create and fill the peak list
-            peakList = new HashMap<Double, Double>();
+            peakList = new HashMap<>();
 
             for (int i = 0; i < mz.size(); i++)
                 peakList.put(mz.get(i), inten.get(i));

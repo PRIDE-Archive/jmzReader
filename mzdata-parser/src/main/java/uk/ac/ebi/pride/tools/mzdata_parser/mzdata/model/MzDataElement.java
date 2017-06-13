@@ -19,13 +19,13 @@ public enum MzDataElement {
     private static final Set<String> xpaths;
 
     static {
-        xpaths = new HashSet<String>();
+        xpaths = new HashSet<>();
         for (MzDataElement xpath : values()) {
             xpaths.add(xpath.getXpath());
         }
     }
 
-    private MzDataElement(String xpath, @SuppressWarnings("rawtypes") Class clazz) {
+    MzDataElement(String xpath, @SuppressWarnings("rawtypes") Class clazz) {
         this.xpath = xpath;
         this.type = clazz;
     }

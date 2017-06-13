@@ -249,7 +249,7 @@ public class InstrumentDescription
          */
         public List<Param> getAnalyzer() {
             if (analyzer == null) {
-                analyzer = new ArrayList<Param>();
+                analyzer = new ArrayList<>();
             }
             return this.analyzer;
         }

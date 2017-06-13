@@ -90,9 +90,9 @@ public class Ms2Spectrum implements Spectrum {
 		int i = 0;
 		
 		// reset / create the HashMaps
-		additionalInformation 	= new HashMap<String, String>();
-		chargeDependentData 	= new HashMap<String, String>();
-		charges					= new HashMap<Integer, Double>();
+		additionalInformation 	= new HashMap<>();
+		chargeDependentData 	= new HashMap<>();
+		charges					= new HashMap<>();
 		
 		// loop through the lines to parse the header
 		for (; i < lines.length; i++) {
@@ -176,7 +176,7 @@ public class Ms2Spectrum implements Spectrum {
 	 */
 	private void parsePeakList(String[] lines, int nOffset) throws JMzReaderException {
 		// reset / create the peak list
-		peakList = new HashMap<Double, Double>();
+		peakList = new HashMap<>();
 		
 		// parse the lines
 		for (int i = nOffset; i < lines.length; i++) {

@@ -80,7 +80,7 @@ public class Param
      */
     public List<MzDataObject> getCvParamOrUserParam() {
         if (cvParamOrUserParam == null) {
-            cvParamOrUserParam = new ArrayList<MzDataObject>();
+            cvParamOrUserParam = new ArrayList<>();
         }
         return this.cvParamOrUserParam;
     }
@@ -89,7 +89,7 @@ public class Param
     	if (cvParamOrUserParam == null)
     		return Collections.emptyList();
     	
-    	List<CvParam> cvParams = new ArrayList<CvParam>();
+    	List<CvParam> cvParams = new ArrayList<>();
     	
     	for (MzDataObject param : cvParamOrUserParam) {
     		if (param instanceof CvParam) {
@@ -104,7 +104,7 @@ public class Param
     	if (cvParamOrUserParam == null)
     		return Collections.emptyList();
     	
-    	List<UserParam> userParams = new ArrayList<UserParam>();
+    	List<UserParam> userParams = new ArrayList<>();
     	
     	for (MzDataObject param : cvParamOrUserParam) {
     		if (param instanceof UserParam) {

@@ -38,10 +38,7 @@ public class UserParam implements Param {
 
         UserParam userParam = (UserParam) o;
 
-        if (name != null ? !name.equals(userParam.name) : userParam.name != null) return false;
-        if (value != null ? !value.equals(userParam.value) : userParam.value != null) return false;
-
-        return true;
+        return (name != null ? name.equals(userParam.name) : userParam.name == null) && (value != null ? value.equals(userParam.value) : userParam.value == null);
     }
 
     @Override

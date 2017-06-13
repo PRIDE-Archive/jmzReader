@@ -33,7 +33,7 @@ public class MgfFile implements JMzReader {
         PMF("PMF"), SQ("SQ"), MIS("MIS");
         private String name;
 
-        private SearchType(String name) {
+        SearchType(String name) {
             this.name = name;
         }
 
@@ -49,7 +49,7 @@ public class MgfFile implements JMzReader {
 
         private String name;
 
-        private ReportType(String name) {
+        ReportType(String name) {
             this.name = name;
         }
 
@@ -64,7 +64,7 @@ public class MgfFile implements JMzReader {
 
         private String name;
 
-        private PeptideToleranceUnit(String name) {
+        PeptideToleranceUnit(String name) {
             this.name = name;
         }
 
@@ -125,16 +125,16 @@ public class MgfFile implements JMzReader {
      * Position from the "BEGIN IONS" fields in the file to
      * the "END IONS"
      */
-    private List<IndexElement> index = new ArrayList<IndexElement>();
+    private List<IndexElement> index = new ArrayList<>();
     /**
      * PMF Queries
      */
-    private List<PmfQuery> pmfQueries = new ArrayList<PmfQuery>();
+    private List<PmfQuery> pmfQueries = new ArrayList<>();
     /**
      * MS2 queries. The index of the query in the file as key
      * and the respective query as value.
      */
-    private HashMap<Integer, Ms2Query> ms2Queries = new HashMap<Integer, Ms2Query>();
+    private HashMap<Integer, Ms2Query> ms2Queries = new HashMap<>();
     /**
      * Indicates whether the cache should be used
      */
@@ -177,14 +177,14 @@ public class MgfFile implements JMzReader {
         } else if ("DB".equals(name)) {
             database = value;
         } else if ("DECOY".equals(name)) {
-            performDecoySearch = (value.equals("1")) ? true : false;
+            performDecoySearch = value.equals("1");
         } else if ("ERRORTOLERANT".equals(name)) {
-            isErrorTolerant = (value.equals("1")) ? true : false;
+            isErrorTolerant = value.equals("1");
         } else if ("FORMAT".equals(name)) {
             format = value;
         } else if ("FRAMES".equals(name)) {
             String[] frames = value.split(",");
-            this.frames = new ArrayList<Integer>();
+            this.frames = new ArrayList<>();
             for (String frame : frames)
                 this.frames.add(Integer.parseInt(frame));
         } else if ("INSTRUMENT".equals(name)) {
@@ -252,7 +252,7 @@ public class MgfFile implements JMzReader {
             } else if ("USERNAME".equals(name)) {
                 userName = value;
             } else {
-                if (userParameter == null) userParameter = new ArrayList<String>();
+                if (userParameter == null) userParameter = new ArrayList<>();
                 userParameter.add(value);
             }
         } else {
@@ -837,9 +837,8 @@ public class MgfFile implements JMzReader {
             accFile.read(byteBuffer);
             String ms2Buffer = new String(byteBuffer);
             // create the query
-            Ms2Query query = new Ms2Query(ms2Buffer, index, disableCommentSupport);
 
-            return query;
+            return new Ms2Query(ms2Buffer, index, disableCommentSupport);
         } catch (FileNotFoundException e) {
             throw new JMzReaderException("MGF file could not be found.", e);
         } catch (IOException e) {
@@ -913,24 +912,24 @@ public class MgfFile implements JMzReader {
     @Override
     public String toString() {
         // add the parameters
-        String string = marshallAdditionalParameters();
+        StringBuilder string = new StringBuilder(marshallAdditionalParameters());
 
         // process the pmf spectra
         for (PmfQuery q : pmfQueries)
-            string += (q.toString() + "\n");
+            string.append(q.toString()).append("\n");
 
         if (pmfQueries.size() > 0)
-            string += "\n";
+            string.append("\n");
 
         // write the spectra
         for (Integer index = 0; index < 1000000; index++) {
             if (!ms2Queries.containsKey(index))
                 continue;
 
-            string += ms2Queries.get(index).toString() + "\n";
+            string.append(ms2Queries.get(index).toString()).append("\n");
         }
 
-        return string;
+        return string.toString();
     }
 
     /**
@@ -939,110 +938,110 @@ public class MgfFile implements JMzReader {
      * @return A string holding the marshalled parameters
      */
     private String marshallAdditionalParameters() {
-        String parameters = "";
+        StringBuilder parameters = new StringBuilder();
 
         if (accessions != null && accessions.size() > 0) {
-            parameters += "ACCESSION=";
+            parameters.append("ACCESSION=");
             for (int i = 0; i < accessions.size(); i++)
-                parameters += ((i > 0) ? "," : "") + "\"" + accessions.get(i) + "\"";
-            parameters += "\n";
+                parameters.append((i > 0) ? "," : "").append("\"").append(accessions.get(i)).append("\"");
+            parameters.append("\n");
         }
 
         if (charge != null)
-            parameters += "CHARGE=" + charge + "\n";
+            parameters.append("CHARGE=").append(charge).append("\n");
 
         if (enzyme != null)
-            parameters += "CLE=" + enzyme + "\n";
+            parameters.append("CLE=").append(enzyme).append("\n");
 
         if (searchTitle != null)
-            parameters += "COM=" + searchTitle + "\n";
+            parameters.append("COM=").append(searchTitle).append("\n");
 
         if (precursorRemoval != null)
-            parameters += "CUTOUT=" + precursorRemoval + "\n";
+            parameters.append("CUTOUT=").append(precursorRemoval).append("\n");
 
         if (database != null)
-            parameters += "DB=" + database + "\n";
+            parameters.append("DB=").append(database).append("\n");
 
         if (performDecoySearch != null)
-            parameters += "DECOY=" + ((performDecoySearch) ? "1" : "0") + "\n";
+            parameters.append("DECOY=").append((performDecoySearch) ? "1" : "0").append("\n");
 
         if (isErrorTolerant != null)
-            parameters += "ERRORTOLERANT=" + ((isErrorTolerant) ? "1" : "0") + "\n";
+            parameters.append("ERRORTOLERANT=").append((isErrorTolerant) ? "1" : "0").append("\n");
 
         if (format != null)
-            parameters += "FORMAT=" + format + "\n";
+            parameters.append("FORMAT=").append(format).append("\n");
 
         if (frames != null && frames.size() > 0) {
-            parameters += "FRAMES=";
+            parameters.append("FRAMES=");
             for (int i = 0; i < frames.size(); i++)
-                parameters += ((i > 0) ? "," : "") + frames.get(i).toString();
-            parameters += "\n";
+                parameters.append((i > 0) ? "," : "").append(frames.get(i).toString());
+            parameters.append("\n");
         }
 
         if (instrument != null)
-            parameters += "INSTRUMENT=" + instrument + "\n";
+            parameters.append("INSTRUMENT=").append(instrument).append("\n");
 
         if (variableModifications != null)
-            parameters += "IT_MODS=" + variableModifications + "\n";
+            parameters.append("IT_MODS=").append(variableModifications).append("\n");
 
         if (fragmentIonTolerance != null)
-            parameters += "ITOL=" + fragmentIonTolerance.toString() + "\n";
+            parameters.append("ITOL=").append(fragmentIonTolerance.toString()).append("\n");
 
         if (fragmentIonToleranceUnit != null)
-            parameters += "ITOLU=" + ((fragmentIonToleranceUnit == FragmentToleranceUnits.MMU) ? "mmu" : "Da") + "\n";
+            parameters.append("ITOLU=").append((fragmentIonToleranceUnit == FragmentToleranceUnits.MMU) ? "mmu" : "Da").append("\n");
 
         if (massType != null)
-            parameters += "MASS=" + ((massType == MassType.AVERAGE) ? "Average" : "Monoisotopic") + "\n";
+            parameters.append("MASS=").append((massType == MassType.AVERAGE) ? "Average" : "Monoisotopic").append("\n");
 
         if (fixedMofications != null)
-            parameters += "MODS=" + fixedMofications + "\n";
+            parameters.append("MODS=").append(fixedMofications).append("\n");
 
         if (peptideIsotopeError != null)
-            parameters += "PEP_ISOTOPE_ERROR=" + peptideIsotopeError.toString() + "\n";
+            parameters.append("PEP_ISOTOPE_ERROR=").append(peptideIsotopeError.toString()).append("\n");
 
         if (partials != null)
-            parameters += "PFA=" + partials.toString() + "\n";
+            parameters.append("PFA=").append(partials.toString()).append("\n");
 
         if (precursor != null)
-            parameters += "PRECURSOR=" + precursor.toString() + "\n";
+            parameters.append("PRECURSOR=").append(precursor.toString()).append("\n");
 
         if (quantitation != null)
-            parameters += "QUANTITATION=" + quantitation + "\n";
+            parameters.append("QUANTITATION=").append(quantitation).append("\n");
 
         if (maxHitsToReport != null)
-            parameters += "REPORT=" + maxHitsToReport + "\n";
+            parameters.append("REPORT=").append(maxHitsToReport).append("\n");
 
         if (reportType != null)
-            parameters += "REPTYPE=" + reportType.toString() + "\n";
+            parameters.append("REPTYPE=").append(reportType.toString()).append("\n");
 
         if (searchType != null)
-            parameters += "SEARCH=" + searchType.toString() + "\n";
+            parameters.append("SEARCH=").append(searchType.toString()).append("\n");
 
         if (proteinMass != null)
-            parameters += "SEG=" + proteinMass + "\n";
+            parameters.append("SEG=").append(proteinMass).append("\n");
 
         if (taxonomy != null)
-            parameters += "TAXONOMY=" + taxonomy + "\n";
+            parameters.append("TAXONOMY=").append(taxonomy).append("\n");
 
         if (peptideMassTolerance != null)
-            parameters += "TOL=" + peptideMassTolerance.toString() + "\n";
+            parameters.append("TOL=").append(peptideMassTolerance.toString()).append("\n");
 
         if (peptideMassToleranceUnit != null)
-            parameters += "TOLU=" + peptideMassToleranceUnit.toString() + "\n";
+            parameters.append("TOLU=").append(peptideMassToleranceUnit.toString()).append("\n");
 
         if (userMail != null)
-            parameters += "USEREMAIL=" + userMail + "\n";
+            parameters.append("USEREMAIL=").append(userMail).append("\n");
 
         if (userName != null)
-            parameters += "USERNAME=" + userName + "\n";
+            parameters.append("USERNAME=").append(userName).append("\n");
 
         if (userParameter != null) {
             for (Integer i = 0; i < userParameter.size(); i++) {
-                parameters += "USER" + ((i < 10) ? "0" : "") + i.toString() + "=" + userParameter.get(i) + "\n";
+                parameters.append("USER").append((i < 10) ? "0" : "").append(i.toString()).append("=").append(userParameter.get(i)).append("\n");
             }
         }
 
-        return parameters;
+        return parameters.toString();
     }
 
     /**
@@ -1092,7 +1091,7 @@ public class MgfFile implements JMzReader {
         /**
          * A list of keys in the ms2Query HashMap
          */
-        private ArrayList<Integer> keys = new ArrayList<Integer>(ms2Queries.keySet());
+        private ArrayList<Integer> keys = new ArrayList<>(ms2Queries.keySet());
 
         /**
          * Creates a Ms2QueryIterator. In case a source file is
@@ -1171,7 +1170,7 @@ public class MgfFile implements JMzReader {
      * @return An array of "BEGIN IONS" lines offsets.
      */
     public List<IndexElement> getIndex() {
-        return new ArrayList<IndexElement>(index);
+        return new ArrayList<>(index);
     }
 
     /**
@@ -1193,7 +1192,7 @@ public class MgfFile implements JMzReader {
 
     public List<String> getSpectraIds() {
         // simply create a list of ids 1..size
-        List<String> ids = new ArrayList<String>(getMs2QueryCount());
+        List<String> ids = new ArrayList<>(getMs2QueryCount());
 
         for (Integer id = 1; id <= getMs2QueryCount(); id++)
             ids.add(id.toString());
@@ -1223,13 +1222,13 @@ public class MgfFile implements JMzReader {
         if (msLevel != 2)
             return Collections.emptyList();
 
-        return new ArrayList<IndexElement>(index);
+        return new ArrayList<>(index);
     }
 
     @Override
     public List<Integer> getMsLevels() {
         // MGF files can only contain MS 2
-        List<Integer> msLevels = new ArrayList<Integer>(1);
+        List<Integer> msLevels = new ArrayList<>(1);
         msLevels.add(2);
 
         return msLevels;
@@ -1237,7 +1236,7 @@ public class MgfFile implements JMzReader {
 
     @Override
     public Map<String, IndexElement> getIndexElementForIds() {
-        Map<String, IndexElement> idToIndexMap = new HashMap<String, IndexElement>(index.size());
+        Map<String, IndexElement> idToIndexMap = new HashMap<>(index.size());
 
         for (int i = 0; i < index.size(); i++) {
             idToIndexMap.put(String.format("%d", i + 1), index.get(i));

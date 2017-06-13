@@ -137,8 +137,8 @@ public class MzDataSpectrum implements Spectrum {
 			intenBuffer.order(ByteOrder.BIG_ENDIAN);
 		
 		// convert the buffers into lists
-		List<Double> mz = new ArrayList<Double>();
-		List<Double> inten = new ArrayList<Double>();
+		List<Double> mz = new ArrayList<>();
+		List<Double> inten = new ArrayList<>();
 		
 		int size = mzData.getPrecision().equals("32") ? 4 : 8;
 		for (int i = 0; i < mzBuffer.limit(); i += size)
@@ -152,7 +152,7 @@ public class MzDataSpectrum implements Spectrum {
 			throw new IllegalStateException("Different sizes encountered for intensity and m/z array (spectrum id = " + id + ")");
 		
 		// create and fill the peak list
-		peakList = new HashMap<Double, Double>();
+		peakList = new HashMap<>();
 		
 		for (int i = 0; i < mz.size(); i++)
 			peakList.put(mz.get(i), inten.get(i));

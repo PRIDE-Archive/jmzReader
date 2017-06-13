@@ -13,7 +13,7 @@ public interface IndexElement {
 	 * indexed object.
 	 * @return Byte offset of the indexed offset.
 	 */
-	public long getStart();
+    long getStart();
 	
 	/**
 	 * Returns the size of the indexed object
@@ -21,5 +21,5 @@ public interface IndexElement {
 	 * 
 	 * @return Size of the indexed object in bytes.
 	 */
-	public int getSize();
+	int getSize();
 }

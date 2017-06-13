@@ -41,12 +41,12 @@ public class AplFile implements JMzReader {
      * Position from the "BEGIN IONS" fields in the file to
      * the "END IONS"
      */
-    private List<IndexElement> index = new ArrayList<IndexElement>();
+    private List<IndexElement> index = new ArrayList<>();
     /**
      * MS2 peak lists. The index of the query in the file as key
      * and the respective query as value.
      */
-    private HashMap<Integer, PeakList> peakLists = new HashMap<Integer, PeakList>();
+    private HashMap<Integer, PeakList> peakLists = new HashMap<>();
     /**
      * Indicates whether the cache should be used
      */
@@ -265,9 +265,8 @@ public class AplFile implements JMzReader {
             accFile.read(byteBuffer);
             String ms2Buffer = new String(byteBuffer);
             // create the query
-            PeakList query = new PeakList(ms2Buffer, index);
 
-            return query;
+            return new PeakList(ms2Buffer, index);
         } catch (FileNotFoundException e) {
             throw new JMzReaderException("MGF file could not be found.", e);
         } catch (IOException e) {
@@ -301,17 +300,17 @@ public class AplFile implements JMzReader {
 
     @Override
     public String toString() {
-        String string = "";
+        StringBuilder string = new StringBuilder();
 
         // write the spectra
         for (Integer index = 0; index < 1000000; index++) {
             if (!peakLists.containsKey(index))
                 continue;
 
-            string += peakLists.get(index).toString() + "\n";
+            string.append(peakLists.get(index).toString()).append("\n");
         }
 
-        return string;
+        return string.toString();
     }
 
     /**
@@ -361,7 +360,7 @@ public class AplFile implements JMzReader {
         /**
          * A list of keys in the ms2Query HashMap
          */
-        private ArrayList<Integer> keys = new ArrayList<Integer>(peakLists.keySet());
+        private ArrayList<Integer> keys = new ArrayList<>(peakLists.keySet());
 
         /**
          * Creates a Ms2QueryIterator. In case a source file is
@@ -440,7 +439,7 @@ public class AplFile implements JMzReader {
      * @return An array of "BEGIN IONS" lines offsets.
      */
     public List<IndexElement> getIndex() {
-        return new ArrayList<IndexElement>(index);
+        return new ArrayList<>(index);
     }
 
     /**
@@ -462,7 +461,7 @@ public class AplFile implements JMzReader {
 
     public List<String> getSpectraIds() {
         // simply create a list of ids 1..size
-        List<String> ids = new ArrayList<String>(getPeakListCount());
+        List<String> ids = new ArrayList<>(getPeakListCount());
 
         for (Integer id = 1; id <= getPeakListCount(); id++)
             ids.add(id.toString());
@@ -492,13 +491,13 @@ public class AplFile implements JMzReader {
         if (msLevel != 2)
             return Collections.emptyList();
 
-        return new ArrayList<IndexElement>(index);
+        return new ArrayList<>(index);
     }
 
     @Override
     public List<Integer> getMsLevels() {
         // MGF files can only contain MS 2
-        List<Integer> msLevels = new ArrayList<Integer>(1);
+        List<Integer> msLevels = new ArrayList<>(1);
         msLevels.add(2);
 
         return msLevels;
@@ -506,7 +505,7 @@ public class AplFile implements JMzReader {
 
     @Override
     public Map<String, IndexElement> getIndexElementForIds() {
-        Map<String, IndexElement> idToIndexMap = new HashMap<String, IndexElement>(index.size());
+        Map<String, IndexElement> idToIndexMap = new HashMap<>(index.size());
 
         for (int i = 0; i < index.size(); i++) {
             idToIndexMap.put(String.format("%d", i + 1), index.get(i));

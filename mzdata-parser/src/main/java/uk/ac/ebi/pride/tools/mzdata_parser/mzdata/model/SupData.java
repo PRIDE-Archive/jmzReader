@@ -132,7 +132,7 @@ public class SupData implements Serializable, MzDataObject
      */
     public List<JAXBElement<? extends Serializable>> getFloatOrDoubleOrInt() {
         if (floatOrDoubleOrInt == null) {
-            floatOrDoubleOrInt = new ArrayList<JAXBElement<? extends Serializable>>();
+            floatOrDoubleOrInt = new ArrayList<>();
         }
         return this.floatOrDoubleOrInt;
     }

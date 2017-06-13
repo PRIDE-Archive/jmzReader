@@ -223,7 +223,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://sashimi.sourceforge.net/schema_revision/mzXML_3.2", name = "separationTechnique")
     public JAXBElement<SeparationTechnique> createSeparationTechnique(SeparationTechnique value) {
-        return new JAXBElement<SeparationTechnique>(_SeparationTechnique_QNAME, SeparationTechnique.class, null, value);
+        return new JAXBElement<>(_SeparationTechnique_QNAME, SeparationTechnique.class, null, value);
     }
 
 }

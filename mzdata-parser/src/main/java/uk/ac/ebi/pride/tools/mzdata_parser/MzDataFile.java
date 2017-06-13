@@ -141,9 +141,9 @@ public class MzDataFile implements JMzReader {
 	private void initializeSpectraMaps() throws JMzReaderException {
 		List<IndexElement> spectra = index.getElements(MzDataElement.SPECTRUM.getXpath());
 		
-		idToIndexElementMap = new HashMap<Integer, IndexElement>(spectra.size());
-		spectraIds = new ArrayList<String>(spectra.size());
-		msNScans = new HashMap<Integer, List<IndexElement>>(spectra.size());
+		idToIndexElementMap = new HashMap<>(spectra.size());
+		spectraIds = new ArrayList<>(spectra.size());
+		msNScans = new HashMap<>(spectra.size());
 		
 		for (IndexElement spectrum : spectra) {
 			// read the attributes
@@ -157,7 +157,7 @@ public class MzDataFile implements JMzReader {
 			spectraIds.add(attributes.get("id"));
 			
 			if (!msNScans.containsKey(msLevel))
-				msNScans.put(msLevel, new ArrayList<IndexElement>());
+				msNScans.put(msLevel, new ArrayList<>());
 			
 			msNScans.get(msLevel).add(spectrum);
 		}		
@@ -174,7 +174,7 @@ public class MzDataFile implements JMzReader {
 		// process the file line by line
 		try {
 			// initialize the run attributes
-			mzDataAttributes = new HashMap<String, String>();
+			mzDataAttributes = new HashMap<>();
 			
 			// go to the beginning of the file
 			access.seek(0);
@@ -282,7 +282,7 @@ RandomAccessFile access = getRandomAccess();
 		// process the file line by line
 		try {
 			// initialize the run attributes
-			HashMap<String, String> foundAttributes = new HashMap<String, String>();
+			HashMap<String, String> foundAttributes = new HashMap<>();
 			
 			// go to the beginning of element
 			access.seek(indexElement.getStart());
@@ -292,26 +292,26 @@ RandomAccessFile access = getRandomAccess();
 			
 			access.read(headerBuffer);
 			
-			String headerString = new String(headerBuffer);
+			StringBuilder headerString = new StringBuilder(new String(headerBuffer));
 			
 			// make sure the whole header was retrieved
-			while (!headerString.contains(">")) {
+			while (!headerString.toString().contains(">")) {
 				// read another header string
 				access.seek(indexElement.getStart() + headerString.length());
 				
 				access.read(headerBuffer);
 				
-				headerString += new String(headerBuffer);
+				headerString.append(new String(headerBuffer));
 			}
 			
 			// remove all new line characters
-			headerString = headerString.replace("\n", "");
+			headerString = new StringBuilder(headerString.toString().replace("\n", ""));
 			
 			// remove everything after the first ">"
-			headerString = headerString.substring(0, headerString.indexOf('>') + 1);
+			headerString = new StringBuilder(headerString.substring(0, headerString.toString().indexOf('>') + 1));
 			
 			// parse the line
-			Matcher matcher = xmlAttributePattern.matcher(headerString);
+			Matcher matcher = xmlAttributePattern.matcher(headerString.toString());
 			
 			while (matcher.find()) {
 				String name = matcher.group(1);
@@ -386,8 +386,7 @@ RandomAccessFile access = getRandomAccess();
 			access.read(bytes);
 			
 			// create and return the string
-			String snipplet = new String(bytes);
-			return snipplet;
+            return new String(bytes);
 			
 		} catch (IOException e) {
 			throw new JMzReaderException("Failed to read from mzData file.", e);
@@ -412,7 +411,7 @@ RandomAccessFile access = getRandomAccess();
 	 */
 	public List<CvLookup> getCvLookups() throws JMzReaderException {
 		try {
-			List<CvLookup> cvLookups = new ArrayList<CvLookup>();
+			List<CvLookup> cvLookups = new ArrayList<>();
 			
 			List<IndexElement> indexElements = index.getElements(MzDataElement.CV_LOOKUP.getXpath());
 			
@@ -440,9 +439,8 @@ RandomAccessFile access = getRandomAccess();
 		try {
 			IndexElement indexElement = index.getElements(MzDataElement.DESCRIPTION.getXpath()).get(0);
 			String xml = readSnipplet(indexElement);
-			uk.ac.ebi.pride.tools.mzdata_parser.mzdata.model.MzData.Description description = unmarshaller.unmarshal(xml, MzDataElement.DESCRIPTION);
-			
-			return description;
+
+            return unmarshaller.unmarshal(xml, MzDataElement.DESCRIPTION);
 		}
 		catch (Exception e) {
 			throw new JMzReaderException("Failed to unmarshall Desription object.", e);
@@ -466,7 +464,7 @@ RandomAccessFile access = getRandomAccess();
 
 	@Override
 	public List<String> getSpectraIds() {
-		return new ArrayList<String>(spectraIds);
+		return new ArrayList<>(spectraIds);
 	}
 	
 	/**
@@ -492,9 +490,8 @@ RandomAccessFile access = getRandomAccess();
 		
 		// unmarshall the object
 		try {
-			uk.ac.ebi.pride.tools.mzdata_parser.mzdata.model.Spectrum mzDataSpectrum = unmarshaller.unmarshal(xml, MzDataElement.SPECTRUM);
-			
-			return mzDataSpectrum;
+
+            return unmarshaller.unmarshal(xml, MzDataElement.SPECTRUM);
 		} catch (Exception e) {
 			throw new JMzReaderException("Failed to unmarshal spectrum", e);
 		}
@@ -529,9 +526,8 @@ RandomAccessFile access = getRandomAccess();
 		
 		// unmarshall the object
 		try {
-			uk.ac.ebi.pride.tools.mzdata_parser.mzdata.model.Spectrum mzDataSpectrum = unmarshaller.unmarshal(xml, MzDataElement.SPECTRUM);
-			
-			return mzDataSpectrum;
+
+            return unmarshaller.unmarshal(xml, MzDataElement.SPECTRUM);
 		} catch (Exception e) {
 			throw new JMzReaderException("Failed to unmarshal spectrum", e);
 		}
@@ -561,13 +557,13 @@ RandomAccessFile access = getRandomAccess();
 
 	@Override
 	public List<Integer> getMsLevels() {
-		return new ArrayList<Integer>(msNScans.keySet());
+		return new ArrayList<>(msNScans.keySet());
 	}
 
 	@Override
 	public Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> getIndexElementForIds() {
-		Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> idToIndex = 
-			new HashMap<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement>(idToIndexElementMap.size());
+		Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> idToIndex =
+				new HashMap<>(idToIndexElementMap.size());
 		
 		for (Integer id : idToIndexElementMap.keySet()) {
 			IndexElement e = idToIndexElementMap.get(id);
@@ -585,8 +581,8 @@ RandomAccessFile access = getRandomAccess();
 	 * @return
 	 */
 	private List<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> convertIndexElements(List<IndexElement> index) {
-		List<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> convertedIndex = 
-			new ArrayList<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement>(index.size());
+		List<uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> convertedIndex =
+				new ArrayList<>(index.size());
 		
 		for (IndexElement e : index) {
 			int size = (int) (e.getStop() - e.getStart());
@@ -661,10 +657,8 @@ RandomAccessFile access = getRandomAccess();
 			
 			try {
 				String xml = readSnipplet(indexElement);
-				
-				uk.ac.ebi.pride.tools.mzdata_parser.mzdata.model.Spectrum spectrum = unmarshaller.unmarshal(xml, MzDataElement.SPECTRUM);
-				
-				return spectrum;
+
+                return unmarshaller.unmarshal(xml, MzDataElement.SPECTRUM);
 			} catch (Exception e) {
 				throw new RuntimeException("Failed to load spectrum from mzData file.", e);
 			}

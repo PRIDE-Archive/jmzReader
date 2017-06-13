@@ -59,18 +59,15 @@ public class CvParam implements Param {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
 
-        CvParam cvParam = (CvParam) o;
+		CvParam cvParam = (CvParam) o;
 
-        if (accession != null ? !accession.equals(cvParam.accession) : cvParam.accession != null) return false;
-        if (cv != null ? !cv.equals(cvParam.cv) : cvParam.cv != null) return false;
-        if (name != null ? !name.equals(cvParam.name) : cvParam.name != null) return false;
-        if (value != null ? !value.equals(cvParam.value) : cvParam.value != null) return false;
-
-        return true;
-    }
+		if (accession != null ? !accession.equals(cvParam.accession) : cvParam.accession != null) return false;
+		if (cv != null ? !cv.equals(cvParam.cv) : cvParam.cv != null) return false;
+		return (name != null ? name.equals(cvParam.name) : cvParam.name == null) && (value != null ? value.equals(cvParam.value) : cvParam.value == null);
+	}
 
     @Override
     public int hashCode() {

@@ -131,7 +131,7 @@ public class Spotting
      */
     public List<Plate> getPlate() {
         if (plate == null) {
-            plate = new ArrayList<Plate>();
+            plate = new ArrayList<>();
         }
         return this.plate;
     }

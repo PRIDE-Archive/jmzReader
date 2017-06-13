@@ -15,7 +15,7 @@ public interface Spectrum {
 	 * Retrieves the spectrum's id.
 	 * @return
 	 */
-	public String getId();
+    String getId();
 	
 	/**
 	 * Returns the spectrum's charge or
@@ -23,7 +23,7 @@ public interface Spectrum {
 	 * available.
 	 * @return
 	 */
-	public Integer getPrecursorCharge();
+	Integer getPrecursorCharge();
 	
 	/**
 	 * Returns the precursor's m/z or
@@ -31,14 +31,14 @@ public interface Spectrum {
 	 * is not available.
 	 * @return
 	 */
-	public Double getPrecursorMZ();
+	Double getPrecursorMZ();
 	
 	/**
 	 * Returns the precursor's intensity
 	 * or null in case it it not available.
 	 * @return
 	 */
-	public Double getPrecursorIntensity();
+	Double getPrecursorIntensity();
 	
 	/**
 	 * Returns the spectrum's peak list as
@@ -47,7 +47,7 @@ public interface Spectrum {
 	 * values.
 	 * @return
 	 */
-	public Map<Double, Double> getPeakList();
+	Map<Double, Double> getPeakList();
 	
 	/**
 	 * Returns the msLevel of the spectrum. NULL
@@ -55,7 +55,7 @@ public interface Spectrum {
 	 * unknown.
 	 * @return
 	 */
-	public Integer getMsLevel();
+	Integer getMsLevel();
 	
 	/**
 	 * Retrieves file format specific variables
@@ -64,5 +64,5 @@ public interface Spectrum {
 	 * these additional fields.
 	 * @return A ParamGroup containing the additional fields as parameters.
 	 */
-	public ParamGroup getAdditional();
+	ParamGroup getAdditional();
 }

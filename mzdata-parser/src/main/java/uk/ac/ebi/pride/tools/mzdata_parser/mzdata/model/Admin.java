@@ -149,7 +149,7 @@ public class Admin
      */
     public List<Person> getContact() {
         if (contact == null) {
-            contact = new ArrayList<Person>();
+            contact = new ArrayList<>();
         }
         return this.contact;
     }

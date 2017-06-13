@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by neuhause on 11/02/14.
- */
 
 public class TestAplFile extends TestCase {
     private AplFile aplFile;
@@ -47,7 +44,7 @@ public class TestAplFile extends TestCase {
         try {
             query = new PeakList("peaklist start\nmz=1271.13935636076\ncharge=4\nheader=RawFile: 20080830_Orbi6_NaNa_SA_BiotechVariation_MH03_02 Index: 16236 Silind: 43885\n380.02725\t7.750772\n419.57687\t11.58331\n423.23862\t10.6417\npeaklist end\n", 1);
 
-            ArrayList<PeakList> queries = new ArrayList<PeakList>();
+            ArrayList<PeakList> queries = new ArrayList<>();
             queries.add(query);
 
             aplFile.setPeakLists(queries);
@@ -84,8 +81,6 @@ public class TestAplFile extends TestCase {
                 queryCount++;
             }
             assertEquals(10, queryCount);
-        } catch (JMzReaderException e) {
-            fail(e.getMessage());
         } catch (Exception x){
             fail(x.getMessage());
         }
