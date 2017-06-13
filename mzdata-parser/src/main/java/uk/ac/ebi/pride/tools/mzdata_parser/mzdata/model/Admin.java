@@ -47,7 +47,7 @@ public class Admin
 
     private final static long serialVersionUID = 105L;
     @XmlElement(required = true)
-    protected String sampleName;
+    private String sampleName;
     protected Description sampleDescription;
     protected SourceFile sourceFile;
     @XmlElement(required = true)

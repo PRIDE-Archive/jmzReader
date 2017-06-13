@@ -1099,7 +1099,7 @@ public class MgfFile implements JMzReader {
          *
          * @throws FileNotFoundException
          */
-        protected Ms2QueryIterator() throws FileNotFoundException {
+        protected Ms2QueryIterator() throws FileNotFoundException{
 
         }
 

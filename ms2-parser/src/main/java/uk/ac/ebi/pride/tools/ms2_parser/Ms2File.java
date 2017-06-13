@@ -281,14 +281,14 @@ public class Ms2File implements JMzReader {
 	 * @return
 	 * @throws JMzReaderException 
 	 */
-	public Iterator<Ms2Spectrum> getMs2SpectrumIterator() throws JMzReaderException {
+	public Iterator<Ms2Spectrum> getMs2SpectrumIterator() {
 		return new Ms2FileSpectrumIterator();
 	}
 	
 	private class SpectrumIterator implements Iterator<Spectrum> {
 		private Ms2FileSpectrumIterator it;
 		
-		public SpectrumIterator() throws JMzReaderException {
+		public SpectrumIterator() throws JMzReaderException{
 			it = new Ms2FileSpectrumIterator();
 		}
 

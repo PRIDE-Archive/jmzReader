@@ -154,7 +154,7 @@ public class Ms2Query implements Spectrum {
    * @param value The attribute's value
    * @throws JMzReaderException any problems saving the attribute
    */
-  private void saveAttribute(String name, String value) throws JMzReaderException {
+  private void saveAttribute(String name, String value) {
     if ("TITLE".equals(name)) {
       title = value;
     } else if ("CHARGE".equals(name)) {

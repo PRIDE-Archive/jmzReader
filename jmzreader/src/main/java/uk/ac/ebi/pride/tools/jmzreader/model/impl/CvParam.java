@@ -65,8 +65,7 @@ public class CvParam implements Param {
 		CvParam cvParam = (CvParam) o;
 
 		if (accession != null ? !accession.equals(cvParam.accession) : cvParam.accession != null) return false;
-		if (cv != null ? !cv.equals(cvParam.cv) : cvParam.cv != null) return false;
-		return (name != null ? name.equals(cvParam.name) : cvParam.name == null) && (value != null ? value.equals(cvParam.value) : cvParam.value == null);
+		return (cv != null ? cv.equals(cvParam.cv) : cvParam.cv == null) && (name != null ? name.equals(cvParam.name) : cvParam.name == null) && (value != null ? value.equals(cvParam.value) : cvParam.value == null);
 	}
 
     @Override

@@ -368,7 +368,7 @@ public class AplFile implements JMzReader {
          *
          * @throws java.io.FileNotFoundException
          */
-        public PeakListIterator() throws FileNotFoundException {
+        public PeakListIterator() throws FileNotFoundException{
 
         }
 
