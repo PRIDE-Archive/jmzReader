@@ -281,7 +281,7 @@ public class PRIDEXmlWrapper implements JMzReader {
 
         private void extractPrecursorInformation() {
             // if there's no precursor list, return
-            if (prideSpectrum.getSpectrumDesc().getPrecursorList() == null)
+            if (prideSpectrum.getSpectrumDesc().getPrecursorList() == null || prideSpectrum.getSpectrumDesc().getPrecursorList().getCount() == 0)
                 return;
 
             // only process the first precursor

@@ -1,6 +1,9 @@
 package uk.ac.ebi.pride.tools.pride_wrapper;
 
 import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import uk.ac.ebi.pride.tools.jmzreader.model.IndexElement;
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 import uk.ac.ebi.pride.tools.jmzreader.model.impl.CvParam;
@@ -20,6 +23,7 @@ public class PRIDEXmlWrapperTest extends TestCase {
 
     private PRIDEXmlWrapper wrapper;
 
+    @Before
     public void setUp() throws Exception {
         URL url = PRIDEXmlWrapperTest.class.getClassLoader().getResource("test-pride.xml");
         if (url == null) {
@@ -29,22 +33,27 @@ public class PRIDEXmlWrapperTest extends TestCase {
         wrapper = new PRIDEXmlWrapper(inputFile);
     }
 
+    @After
     public void tearDown() throws Exception {
         wrapper = null;
     }
 
+    @Test
     public void testGetSpectraCount() throws Exception {
         assertTrue("The number of spectrum should be 100", wrapper.getSpectraCount() == 100);
     }
 
+    @Test
     public void testAcceptsFile() throws Exception {
         assertTrue("This wrapper should allow file", wrapper.acceptsFile());
     }
 
+    @Test
     public void testAcceptsDirectory() throws Exception {
         assertFalse("This wrapper should not allow folder", wrapper.acceptsDirectory());
     }
 
+    @Test
     public void testGetSpectraIds() throws Exception {
         List<String> ids = wrapper.getSpectraIds();
         // check size
@@ -53,6 +62,7 @@ public class PRIDEXmlWrapperTest extends TestCase {
         assertTrue("This wrapper should contain spectrum", ids.contains("2"));
     }
 
+    @Test
     public void testGetSpectrumById() throws Exception {
         Spectrum spectrum = wrapper.getSpectrumById("2");
         // id
@@ -72,6 +82,7 @@ public class PRIDEXmlWrapperTest extends TestCase {
         List<CvParam> cvParams = paramGroup.getCvParams();
     }
 
+    @Test
     public void testGetSpectrumByIndex() throws Exception {
         Spectrum spectrum = wrapper.getSpectrumByIndex(1);
 
@@ -92,6 +103,7 @@ public class PRIDEXmlWrapperTest extends TestCase {
         List<CvParam> cvParams = paramGroup.getCvParams();
     }
 
+    @Test
     public void testGetSpectrumIterator() throws Exception {
         Iterator<Spectrum> iter = wrapper.getSpectrumIterator();
 
@@ -118,11 +130,13 @@ public class PRIDEXmlWrapperTest extends TestCase {
         List<CvParam> cvParams = paramGroup.getCvParams();
     }
 
+    @Test
     public void testGetMsNIndexes() throws Exception {
         List<IndexElement> indexElements = wrapper.getMsNIndexes(0);
         assertEquals(1, indexElements.size());
     }
 
+    @Test
     public void testGetMsLevels() throws Exception {
         List<Integer> msLevels = wrapper.getMsLevels();
 
@@ -133,6 +147,7 @@ public class PRIDEXmlWrapperTest extends TestCase {
         assertTrue(msLevels.contains(0));
     }
 
+    @Test
     public void testGetIndexElementForIds() throws Exception {
         Map<String, IndexElement> indexElements = wrapper.getIndexElementForIds();
         assertNotNull(indexElements);
