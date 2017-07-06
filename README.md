@@ -60,68 +60,20 @@ To add all parsers to you maven project simply add the following dependencies to
         <version>version</version>
         <type>jar</type>
 </dependency>
-<dependency>
-        <groupId>uk.ac.ebi.pride.tools</groupId>
-        <artifactId>pkl-parser</artifactId>
-        <version>version</version>
-        <type>jar</type>
-</dependency>
-<dependency>
-        <groupId>uk.ac.ebi.pride.tools</groupId>
-        <artifactId>dta-parser</artifactId>
-        <version>version</version>
-        <type>jar</type>
-</dependency>
-<dependency>
-        <groupId>uk.ac.ebi.pride.tools</groupId>
-        <artifactId>ms2-parser</artifactId>
-        <version>version</version>
-        <type>jar</type>
-</dependency>
-<dependency>
-        <groupId>uk.ac.ebi.pride.tools</groupId>
-        <artifactId>mgf-parser</artifactId>
-        <version>version</version>
-        <type>jar</type>
-</dependency>
-<dependency>
-        <groupId>uk.ac.ebi.pride.tools</groupId>
-        <artifactId>mzxml-parser</artifactId>
-        <version>version</version>
-        <type>jar</type>
-</dependency>
-<dependency>
-        <groupId>uk.ac.ebi.pride.tools</groupId>
-        <artifactId>mzdata-parser</artifactId>
-        <version>version</version>
-        <type>jar</type>
-</dependency>
-<dependency>
-        <groupId>uk.ac.ebi.pride.tools</groupId>
-        <artifactId>mzml-wrapper</artifactId>
-        <version>version</version>
-        <type>jar</type>
-</dependency>
-<dependency>
-        <groupId>uk.ac.ebi.pride.tools</groupId>
-        <artifactId>pride-wrapper</artifactId>
-        <version>version</version>
-        <type>jar</type>
-</dependency>
  ```
  
  ```maven
- <!-- EBI repo -->
  <repository>
-     <id>nexus-ebi-repo</id>
-     <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo</url>
+             <id>pst-release</id>
+             <name>EBI Nexus Repository</name>
+             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
  </repository>
- 
- <!-- EBI SNAPSHOT repo -->
- <snapshotRepository>
-    <id>nexus-ebi-repo-snapshots</id>
-    <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo-snapshots</url>
- </snapshotRepository>
+   <!-- EBI SNAPSHOT repo -->
+         <repository>
+             <id>pst-snapshots</id>
+             <name>EBI Nexus Snapshots Repository</name>
+             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+         </repository>
 ```
 Note: you need to change the version number to the latest version.
 
@@ -135,7 +87,7 @@ Please send us your feedback, including error reports, improvement suggestions, 
 
 # This library has been used in:
 
-* Perez-Riverol Y., Uszkoreit J., Sanchez A., Ternent T., Del Toro N., Hermjakob H., Vizcaíno J.A., Wang R. ms-data-core-api: an open-source, metadata-oriented library for computational proteomics. Bioinformatics, 2015 Sep 1;31(17):2903-5[ms-data-core-api](http://bioinformatics.oxfordjournals.org/content/31/17/2903.long)
+* Perez-Riverol Y., Uszkoreit J., Sanchez A., Ternent T., Del Toro N., Hermjakob H., Vizcaíno J.A., Wang R. ms-data-core-api: an open-source, metadata-oriented library for computational proteomics. Bioinformatics, 2015 Sep 1;31(17):2903-5 [ms-data-core-api](http://bioinformatics.oxfordjournals.org/content/31/17/2903.long)
 * Côté, R. G., Griss, J., Dianes, J. A., Wang, R., Wright, J. C., van den Toorn, H. W., ... & Vizcaíno, J. A. (2012). The PRoteomics IDEntification (PRIDE) Converter 2 framework: an improved suite of tools to facilitate data submission to the PRIDE database and the ProteomeXchange consortium. Molecular & Cellular Proteomics, 11(12), 1682-1689. [PRIDE Converter 2](https://code.google.com/p/pride-converter-2/) 
 * Vizcaíno, J. A., Côté, R. G., Csordas, A., Dianes, J. A., Fabregat, A., Foster, J. M., ... & Hermjakob, H. (2013). The PRoteomics IDEntifications (PRIDE) database and associated tools: status in 2013. Nucleic acids research, 41(D1), D1063-D1069. [PRIDE-Archive](http://www.ebi.ac.uk/pride/archive/)
 
