@@ -12,8 +12,6 @@ import org.junit.Test;
 import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.pkl_parser.model.PklSpectrum;
 
-import junit.framework.TestCase;
-
 public class PklFile_DirTest {
 
 	private PklFile pklFile;

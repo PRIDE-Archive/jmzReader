@@ -84,36 +84,32 @@ public class MzMlWrapper implements JMzReader {
 
     private void initializeSpectrumMaps() throws JMzReaderException {
 
-        try {
-            List<psidev.psi.tools.xxindex.index.IndexElement> spectra = unmarshaller.getMzMLIndexer().getIndexElements(MzMLElement.Spectrum.getXpath());
+        List<psidev.psi.tools.xxindex.index.IndexElement> spectra = unmarshaller.getMzMLIndexer().getIndexElements(MzMLElement.Spectrum.getXpath());
 
-            idToIndexElementMap = new HashMap<>(spectra.size());
-            msNScans = new HashMap<>(spectra.size());
+        idToIndexElementMap = new HashMap<>(spectra.size());
+        msNScans = new HashMap<>(spectra.size());
 
-            for (psidev.psi.tools.xxindex.index.IndexElement element : spectra) {
+        for (psidev.psi.tools.xxindex.index.IndexElement element : spectra) {
 
-                //unmarshall spectrum
-                uk.ac.ebi.jmzml.model.mzml.Spectrum spectrum = unmarshaller.unmarshalFromIndexElement(element, uk.ac.ebi.jmzml.model.mzml.Spectrum.class);
+            //unmarshall spectrum
+            uk.ac.ebi.jmzml.model.mzml.Spectrum spectrum = unmarshaller.unmarshalFromIndexElement(element, uk.ac.ebi.jmzml.model.mzml.Spectrum.class);
 
                 //store id-indexElement
-                idToIndexElementMap.put(spectrum.getId(), element);
+            idToIndexElementMap.put(spectrum.getId(), element);
 
-                //<cvParam cvRef="MS" accession="MS:1000511" name="ms level" value="1"/>
-                //store MS-Level
-                int msLevel = -1;
-                for (uk.ac.ebi.jmzml.model.mzml.CVParam param : spectrum.getCvParam()) {
-                    if (param.getAccession().equals("MS:1000511")) {
-                        msLevel = Integer.parseInt(param.getValue());
-                    }
+            //<cvParam cvRef="MS" accession="MS:1000511" name="ms level" value="1"/>
+            //store MS-Level
+            int msLevel = -1;
+            for (uk.ac.ebi.jmzml.model.mzml.CVParam param : spectrum.getCvParam()) {
+                if (param.getAccession().equals("MS:1000511")) {
+                    msLevel = Integer.parseInt(param.getValue());
                 }
-                if (!msNScans.containsKey(msLevel))
-                    msNScans.put(msLevel, new ArrayList<>());
-                msNScans.get(msLevel).add(element);
             }
-
-        } catch (MzMLUnmarshallerException e) {
-            throw new JMzReaderException("Error unmarshalling mzML file!", e);
+            if (!msNScans.containsKey(msLevel))
+                msNScans.put(msLevel, new ArrayList<>());
+                msNScans.get(msLevel).add(element);
         }
+
 
     }
 

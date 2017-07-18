@@ -12,8 +12,6 @@ import org.junit.Test;
 import uk.ac.ebi.pride.tools.dta_parser.model.DtaSpectrum;
 import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 
-import junit.framework.TestCase;
-
 public class DtaFile_DirectoryTest {
 
 	private DtaFile dtaFile;

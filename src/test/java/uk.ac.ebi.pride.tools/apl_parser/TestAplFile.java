@@ -1,6 +1,6 @@
 package uk.ac.ebi.pride.tools.apl_parser;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ebi.pride.tools.apl_parser.model.PeakList;
@@ -15,34 +15,28 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class TestAplFile extends TestCase {
+public class TestAplFile{
 
     private AplFile aplFile;
     private File sourceFile;
 
     @Before
-    protected void setUp() throws Exception {
-        aplFile = new AplFile();
-    }
-
-    @Test
-    private void loadTestFile() {
+    public  void setUp() {
         URL testFile = TestAplFile.class.getClassLoader().getResource("allSpectra.CID.ITMS.sil0.apl");
-        assertNotNull("Error loading apl test file", testFile);
+        Assert.assertNotNull("Error loading apl test file", testFile);
 
         try {
             sourceFile = new File(testFile.toURI());
 
             aplFile = new AplFile(sourceFile);
         } catch (Exception e) {
-            fail("Faild to load test file");
+            System.out.println("Faild to load test file");
         }
     }
 
     @Test
     public void testGetFormat() {
-        loadTestFile();
-        assertEquals("Andromeda peaklist file", aplFile.getFormat());
+        Assert.assertEquals("Andromeda peaklist file", aplFile.getFormat());
     }
 
     @Test
@@ -56,7 +50,7 @@ public class TestAplFile extends TestCase {
 
             aplFile.setPeakLists(queries);
 
-            assertEquals("peaklist start\nmz=1271.13935636076\ncharge=4\nheader=RawFile: 20080830_Orbi6_NaNa_SA_BiotechVariation_MH03_02 Index: 16236 Silind: 43885\n380.02725\t7.750772\n419.57687\t11.58331\n423.23862\t10.6417\npeaklist end\n\n", aplFile.toString());
+            Assert.assertEquals("peaklist start\nmz=1271.13935636076\ncharge=4\nheader=RawFile: 20080830_Orbi6_NaNa_SA_BiotechVariation_MH03_02 Index: 16236 Silind: 43885\n380.02725\t7.750772\n419.57687\t11.58331\n423.23862\t10.6417\npeaklist end\n\n", aplFile.toString());
         } catch (JMzReaderException e) {
             e.printStackTrace();
         }
@@ -64,42 +58,35 @@ public class TestAplFile extends TestCase {
 
     @Test
     public void testGetPeakListCount() {
-        loadTestFile();
-        assertEquals(10, aplFile.getPeakListCount());
+        Assert.assertEquals(10, aplFile.getPeakListCount());
     }
 
     @Test
     public void testGetPeakList() {
-        loadTestFile();
-
         try {
-            assertNotNull(aplFile.getPeakList(7));
+            Assert.assertNotNull(aplFile.getPeakList(7));
         } catch (JMzReaderException e) {
-            fail(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
     @Test
     public void testGetPeakListIterator() {
-        loadTestFile();
-
         int queryCount = 0;
 
         try {
             for (PeakList q : aplFile.getPeakListIterator()) {
-                assertNotNull(q);
+                Assert.assertNotNull(q);
                 queryCount++;
             }
-            assertEquals(10, queryCount);
+            Assert.assertEquals(10, queryCount);
         } catch (Exception x){
-            fail(x.getMessage());
+            System.out.println(x.getMessage());
         }
     }
 
     @Test
     public void testAplFile() {
-        loadTestFile();
-
         // get the index
         List<IndexElement> index = aplFile.getIndex();
 
@@ -112,27 +99,26 @@ public class TestAplFile extends TestCase {
             Iterator<PeakList> it2 = newFile.getPeakListIterator();
 
             while (it1.hasNext() && it2.hasNext()) {
-                assertEquals(it1.next().toString(), it2.next().toString());
+                Assert.assertEquals(it1.next().toString(), it2.next().toString());
             }
         } catch (JMzReaderException e) {
-            fail(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
     @Test
     public void testGetIndex() {
         try {
-            loadTestFile();
             List<IndexElement> index = aplFile.getMsNIndexes(2);
 
             Spectrum s = aplFile.getSpectrumByIndex(3);
 
             Spectrum s1 = AplFile.getIndexedSpectrum(sourceFile, index.get(2));
 
-            assertEquals(s.toString(), s1.toString());
+            Assert.assertEquals(s.toString(), s1.toString());
         } catch (Exception e) {
             e.printStackTrace();
-            fail(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }

@@ -16,8 +16,6 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.model.MsInstrument;
 import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.model.ParentFile;
 import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.model.Scan;
 
-import junit.framework.TestCase;
-
 public class MzXMLFileTest{
 
 

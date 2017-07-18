@@ -52,8 +52,8 @@
 
         <!-- Dependencies -->
         <psidev.psi.tools-xxindex.version>0.18</psidev.psi.tools-xxindex.version>
-        <uk.ac.ebi.jmzml-jmzml.version>1.7.7</uk.ac.ebi.jmzml-jmzml.version>
-        <uk.ac.ebi.pride.jaxb-pride-jaxb.version>1.0.18</uk.ac.ebi.pride.jaxb-pride-jaxb.version>
+        <uk.ac.ebi.jmzml-jmzml.version>1.7.9</uk.ac.ebi.jmzml-jmzml.version>
+        <uk.ac.ebi.pride.jaxb-pride-jaxb.version>1.0.19</uk.ac.ebi.pride.jaxb-pride-jaxb.version>
         <org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>0.13.1</org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>
 
     </properties>

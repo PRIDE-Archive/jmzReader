@@ -3,7 +3,6 @@ package uk.ac.ebi.pride.tools.mgf_parser;
 import java.io.File;
 import java.net.URL;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

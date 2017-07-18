@@ -5,20 +5,20 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Iterator;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.ms2_parser.model.Ms2Spectrum;
 
-public class Ms2FileTest extends TestCase {
+public class Ms2FileTest {
 
 	Ms2File ms2File;
 
 	@Before
-	protected void setUp() throws Exception {
+	public void setUp() throws Exception {
 		URL testFile = getClass().getClassLoader().getResource("test.ms2");
-        assertNotNull("Error loading test directory", testFile);
+        Assert.assertNotNull("Error loading test directory", testFile);
         File sourceFile;
         
 		try {
@@ -26,23 +26,23 @@ public class Ms2FileTest extends TestCase {
 			
 			ms2File = new Ms2File(sourceFile);
 		} catch (URISyntaxException e) {
-			fail("Faild to load test file");
+			System.out.println("Faild to load test file");
 		}
 	}
 
 	@Test
 	public void testMs2File() {
 		// check that the header was parsed correctly
-		assertEquals(14, ms2File.getHeader().size());
-		assertEquals("700", ms2File.getHeader().get("MinimumMass"));
-		assertEquals("RawXtract written by John Venable, 2003", ms2File.getHeader().get("Comments"));
+		Assert.assertEquals(14, ms2File.getHeader().size());
+		Assert.assertEquals("700", ms2File.getHeader().get("MinimumMass"));
+		Assert.assertEquals("RawXtract written by John Venable, 2003", ms2File.getHeader().get("Comments"));
 		
-		assertNotNull(ms2File.getCreationDate());
-		assertNotNull(ms2File.getExtractor());
-		assertNotNull(ms2File.getExtractorVersion());
-		assertNotNull(ms2File.getExtractorOptions());
+		Assert.assertNotNull(ms2File.getCreationDate());
+		Assert.assertNotNull(ms2File.getExtractor());
+		Assert.assertNotNull(ms2File.getExtractorVersion());
+		Assert.assertNotNull(ms2File.getExtractorOptions());
 		
-		assertEquals(16421, ms2File.getSpectraCount());
+		Assert.assertEquals(16421, ms2File.getSpectraCount());
 	}
 
 	@Test
@@ -51,19 +51,19 @@ public class Ms2FileTest extends TestCase {
 		try {
 			s = ms2File.getSpectrum(5);
 			
-			assertEquals(492.41000, s.getPrecursorMZ());
-			assertEquals("0.33", s.getAdditionalInformation().get("RetTime"));
-			assertEquals("hupo_06_itms.ms1", s.getAdditionalInformation().get("PrecursorFile"));
+			Assert.assertEquals(492.41000, s.getPrecursorMZ(), 0.0);
+			Assert.assertEquals("0.33", s.getAdditionalInformation().get("RetTime"), "0.33");
+			Assert.assertEquals("hupo_06_itms.ms1", s.getAdditionalInformation().get("PrecursorFile"));
 			
-			assertEquals(3, s.getCharges().size());
-			assertEquals(1966.61652, s.getCharges().get(4));
+			Assert.assertEquals(3, s.getCharges().size());
+			Assert.assertEquals(1966.61652, s.getCharges().get(4), 0.0);
 			
-			assertEquals(0, s.getChargeDependentData().size());
+			Assert.assertEquals(0, s.getChargeDependentData().size());
 			
-			assertEquals(35, s.getPeakList().size());
-			assertEquals(2.2, s.getPeakList().get(336.9019));
+			Assert.assertEquals(35, s.getPeakList().size());
+			Assert.assertEquals(2.2, s.getPeakList().get(336.9019), 0.0);
 		} catch (JMzReaderException e) {
-			fail(e.getMessage());
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -73,9 +73,9 @@ public class Ms2FileTest extends TestCase {
 		it = ms2File.getMs2SpectrumIterator();
 		int nSpecCount = 0;
 		while (it.hasNext()) {
-			assertNotNull(it.next());
+			Assert.assertNotNull(it.next());
 			nSpecCount++;
 		}
-		assertEquals(16421, nSpecCount);
+		Assert.assertEquals(16421, nSpecCount);
 	}
 }
