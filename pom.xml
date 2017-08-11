@@ -50,7 +50,7 @@
         <uk.ac.ebi.pride.architectural-pride-logging.version>1.0.0</uk.ac.ebi.pride.architectural-pride-logging.version>
         <uk.ac.ebi.pride.architectural-pride-tdd.version>1.0.3</uk.ac.ebi.pride.architectural-pride-tdd.version>
         <uk.ac.ebi.jmzml-jmzml.version>1.7.9</uk.ac.ebi.jmzml-jmzml.version>
-        <uk.ac.ebi.pride.jaxb-pride-jaxb.version>1.0.20-SNAPSHOT</uk.ac.ebi.pride.jaxb-pride-jaxb.version>
+        <uk.ac.ebi.pride.jaxb-pride-jaxb.version>1.0.20</uk.ac.ebi.pride.jaxb-pride-jaxb.version>
         <!-- Dependencies -->
         <uk.ac.ebi.pride.architectural-pride-xml-handling.version>1.0.1</uk.ac.ebi.pride.architectural-pride-xml-handling.version>
         <org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>0.6.3</org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>
