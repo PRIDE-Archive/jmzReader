@@ -247,7 +247,7 @@ RandomAccessFile access = getRandomAccess();
 			String headerString = new String(headerBuffer);
 			
 			// make sure the msLevel was found
-			int msLevelIndex = -1;
+			int msLevelIndex;
 			
 			do {
 				msLevelIndex = headerString.indexOf("msLevel=\"");

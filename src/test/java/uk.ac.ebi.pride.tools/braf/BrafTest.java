@@ -39,11 +39,11 @@ public class BrafTest {
 			int lineCount = 0;
 			
 			while ((line = reader.readLine()) != null) {
-//				// do something
-//				System.out.println(reader.getFilePointer() + ": " + line.trim());
-//				
-//				if (lineCount > 10)
-//					break;
+				// do something
+				System.out.println(reader.getFilePointer() + ": " + line.trim());
+
+				if (lineCount > 10)
+					break;
 				
 				if (lineCount %1000000 == 0) {
 					System.out.println(((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024*1024)) + " MB used");

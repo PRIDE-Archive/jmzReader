@@ -60,7 +60,7 @@ public class PklSpectrum implements Spectrum {
 	 */
 	public PklSpectrum(File sourceFile) throws JMzReaderException {
 		// open the file just read it in a buffer
-		String line = "";
+		String line;
 		ArrayList<String> lines = new ArrayList<>();
 		
 		// save the sourcefile

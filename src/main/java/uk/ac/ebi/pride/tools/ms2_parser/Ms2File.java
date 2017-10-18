@@ -92,7 +92,7 @@ public class Ms2File implements JMzReader {
 			BufferedRandomAccessFile reader = new BufferedRandomAccessFile(sourcefile, "r", 1024*1000);
 			
 			// parse the file line by line
-			String line 	= ""; // the current line
+			String line; // the current line
 			Long lineOffset = 0L; // the offset of the current line
 			Long lastSpecOffset = null; // the offset of the spectrum the iterator is in
 			boolean inHeader= true; // indicates whether we're still in the header section

@@ -89,7 +89,7 @@ public class PklFile implements JMzReader {
 		
 		// process the file line by line
 		boolean emptyLineFound = true; // indicates that an empty line was enountered before
-		String line = "";
+		String line;
 		int currentSpectrum = 1; // 1-based spectrum index
 		long previousIndex = 0;
 		long offset = 0;

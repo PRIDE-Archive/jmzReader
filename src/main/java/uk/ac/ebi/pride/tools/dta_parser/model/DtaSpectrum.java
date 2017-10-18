@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 import uk.ac.ebi.pride.tools.jmzreader.model.impl.ParamGroup;
@@ -46,6 +48,7 @@ public class DtaSpectrum implements Spectrum {
      */
     private HashMap<Double, Double> peakList;
 
+    public static final Logger logger = LoggerFactory.getLogger(DtaSpectrum.class);
     /**
      * Creates a DTA spectrum object that's based
      * on a specific source file. This sourcefile
@@ -56,7 +59,7 @@ public class DtaSpectrum implements Spectrum {
      */
     public DtaSpectrum(File sourceFile) throws JMzReaderException {
         // open the file just read it in a buffer
-        String line = "";
+        String line;
         ArrayList<String> lines = new ArrayList<>();
 
         // save the sourcefile
@@ -94,7 +97,6 @@ public class DtaSpectrum implements Spectrum {
             // section should contain comment lines, they should be removed
             if (!(line.startsWith("=") || line.startsWith("#"))) lineArray.add(line);
         }
-
 
         // save the index
         this.index = index;

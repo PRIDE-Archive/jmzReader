@@ -6,6 +6,7 @@ import uk.ac.ebi.pride.tools.jmzreader.model.impl.CvParam;
 import uk.ac.ebi.pride.tools.jmzreader.model.impl.ParamGroup;
 import uk.ac.ebi.pride.tools.jmzreader.model.impl.UserParam;
 import uk.ac.ebi.pride.tools.mgf_parser.MgfFile;
+import uk.ac.ebi.pride.tools.utils.StringUtils;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -102,7 +103,7 @@ public class Ms2Query implements Spectrum {
         continue;
       }
       // first line must be "BEGIN IONS" and last line must be "END IONS"
-      if (nLineNumber == 0 && !"BEGIN IONS".equals(line)) {
+      if (nLineNumber == 0 && !"BEGIN IONS".equals(StringUtils.removeBOMString(line))) {
         throw new JMzReaderException("MS2 query must start with 'BEGIN IONS'");
       }
       if (nLineNumber == 0) {

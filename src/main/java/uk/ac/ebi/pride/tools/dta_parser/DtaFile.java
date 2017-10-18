@@ -13,6 +13,7 @@ import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.jmzreader.model.IndexElement;
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 import uk.ac.ebi.pride.tools.jmzreader.model.impl.IndexElementImpl;
+import uk.ac.ebi.pride.tools.utils.StringUtils;
 
 /**
  * This class represents a DTA file. Normally, a dta
@@ -147,11 +148,11 @@ public class DtaFile implements JMzReader {
 
         // process the file line by line
         boolean emptyLineFound = true;
-        String line = "";
+        String line;
         int currentSpectrum = 0; // 1-based spectrum index
         long startOffset = 0;
         while ((line = reader.getNextLine()) != null) {
-            if (line.trim().length() == 0) {
+            if (StringUtils.globalTrim(line).length() == 0) {
                 if (!emptyLineFound) {
                     currentSpectrum++;
                     int size = (int) (reader.getFilePointer() - startOffset);
@@ -162,9 +163,11 @@ public class DtaFile implements JMzReader {
             } else emptyLineFound = false;
 
         }
-        currentSpectrum++;
         int size = (int) (reader.getFilePointer() - startOffset);
-        fileIndex.put(currentSpectrum, new IndexElementImpl(startOffset, size));
+        if(size > 0){
+            currentSpectrum++;
+            fileIndex.put(currentSpectrum, new IndexElementImpl(startOffset, size));
+        }
         reader.close();
     }
 
