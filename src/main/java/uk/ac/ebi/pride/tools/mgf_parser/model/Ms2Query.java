@@ -138,7 +138,7 @@ public class Ms2Query implements Spectrum {
           if (anotherSpace<0) {
             intensity = Double.parseDouble(secondHalf);
           } else { // ignore extra fragment charge number (3rd field), may be present
-            intensity = Double.parseDouble(secondHalf.substring(0, anotherSpace));
+            intensity = StringUtils.smartParseDouble((secondHalf.substring(0, anotherSpace)));
           }
           addPeak(Double.parseDouble(firstHalf), intensity);
         } else {  // no index could be found

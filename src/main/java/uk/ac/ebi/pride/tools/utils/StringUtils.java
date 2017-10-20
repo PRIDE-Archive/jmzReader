@@ -23,7 +23,7 @@ public class StringUtils {
     public static String removeBOMString(String keyword){
         if(keyword != null){
             if (keyword.startsWith("\ufeff")){
-                keyword = keyword.replaceFirst("\ufeff", "");
+                keyword = keyword.replaceFirst("\ufeff", "").replaceAll("\uFEFF", "");
             }
         }
         return keyword;
@@ -31,5 +31,22 @@ public class StringUtils {
 
     public static String globalTrim(String keyword){
         return keyword.replaceAll("\n", "").replaceAll("\r", "");
+    }
+
+    /**
+     * Smart parse of Double values in the way ##.##.##
+     * @param number Number in String format
+     * @return Return Double
+     */
+    public static Double smartParseDouble(String number){
+        Double doubleNumber = null;
+        try{
+            doubleNumber =  Double.parseDouble(number);
+        }catch (NumberFormatException ex){
+            String[] numberComponents = number.split("\\.");
+            if(numberComponents.length > 2)
+                doubleNumber =  Double.parseDouble(numberComponents[0] + "." + numberComponents[1]);
+        }
+        return doubleNumber;
     }
 }
