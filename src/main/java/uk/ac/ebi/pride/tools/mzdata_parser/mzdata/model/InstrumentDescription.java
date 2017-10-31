@@ -19,30 +19,30 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="instrumentDescriptionType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="instrumentName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="source" type="{}paramType"/>
- *         &lt;element name="analyzerList">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;sequence>
- *                   &lt;element name="analyzer" type="{}paramType" maxOccurs="unbounded"/>
- *                 &lt;/sequence>
- *                 &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *               &lt;/restriction>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="detector" type="{}paramType"/>
- *         &lt;element name="additional" type="{}paramType" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="instrumentDescriptionType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="instrumentName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="source" type="{}paramType"/&gt;
+ *         &lt;element name="analyzerList"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;sequence&gt;
+ *                   &lt;element name="analyzer" type="{}paramType" maxOccurs="unbounded"/&gt;
+ *                 &lt;/sequence&gt;
+ *                 &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="detector" type="{}paramType"/&gt;
+ *         &lt;element name="additional" type="{}paramType" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -197,16 +197,16 @@ public class InstrumentDescription
      * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
-     * &lt;complexType>
-     *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;sequence>
-     *         &lt;element name="analyzer" type="{}paramType" maxOccurs="unbounded"/>
-     *       &lt;/sequence>
-     *       &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
-     *     &lt;/restriction>
-     *   &lt;/complexContent>
-     * &lt;/complexType>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;sequence&gt;
+     *         &lt;element name="analyzer" type="{}paramType" maxOccurs="unbounded"/&gt;
+     *       &lt;/sequence&gt;
+     *       &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
      * </pre>
      * 
      * 
