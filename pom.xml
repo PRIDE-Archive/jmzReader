@@ -91,6 +91,15 @@
 
     </dependencies>
 
+    <repositories>
+        <!-- EBI repo -->
+        <repository>
+            <id>pst-release</id>
+            <name>EBI Nexus Repository</name>
+            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
