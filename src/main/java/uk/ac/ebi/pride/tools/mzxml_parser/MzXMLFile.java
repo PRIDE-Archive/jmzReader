@@ -551,7 +551,7 @@ public class MzXMLFile implements JMzReader {
      * Scans that are contained within a scan that's
      * contained within a scan are not accessible via this
      * function. In case the scan is not available (either
-     * > level 2 or the number does not exist) null is returned.
+     * &gt; level 2 or the number does not exist) null is returned.
      *
      * @param scanNum The scan's number.
      * @return A Scan object or null in case the scan is not available.
@@ -587,7 +587,7 @@ public class MzXMLFile implements JMzReader {
      * Scans that are contained within a scan that's
      * contained within a scan are not accessible via this
      * function. In case the scan is not available (either
-     * > level 2 or the number does not exist) null is returned.
+     * &gt; level 2 or the number does not exist) null is returned.
      *
      * @param scanNum The scan's number as a string.
      * @return A Scan object or null in case the scan is not available.

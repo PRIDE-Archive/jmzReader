@@ -17,43 +17,43 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;simpleContent>
- *     &lt;extension base="&lt;http://sashimi.sourceforge.net/schema_revision/mzXML_3.2>strictBase64Type">
- *       &lt;attribute name="precision">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}positiveInteger">
- *             &lt;enumeration value="32"/>
- *             &lt;enumeration value="64"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
- *       &lt;attribute name="byteOrder" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="network" />
- *       &lt;attribute name="contentType" use="required">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;enumeration value="m/z-int"/>
- *             &lt;enumeration value="m/z"/>
- *             &lt;enumeration value="m/z ruler"/>
- *             &lt;enumeration value="TOF"/>
- *             &lt;enumeration value="intensity"/>
- *             &lt;enumeration value="S/N"/>
- *             &lt;enumeration value="charge"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
- *       &lt;attribute name="compressionType" use="required">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;enumeration value="none"/>
- *             &lt;enumeration value="zlib"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
- *       &lt;attribute name="compressedLen" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *     &lt;/extension>
- *   &lt;/simpleContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;simpleContent&gt;
+ *     &lt;extension base="&lt;http://sashimi.sourceforge.net/schema_revision/mzXML_3.2&gt;strictBase64Type"&gt;
+ *       &lt;attribute name="precision"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}positiveInteger"&gt;
+ *             &lt;enumeration value="32"/&gt;
+ *             &lt;enumeration value="64"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
+ *       &lt;attribute name="byteOrder" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="network" /&gt;
+ *       &lt;attribute name="contentType" use="required"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *             &lt;enumeration value="m/z-int"/&gt;
+ *             &lt;enumeration value="m/z"/&gt;
+ *             &lt;enumeration value="m/z ruler"/&gt;
+ *             &lt;enumeration value="TOF"/&gt;
+ *             &lt;enumeration value="intensity"/&gt;
+ *             &lt;enumeration value="S/N"/&gt;
+ *             &lt;enumeration value="charge"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
+ *       &lt;attribute name="compressionType" use="required"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *             &lt;enumeration value="none"/&gt;
+ *             &lt;enumeration value="zlib"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
+ *       &lt;attribute name="compressedLen" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/simpleContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
