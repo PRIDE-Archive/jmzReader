@@ -18,24 +18,24 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}software"/>
- *         &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *           &lt;element name="processingOperation" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/>
- *           &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;/sequence>
- *       &lt;/sequence>
- *       &lt;attribute name="intensityCutoff" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="centroided" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="deisotoped" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="chargeDeconvoluted" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="spotIntegration" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}software"/&gt;
+ *         &lt;sequence maxOccurs="unbounded" minOccurs="0"&gt;
+ *           &lt;element name="processingOperation" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/&gt;
+ *           &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;/sequence&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="intensityCutoff" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="centroided" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="deisotoped" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="chargeDeconvoluted" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="spotIntegration" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -69,7 +69,7 @@ public class DataProcessing
     protected Boolean spotIntegration;
 
     /**
-     * Software used to convert the data. If data has been processed (e.g. profile > centroid) by any additional progs these should be added too.
+     * Software used to convert the data. If data has been processed (e.g. profile &gt; centroid) by any additional progs these should be added too.
      * 
      * @return
      *     possible object is

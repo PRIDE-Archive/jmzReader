@@ -55,7 +55,6 @@ public class DtaSpectrum implements Spectrum {
      * must only contain one spectrum.
      *
      * @param sourceFile
-     * @throws IOException
      */
     public DtaSpectrum(File sourceFile) throws JMzReaderException {
         // open the file just read it in a buffer

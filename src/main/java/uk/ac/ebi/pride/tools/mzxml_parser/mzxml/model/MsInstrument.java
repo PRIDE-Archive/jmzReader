@@ -18,41 +18,41 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="msManufacturer">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;extension base="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType">
- *               &lt;/extension>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="msModel" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/>
- *         &lt;element name="msIonisation" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/>
- *         &lt;element name="msMassAnalyzer">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;extension base="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType">
- *               &lt;/extension>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="msDetector" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/>
- *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}software"/>
- *         &lt;element name="msResolution" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType" minOccurs="0"/>
- *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}operator" minOccurs="0"/>
- *         &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *           &lt;element name="nameValue" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/>
- *           &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;/sequence>
- *       &lt;/sequence>
- *       &lt;attribute name="msInstrumentID" type="{http://www.w3.org/2001/XMLSchema}int" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="msManufacturer"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;extension base="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"&gt;
+ *               &lt;/extension&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="msModel" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *         &lt;element name="msIonisation" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *         &lt;element name="msMassAnalyzer"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;extension base="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"&gt;
+ *               &lt;/extension&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="msDetector" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}software"/&gt;
+ *         &lt;element name="msResolution" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType" minOccurs="0"/&gt;
+ *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}operator" minOccurs="0"/&gt;
+ *         &lt;sequence maxOccurs="unbounded" minOccurs="0"&gt;
+ *           &lt;element name="nameValue" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/&gt;
+ *           &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;/sequence&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="msInstrumentID" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

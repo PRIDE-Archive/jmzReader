@@ -22,28 +22,28 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="supDataType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="arrayName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;choice>
- *           &lt;element name="float" type="{http://www.w3.org/2001/XMLSchema}float" maxOccurs="unbounded"/>
- *           &lt;element name="double" type="{http://www.w3.org/2001/XMLSchema}double" maxOccurs="unbounded"/>
- *           &lt;element name="int" type="{http://www.w3.org/2001/XMLSchema}int" maxOccurs="unbounded"/>
- *           &lt;element name="boolean" type="{http://www.w3.org/2001/XMLSchema}boolean" maxOccurs="unbounded"/>
- *           &lt;element name="string" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
- *           &lt;element name="time" type="{http://www.w3.org/2001/XMLSchema}float" maxOccurs="unbounded"/>
- *           &lt;element name="URI" type="{http://www.w3.org/2001/XMLSchema}anyURI" maxOccurs="unbounded"/>
- *         &lt;/choice>
- *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="length" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="indexed" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="offset" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="supDataType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="arrayName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;choice&gt;
+ *           &lt;element name="float" type="{http://www.w3.org/2001/XMLSchema}float" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="double" type="{http://www.w3.org/2001/XMLSchema}double" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="int" type="{http://www.w3.org/2001/XMLSchema}int" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="boolean" type="{http://www.w3.org/2001/XMLSchema}boolean" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="string" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="time" type="{http://www.w3.org/2001/XMLSchema}float" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="URI" type="{http://www.w3.org/2001/XMLSchema}anyURI" maxOccurs="unbounded"/&gt;
+ *         &lt;/choice&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="length" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="indexed" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="offset" type="{http://www.w3.org/2001/XMLSchema}int" default="0" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

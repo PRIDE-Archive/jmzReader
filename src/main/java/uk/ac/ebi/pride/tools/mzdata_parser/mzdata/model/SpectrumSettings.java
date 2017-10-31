@@ -19,54 +19,54 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="spectrumSettingsType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="acqSpecification" minOccurs="0">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;sequence>
- *                   &lt;element name="acquisition" maxOccurs="unbounded">
- *                     &lt;complexType>
- *                       &lt;complexContent>
- *                         &lt;extension base="{}paramType">
- *                           &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *                         &lt;/extension>
- *                       &lt;/complexContent>
- *                     &lt;/complexType>
- *                   &lt;/element>
- *                 &lt;/sequence>
- *                 &lt;attribute name="spectrumType" use="required">
- *                   &lt;simpleType>
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                       &lt;enumeration value="discrete"/>
- *                       &lt;enumeration value="continuous"/>
- *                     &lt;/restriction>
- *                   &lt;/simpleType>
- *                 &lt;/attribute>
- *                 &lt;attribute name="methodOfCombination" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *                 &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *               &lt;/restriction>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="spectrumInstrument">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;extension base="{}paramType">
- *                 &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *                 &lt;attribute name="mzRangeStart" type="{http://www.w3.org/2001/XMLSchema}float" />
- *                 &lt;attribute name="mzRangeStop" type="{http://www.w3.org/2001/XMLSchema}float" />
- *               &lt;/extension>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="spectrumSettingsType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="acqSpecification" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;sequence&gt;
+ *                   &lt;element name="acquisition" maxOccurs="unbounded"&gt;
+ *                     &lt;complexType&gt;
+ *                       &lt;complexContent&gt;
+ *                         &lt;extension base="{}paramType"&gt;
+ *                           &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *                         &lt;/extension&gt;
+ *                       &lt;/complexContent&gt;
+ *                     &lt;/complexType&gt;
+ *                   &lt;/element&gt;
+ *                 &lt;/sequence&gt;
+ *                 &lt;attribute name="spectrumType" use="required"&gt;
+ *                   &lt;simpleType&gt;
+ *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                       &lt;enumeration value="discrete"/&gt;
+ *                       &lt;enumeration value="continuous"/&gt;
+ *                     &lt;/restriction&gt;
+ *                   &lt;/simpleType&gt;
+ *                 &lt;/attribute&gt;
+ *                 &lt;attribute name="methodOfCombination" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *                 &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="spectrumInstrument"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;extension base="{}paramType"&gt;
+ *                 &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *                 &lt;attribute name="mzRangeStart" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *                 &lt;attribute name="mzRangeStop" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *               &lt;/extension&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -140,33 +140,33 @@ public class SpectrumSettings
      * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
-     * &lt;complexType>
-     *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;sequence>
-     *         &lt;element name="acquisition" maxOccurs="unbounded">
-     *           &lt;complexType>
-     *             &lt;complexContent>
-     *               &lt;extension base="{}paramType">
-     *                 &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
-     *               &lt;/extension>
-     *             &lt;/complexContent>
-     *           &lt;/complexType>
-     *         &lt;/element>
-     *       &lt;/sequence>
-     *       &lt;attribute name="spectrumType" use="required">
-     *         &lt;simpleType>
-     *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-     *             &lt;enumeration value="discrete"/>
-     *             &lt;enumeration value="continuous"/>
-     *           &lt;/restriction>
-     *         &lt;/simpleType>
-     *       &lt;/attribute>
-     *       &lt;attribute name="methodOfCombination" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
-     *       &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
-     *     &lt;/restriction>
-     *   &lt;/complexContent>
-     * &lt;/complexType>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;sequence&gt;
+     *         &lt;element name="acquisition" maxOccurs="unbounded"&gt;
+     *           &lt;complexType&gt;
+     *             &lt;complexContent&gt;
+     *               &lt;extension base="{}paramType"&gt;
+     *                 &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     *               &lt;/extension&gt;
+     *             &lt;/complexContent&gt;
+     *           &lt;/complexType&gt;
+     *         &lt;/element&gt;
+     *       &lt;/sequence&gt;
+     *       &lt;attribute name="spectrumType" use="required"&gt;
+     *         &lt;simpleType&gt;
+     *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *             &lt;enumeration value="discrete"/&gt;
+     *             &lt;enumeration value="continuous"/&gt;
+     *           &lt;/restriction&gt;
+     *         &lt;/simpleType&gt;
+     *       &lt;/attribute&gt;
+     *       &lt;attribute name="methodOfCombination" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+     *       &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
      * </pre>
      * 
      * 
@@ -289,13 +289,13 @@ public class SpectrumSettings
          * <p>The following schema fragment specifies the expected content contained within this class.
          * 
          * <pre>
-         * &lt;complexType>
-         *   &lt;complexContent>
-         *     &lt;extension base="{}paramType">
-         *       &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
-         *     &lt;/extension>
-         *   &lt;/complexContent>
-         * &lt;/complexType>
+         * &lt;complexType&gt;
+         *   &lt;complexContent&gt;
+         *     &lt;extension base="{}paramType"&gt;
+         *       &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+         *     &lt;/extension&gt;
+         *   &lt;/complexContent&gt;
+         * &lt;/complexType&gt;
          * </pre>
          * 
          * 
@@ -338,15 +338,15 @@ public class SpectrumSettings
      * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
-     * &lt;complexType>
-     *   &lt;complexContent>
-     *     &lt;extension base="{}paramType">
-     *       &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
-     *       &lt;attribute name="mzRangeStart" type="{http://www.w3.org/2001/XMLSchema}float" />
-     *       &lt;attribute name="mzRangeStop" type="{http://www.w3.org/2001/XMLSchema}float" />
-     *     &lt;/extension>
-     *   &lt;/complexContent>
-     * &lt;/complexType>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;extension base="{}paramType"&gt;
+     *       &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     *       &lt;attribute name="mzRangeStart" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+     *       &lt;attribute name="mzRangeStop" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+     *     &lt;/extension&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
      * </pre>
      * 
      * 
