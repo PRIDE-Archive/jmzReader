@@ -23,154 +23,154 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="scanOrigin" maxOccurs="unbounded" minOccurs="0">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attribute name="parentFileID" use="required">
- *                   &lt;simpleType>
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                       &lt;length value="40"/>
- *                     &lt;/restriction>
- *                   &lt;/simpleType>
- *                 &lt;/attribute>
- *                 &lt;attribute name="num" use="required" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
- *               &lt;/restriction>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="precursorMz" maxOccurs="unbounded" minOccurs="0">
- *           &lt;complexType>
- *             &lt;simpleContent>
- *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>float">
- *                 &lt;attribute name="precursorScanNum" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
- *                 &lt;attribute name="precursorIntensity" use="required" type="{http://www.w3.org/2001/XMLSchema}float" />
- *                 &lt;attribute name="precursorCharge" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
- *                 &lt;attribute name="possibleCharges" type="{http://www.w3.org/2001/XMLSchema}string" />
- *                 &lt;attribute name="windowWideness" type="{http://www.w3.org/2001/XMLSchema}float" />
- *                 &lt;attribute name="activationMethod">
- *                   &lt;simpleType>
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                       &lt;enumeration value="ETD"/>
- *                       &lt;enumeration value="ECD"/>
- *                       &lt;enumeration value="CID"/>
- *                       &lt;enumeration value="HCD"/>
- *                       &lt;enumeration value="ETD+SA"/>
- *                     &lt;/restriction>
- *                   &lt;/simpleType>
- *                 &lt;/attribute>
- *               &lt;/extension>
- *             &lt;/simpleContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="maldi" minOccurs="0">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attribute name="plateID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *                 &lt;attribute name="spotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *                 &lt;attribute name="laserShootCount" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
- *                 &lt;attribute name="laserFrequency" type="{http://www.w3.org/2001/XMLSchema}duration" />
- *                 &lt;attribute name="laserIntensity" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
- *                 &lt;attribute name="collisionGas" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *               &lt;/restriction>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="peaks" maxOccurs="unbounded">
- *           &lt;complexType>
- *             &lt;simpleContent>
- *               &lt;extension base="&lt;http://sashimi.sourceforge.net/schema_revision/mzXML_3.2>strictBase64Type">
- *                 &lt;attribute name="precision">
- *                   &lt;simpleType>
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}positiveInteger">
- *                       &lt;enumeration value="32"/>
- *                       &lt;enumeration value="64"/>
- *                     &lt;/restriction>
- *                   &lt;/simpleType>
- *                 &lt;/attribute>
- *                 &lt;attribute name="byteOrder" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="network" />
- *                 &lt;attribute name="contentType" use="required">
- *                   &lt;simpleType>
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                       &lt;enumeration value="m/z-int"/>
- *                       &lt;enumeration value="m/z"/>
- *                       &lt;enumeration value="m/z ruler"/>
- *                       &lt;enumeration value="TOF"/>
- *                       &lt;enumeration value="intensity"/>
- *                       &lt;enumeration value="S/N"/>
- *                       &lt;enumeration value="charge"/>
- *                     &lt;/restriction>
- *                   &lt;/simpleType>
- *                 &lt;/attribute>
- *                 &lt;attribute name="compressionType" use="required">
- *                   &lt;simpleType>
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                       &lt;enumeration value="none"/>
- *                       &lt;enumeration value="zlib"/>
- *                     &lt;/restriction>
- *                   &lt;/simpleType>
- *                 &lt;/attribute>
- *                 &lt;attribute name="compressedLen" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *               &lt;/extension>
- *             &lt;/simpleContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *           &lt;element name="nameValue" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/>
- *           &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;/sequence>
- *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}scan" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="num" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
- *       &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
- *       &lt;attribute name="peaksCount" use="required" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
- *       &lt;attribute name="polarity">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;enumeration value="+"/>
- *             &lt;enumeration value="-"/>
- *             &lt;enumeration value="any"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
- *       &lt;attribute name="scanType">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;enumeration value="Full"/>
- *             &lt;enumeration value="zoom"/>
- *             &lt;enumeration value="SIM"/>
- *             &lt;enumeration value="SRM"/>
- *             &lt;enumeration value="CRM"/>
- *             &lt;enumeration value="Q1"/>
- *             &lt;enumeration value="Q3"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
- *       &lt;attribute name="filterLine" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="centroided" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="deisotoped" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="chargeDeconvoluted" type="{http://www.w3.org/2001/XMLSchema}boolean" default="0" />
- *       &lt;attribute name="retentionTime" type="{http://www.w3.org/2001/XMLSchema}duration" />
- *       &lt;attribute name="ionisationEnergy" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="collisionEnergy" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="cidGasPressure" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="startMz" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="endMz" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="lowMz" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="highMz" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="basePeakMz" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="basePeakIntensity" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="totIonCurrent" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="msInstrumentID" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="compensationVoltage" type="{http://www.w3.org/2001/XMLSchema}float" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="scanOrigin" maxOccurs="unbounded" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;attribute name="parentFileID" use="required"&gt;
+ *                   &lt;simpleType&gt;
+ *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                       &lt;length value="40"/&gt;
+ *                     &lt;/restriction&gt;
+ *                   &lt;/simpleType&gt;
+ *                 &lt;/attribute&gt;
+ *                 &lt;attribute name="num" use="required" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="precursorMz" maxOccurs="unbounded" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;simpleContent&gt;
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;float"&gt;
+ *                 &lt;attribute name="precursorScanNum" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *                 &lt;attribute name="precursorIntensity" use="required" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *                 &lt;attribute name="precursorCharge" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *                 &lt;attribute name="possibleCharges" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *                 &lt;attribute name="windowWideness" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *                 &lt;attribute name="activationMethod"&gt;
+ *                   &lt;simpleType&gt;
+ *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                       &lt;enumeration value="ETD"/&gt;
+ *                       &lt;enumeration value="ECD"/&gt;
+ *                       &lt;enumeration value="CID"/&gt;
+ *                       &lt;enumeration value="HCD"/&gt;
+ *                       &lt;enumeration value="ETD+SA"/&gt;
+ *                     &lt;/restriction&gt;
+ *                   &lt;/simpleType&gt;
+ *                 &lt;/attribute&gt;
+ *               &lt;/extension&gt;
+ *             &lt;/simpleContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="maldi" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;attribute name="plateID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *                 &lt;attribute name="spotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *                 &lt;attribute name="laserShootCount" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *                 &lt;attribute name="laserFrequency" type="{http://www.w3.org/2001/XMLSchema}duration" /&gt;
+ *                 &lt;attribute name="laserIntensity" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *                 &lt;attribute name="collisionGas" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="peaks" maxOccurs="unbounded"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;simpleContent&gt;
+ *               &lt;extension base="&lt;http://sashimi.sourceforge.net/schema_revision/mzXML_3.2&gt;strictBase64Type"&gt;
+ *                 &lt;attribute name="precision"&gt;
+ *                   &lt;simpleType&gt;
+ *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}positiveInteger"&gt;
+ *                       &lt;enumeration value="32"/&gt;
+ *                       &lt;enumeration value="64"/&gt;
+ *                     &lt;/restriction&gt;
+ *                   &lt;/simpleType&gt;
+ *                 &lt;/attribute&gt;
+ *                 &lt;attribute name="byteOrder" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="network" /&gt;
+ *                 &lt;attribute name="contentType" use="required"&gt;
+ *                   &lt;simpleType&gt;
+ *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                       &lt;enumeration value="m/z-int"/&gt;
+ *                       &lt;enumeration value="m/z"/&gt;
+ *                       &lt;enumeration value="m/z ruler"/&gt;
+ *                       &lt;enumeration value="TOF"/&gt;
+ *                       &lt;enumeration value="intensity"/&gt;
+ *                       &lt;enumeration value="S/N"/&gt;
+ *                       &lt;enumeration value="charge"/&gt;
+ *                     &lt;/restriction&gt;
+ *                   &lt;/simpleType&gt;
+ *                 &lt;/attribute&gt;
+ *                 &lt;attribute name="compressionType" use="required"&gt;
+ *                   &lt;simpleType&gt;
+ *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                       &lt;enumeration value="none"/&gt;
+ *                       &lt;enumeration value="zlib"/&gt;
+ *                     &lt;/restriction&gt;
+ *                   &lt;/simpleType&gt;
+ *                 &lt;/attribute&gt;
+ *                 &lt;attribute name="compressedLen" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *               &lt;/extension&gt;
+ *             &lt;/simpleContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;sequence maxOccurs="unbounded" minOccurs="0"&gt;
+ *           &lt;element name="nameValue" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/&gt;
+ *           &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;/sequence&gt;
+ *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}scan" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="num" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *       &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *       &lt;attribute name="peaksCount" use="required" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
+ *       &lt;attribute name="polarity"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *             &lt;enumeration value="+"/&gt;
+ *             &lt;enumeration value="-"/&gt;
+ *             &lt;enumeration value="any"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
+ *       &lt;attribute name="scanType"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *             &lt;enumeration value="Full"/&gt;
+ *             &lt;enumeration value="zoom"/&gt;
+ *             &lt;enumeration value="SIM"/&gt;
+ *             &lt;enumeration value="SRM"/&gt;
+ *             &lt;enumeration value="CRM"/&gt;
+ *             &lt;enumeration value="Q1"/&gt;
+ *             &lt;enumeration value="Q3"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
+ *       &lt;attribute name="filterLine" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="centroided" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="deisotoped" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="chargeDeconvoluted" type="{http://www.w3.org/2001/XMLSchema}boolean" default="0" /&gt;
+ *       &lt;attribute name="retentionTime" type="{http://www.w3.org/2001/XMLSchema}duration" /&gt;
+ *       &lt;attribute name="ionisationEnergy" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="collisionEnergy" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="cidGasPressure" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="startMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="endMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="lowMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="highMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="basePeakMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="basePeakIntensity" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="totIonCurrent" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="msInstrumentID" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="compensationVoltage" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

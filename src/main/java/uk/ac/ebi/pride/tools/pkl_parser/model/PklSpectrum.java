@@ -55,8 +55,7 @@ public class PklSpectrum implements Spectrum {
 	 * on a specific source file. This sourcefile
 	 * must only contain one spectrum.
 	 * @param sourceFile
-	 * @throws JMzReaderException 
-	 * @throws IOException 
+	 * @throws JMzReaderException
 	 */
 	public PklSpectrum(File sourceFile) throws JMzReaderException {
 		// open the file just read it in a buffer

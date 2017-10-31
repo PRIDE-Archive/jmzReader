@@ -18,28 +18,28 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;simpleContent>
- *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>float">
- *       &lt;attribute name="precursorScanNum" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
- *       &lt;attribute name="precursorIntensity" use="required" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="precursorCharge" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
- *       &lt;attribute name="possibleCharges" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="windowWideness" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="activationMethod">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;enumeration value="ETD"/>
- *             &lt;enumeration value="ECD"/>
- *             &lt;enumeration value="CID"/>
- *             &lt;enumeration value="HCD"/>
- *             &lt;enumeration value="ETD+SA"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
- *     &lt;/extension>
- *   &lt;/simpleContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;simpleContent&gt;
+ *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;float"&gt;
+ *       &lt;attribute name="precursorScanNum" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *       &lt;attribute name="precursorIntensity" use="required" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="precursorCharge" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *       &lt;attribute name="possibleCharges" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="windowWideness" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="activationMethod"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *             &lt;enumeration value="ETD"/&gt;
+ *             &lt;enumeration value="ECD"/&gt;
+ *             &lt;enumeration value="CID"/&gt;
+ *             &lt;enumeration value="HCD"/&gt;
+ *             &lt;enumeration value="ETD+SA"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/simpleContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

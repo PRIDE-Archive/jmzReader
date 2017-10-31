@@ -22,23 +22,23 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="spectrumType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="spectrumDesc" type="{}spectrumDescType"/>
- *         &lt;element name="supDesc" type="{}supDescType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="mzArrayBinary" type="{}peakListBinaryType"/>
- *         &lt;element name="intenArrayBinary" type="{}peakListBinaryType"/>
- *         &lt;choice maxOccurs="unbounded" minOccurs="0">
- *           &lt;element name="supDataArrayBinary" type="{}supDataBinaryType"/>
- *           &lt;element name="supDataArray" type="{}supDataType"/>
- *         &lt;/choice>
- *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="spectrumType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="spectrumDesc" type="{}spectrumDescType"/&gt;
+ *         &lt;element name="supDesc" type="{}supDescType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="mzArrayBinary" type="{}peakListBinaryType"/&gt;
+ *         &lt;element name="intenArrayBinary" type="{}peakListBinaryType"/&gt;
+ *         &lt;choice maxOccurs="unbounded" minOccurs="0"&gt;
+ *           &lt;element name="supDataArrayBinary" type="{}supDataBinaryType"/&gt;
+ *           &lt;element name="supDataArray" type="{}supDataType"/&gt;
+ *         &lt;/choice&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
