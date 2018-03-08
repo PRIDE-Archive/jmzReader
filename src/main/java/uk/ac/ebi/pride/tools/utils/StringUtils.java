@@ -49,4 +49,22 @@ public class StringUtils {
         }
         return doubleNumber;
     }
+
+    /**
+     * Helper method to check if a String is a valid integer or not (0-9 digits).
+     * @param input the input String to test
+     * @return true for a valid integer, false otherwise
+     */
+    public static boolean isInteger(String input) {
+      for(int i = 0; i < input.length(); i++) {
+        if(i == 0 && input.charAt(i) == '-') {
+          if(input.length() == 1) {
+            return false;
+          }
+          else continue;
+        }
+        if(Character.digit(input.charAt(i),10) < 0) return false;
+      }
+      return true;
+    }
 }

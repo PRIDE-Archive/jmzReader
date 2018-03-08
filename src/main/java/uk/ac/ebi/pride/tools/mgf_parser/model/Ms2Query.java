@@ -473,17 +473,22 @@ public class Ms2Query implements Spectrum {
    */
   public Integer getPrecursorCharge() {
     Integer result = null;
-    if (chargeState!=null && !chargeState.contains(",")) {
-      if (chargeState.contains("-")) {
-        result = Integer.parseInt(chargeState);
-      } else {
-        String modifiedChargeState = chargeState.replace("+", "");
-        if (modifiedChargeState.endsWith(".0")) {
-          modifiedChargeState = modifiedChargeState.substring(0, modifiedChargeState.length() - 2);
+    if (chargeState!=null && !chargeState.isEmpty()) {
+      if (!chargeState.contains(",") && !chargeState.contains("and")) {
+        String modifiedChargeState = chargeState;
+        if (modifiedChargeState.contains(".")) { // value should be reported as integer not decimal
+          modifiedChargeState = modifiedChargeState.substring(0, modifiedChargeState.indexOf("."));
         }
-        result = Integer.parseInt(modifiedChargeState);
-      }
-    } // if there are multiple charge states, give up
+        if (modifiedChargeState.contains("+")) { // positive "+x"
+          modifiedChargeState = modifiedChargeState.replace("+", "");
+        } // else may be negative "-x"
+        if (StringUtils.isInteger(modifiedChargeState)) {
+          result = Integer.parseInt(modifiedChargeState);
+        } else {
+          throw new NumberFormatException("Unable to parse chargeState: " + chargeState);
+        }
+      } // else there are multiple charge states, give up (null)
+    } // else no charge state found (null)
     return result;
   }
 
