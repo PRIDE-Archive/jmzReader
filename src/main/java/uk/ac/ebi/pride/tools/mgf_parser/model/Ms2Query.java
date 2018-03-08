@@ -483,7 +483,7 @@ public class Ms2Query implements Spectrum {
           modifiedChargeState = modifiedChargeState.replace("+", "");
         } // else may be negative "-x"
         if (StringUtils.isInteger(modifiedChargeState)) {
-          result = Integer.parseInt(chargeState);
+          result = Integer.parseInt(modifiedChargeState);
         } else {
           throw new NumberFormatException("Unable to parse chargeState: " + chargeState);
         }
