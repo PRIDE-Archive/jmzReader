@@ -9,50 +9,33 @@ import java.io.File;
 import java.net.URL;
 import java.util.Iterator;
 
-/**
- * Created by IntelliJ IDEA.
- * User: rcote
- * Date: 20/06/12
- * Time: 12:07
- */
 public class CustomTagTest{
 
-    private MgfFile mgfFile;
+    private MgfFile  mgfFile = new MgfFile();
 
     @Before
     public void setUp() throws Exception {
-        mgfFile = new MgfFile();
+        loadTestFile();
     }
 
-    @Test
-    public void loadTestFile() {
+    private void loadTestFile() throws Exception{
         URL testFile = getClass().getClassLoader().getResource("custom_tags.mgf");
         Assert.assertNotNull("Error loading mgf test file", testFile);
-
         File sourceFile;
         try {
             sourceFile = new File(testFile.toURI());
             mgfFile = new MgfFile(sourceFile, false);
         } catch (Exception e) {
-            System.out.println(e.getMessage() + " thrown and captured");
             Assert.assertEquals(e.getMessage(), "Unknown attribute '_DISTILLER_MDRO_VERSION' encountered");
         }
-
-        try {
-            sourceFile = new File(testFile.toURI());
-            mgfFile = new MgfFile(sourceFile, true);
-            Iterator<Ms2Query> it = mgfFile.getMs2QueryIterator();
-            Assert.assertNotNull("NULL SPECTRUM Encountered!", it.next());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+        sourceFile = new File(testFile.toURI());
+        mgfFile = new MgfFile(sourceFile, true);
     }
 
     @Test
-    public void testLoadFile() {
-        loadTestFile();
+    public void testgGtMs2QueryIterator() throws Exception{
+        Iterator<Ms2Query> it = mgfFile.getMs2QueryIterator();
+        Assert.assertNotNull("NULL SPECTRUM Encountered!", it.next());
     }
 
 }
