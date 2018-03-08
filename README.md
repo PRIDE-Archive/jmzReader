@@ -1,8 +1,5 @@
 jmzReader
 ===============
-
-[![Build Status](https://travis-ci.org/PRIDE-Utilities/jmzReader.svg?branch=master)](https://travis-ci.org/PRIDE-Utilities/jmzReader)
-
 # About jmzReader
 
 The jmzReader library is a collection of Java APIs to parse the most commonly used MS peak list formats. Currently, the library contains parsers for
