@@ -4,3 +4,4 @@ target/*
 */*.iml
 */.idea/*
 */target/*
+*.DS_Store*
