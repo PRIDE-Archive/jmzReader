@@ -125,7 +125,7 @@ public class PRIDEXmlWrapper implements JMzReader {
      * @throws JMzReaderException exception while reading spectrum
      */
     @Override
-    public Spectrum getSpectrumById(String id) throws JMzReaderException {
+    public Spectrum getSpectrumById(String id) {
         uk.ac.ebi.pride.jaxb.model.Spectrum prideSpectrum = prideXmlReader.getSpectrumById(id);
         return new PRIDEXmlSpectrumWrapper(prideSpectrum);
     }
@@ -198,11 +198,7 @@ public class PRIDEXmlWrapper implements JMzReader {
         }
 
         public Spectrum next() {
-            try {
-                return getSpectrumById(idIterator.next());
-            } catch (JMzReaderException e) {
-                throw new RuntimeException("Failed to parse mzML spectrum.", e);
-            }
+            return getSpectrumById(idIterator.next());
         }
 
         public void remove() {
@@ -333,7 +329,7 @@ public class PRIDEXmlWrapper implements JMzReader {
                 inten.add(size == 4 ? ((Float) intenBuffer.getFloat(i)).doubleValue() : intenBuffer.getDouble(i));
 
             if (inten.size() != mz.size())
-                throw new IllegalStateException("Different sizes encountered for intensity and m/z array (spectrum id = " + id + ")");
+                throw new IllegalStateException("Different sizes encountered for intensity and m/z array (spectrum id = " + id + ')');
 
             // create and fill the peak list
             peakList = new HashMap<>();

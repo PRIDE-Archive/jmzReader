@@ -209,28 +209,19 @@ public class PklFile implements JMzReader {
 	 * @throws JMzReaderException 
 	 */
 	private static String readSpectrumFromFile(IndexElement indexElement, File sourceFile) throws JMzReaderException {
-        RandomAccessFile file = null;
-		try {
+		try (RandomAccessFile file = new RandomAccessFile(sourceFile, "r")) {
 			// create the random access file
-			file = new RandomAccessFile(sourceFile, "r");
 			// move to the respective position
 			file.seek(indexElement.getStart());
 			byte[] buffer = new byte[indexElement.getSize()];
 			file.read(buffer);
 
-            return new String(buffer);
+			return new String(buffer);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 			throw new JMzReaderException("Failed to read from file", e);
-		} finally {
-            if (file != null) {
-                try {
-                    file.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
-        }
+		}
+		// ignore
 	}
 	
 	public Iterator<PklSpectrum> getPklSpectrumIterator() {
@@ -359,8 +350,8 @@ public class PklFile implements JMzReader {
 		}
 		else {
 			// just return 1... n
-			for (Integer i = 1; i <= fileIndex.size(); i++)
-				ids.add(i.toString());
+			for (int i = 1; i <= fileIndex.size(); i++)
+				ids.add(Integer.toString(i));
 		}
 		
 		return ids;

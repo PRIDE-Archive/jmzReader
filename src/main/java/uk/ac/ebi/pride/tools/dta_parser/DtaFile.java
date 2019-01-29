@@ -236,10 +236,8 @@ public class DtaFile implements JMzReader {
      * @return The spectrum as a string.
      */
     private static String readSpectrumFromFile(File sourcefile, IndexElement indexElement) {
-        RandomAccessFile accessFile = null;
-        try {
+        try (RandomAccessFile accessFile = new RandomAccessFile(sourcefile, "r")) {
             // create the random access file
-            accessFile = new RandomAccessFile(sourcefile, "r");
 
             // move to the respective position
             accessFile.seek(indexElement.getStart());
@@ -253,15 +251,8 @@ public class DtaFile implements JMzReader {
 
         } catch (Exception e) {
             throw new IllegalStateException("Failed to read from file", e);
-        } finally {
-            if (accessFile != null) {
-                try {
-                    accessFile.close();
-                } catch (IOException e) {
-                    // ignore exceptions
-                }
-            }
         }
+        // ignore exceptions
     }
 
     public Iterator<DtaSpectrum> getDtaSpectrumIterator() {

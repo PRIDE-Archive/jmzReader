@@ -149,7 +149,7 @@ public class MzDataSpectrum implements Spectrum {
 			inten.add(size == 4 ? ((Float) intenBuffer.getFloat(i)).doubleValue() : intenBuffer.getDouble(i));
 		
 		if (inten.size() != mz.size())
-			throw new IllegalStateException("Different sizes encountered for intensity and m/z array (spectrum id = " + id + ")");
+			throw new IllegalStateException("Different sizes encountered for intensity and m/z array (spectrum id = " + id + ')');
 		
 		// create and fill the peak list
 		peakList = new HashMap<>();

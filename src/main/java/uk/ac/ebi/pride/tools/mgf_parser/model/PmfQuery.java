@@ -58,6 +58,6 @@ public class PmfQuery {
 	 * mgf file.
 	 */
 	public String toString() {
-		return mass.toString() + ((intensity != null) ? " " + intensity.toString() : "");
+		return mass.toString() + ((intensity != null) ? ' ' + intensity.toString() : "");
 	}	
 }

@@ -45,7 +45,7 @@ public class StringUtils {
         }catch (NumberFormatException ex){
             String[] numberComponents = number.split("\\.");
             if(numberComponents.length > 2)
-                doubleNumber =  Double.parseDouble(numberComponents[0] + "." + numberComponents[1]);
+                doubleNumber =  Double.parseDouble(numberComponents[0] + '.' + numberComponents[1]);
         }
         return doubleNumber;
     }

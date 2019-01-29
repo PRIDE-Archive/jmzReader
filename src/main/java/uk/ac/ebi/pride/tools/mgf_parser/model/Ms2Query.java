@@ -401,54 +401,54 @@ public class Ms2Query implements Spectrum {
     StringBuilder query = new StringBuilder("BEGIN IONS\n");
     // process the optional attributes
     if (chargeState != null) {
-      query.append("CHARGE=").append(chargeState).append("\n");
+      query.append("CHARGE=").append(chargeState).append('\n');
     }
     if (composition != null) {
-      query.append("COMP=").append(composition).append("\n");
+      query.append("COMP=").append(composition).append('\n');
     }
     if (errorTolerantTags != null && errorTolerantTags.size() > 0) {
       for (String tag : errorTolerantTags) {
-        query.append("ETAG=").append(tag).append("\n");
+        query.append("ETAG=").append(tag).append('\n');
       }
     }
     if (instrument != null) {
-      query.append("INSTRUMENT=").append(instrument).append("\n");
+      query.append("INSTRUMENT=").append(instrument).append('\n');
     }
     if (variableModifications != null) {
-      query.append("IT_MODS=").append(variableModifications).append("\n");
+      query.append("IT_MODS=").append(variableModifications).append('\n');
     }
     if (peptideMass != null) {
-      query.append("PEPMASS=").append(peptideMass).append("\n");
+      query.append("PEPMASS=").append(peptideMass).append('\n');
     }
     if (retentionTime != null) {
-      query.append("RTINSECONDS=").append(retentionTime).append("\n");
+      query.append("RTINSECONDS=").append(retentionTime).append('\n');
     }
     if (scan != null) {
-      query.append("SCANS=").append(scan).append("\n");
+      query.append("SCANS=").append(scan).append('\n');
     }
     if (sequenceQualifiers != null) {
       for (String qual : sequenceQualifiers) {
-        query.append("SEQ=").append(qual).append("\n");
+        query.append("SEQ=").append(qual).append('\n');
       }
     }
     if (tags != null) {
       for (String tag : tags) {
-        query.append("TAG=").append(tag).append("\n");
+        query.append("TAG=").append(tag).append('\n');
       }
     }
     if (title != null) {
-      query.append("TITLE=").append(title).append("\n");
+      query.append("TITLE=").append(title).append('\n');
     }
     if (tolerance != null) {
-      query.append("TOL=").append(tolerance).append("\n");
+      query.append("TOL=").append(tolerance).append('\n');
     }
     if (toleranceUnit != null) {
-      query.append("TOLU=").append(toleranceUnit).append("\n");
+      query.append("TOLU=").append(toleranceUnit).append('\n');
     }
     List<Double> masses = new ArrayList<>(peakList.keySet());
     Collections.sort(masses);
     for (Double mz : masses) {
-      query.append(mz).append(" ").append(peakList.get(mz)).append("\n");
+      query.append(mz).append(' ').append(peakList.get(mz)).append('\n');
     }
     query.append("END IONS\n");
     return query.toString();
@@ -528,12 +528,12 @@ public class Ms2Query implements Spectrum {
     if (sequenceQualifiers != null && sequenceQualifiers.size() == 1) {
       paramGroup.addParam(new UserParam("Sequence", sequenceQualifiers.get(0)));
     }
-    for (Integer userIndex : userTags.keySet()) {
-      String userIndexString = String.valueOf(userIndex);
-      if (userIndex < 10) {
-        userIndexString = "0" + userIndexString;
+    for (Map.Entry<Integer, String> integerStringEntry : userTags.entrySet()) {
+      String userIndexString = String.valueOf(integerStringEntry.getKey());
+      if (integerStringEntry.getKey() < 10) {
+        userIndexString = '0' + userIndexString;
       }
-      paramGroup.addParam(new UserParam("USER" + userIndexString, userTags.get(userIndex)));
+      paramGroup.addParam(new UserParam("USER" + userIndexString, integerStringEntry.getValue()));
     }
     return paramGroup;
   }

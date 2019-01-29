@@ -340,7 +340,7 @@ RandomAccessFile access = getRandomAccess();
 		try {
 			accessFile = new RandomAccessFile(sourcefile, "r");
 		} catch (FileNotFoundException e) {
-			throw new JMzReaderException("Could not find mzData file '" + sourcefile.getPath() + "'", e);
+			throw new JMzReaderException("Could not find mzData file '" + sourcefile.getPath() + '\'', e);
 		}
 		
 		return accessFile;
@@ -565,10 +565,10 @@ RandomAccessFile access = getRandomAccess();
 		Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> idToIndex =
 				new HashMap<>(idToIndexElementMap.size());
 		
-		for (Integer id : idToIndexElementMap.keySet()) {
-			IndexElement e = idToIndexElementMap.get(id);
+		for (Map.Entry<Integer, IndexElement> integerIndexElementEntry : idToIndexElementMap.entrySet()) {
+			IndexElement e = integerIndexElementEntry.getValue();
 			int size = (int) (e.getStop() - e.getStart());
-			idToIndex.put(id.toString(), new IndexElementImpl(e.getStart(), size));
+			idToIndex.put((integerIndexElementEntry.getKey()).toString(), new IndexElementImpl(e.getStart(), size));
 		}	
 		
 		return idToIndex;

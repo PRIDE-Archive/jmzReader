@@ -342,10 +342,8 @@ public class MzXMLFile implements JMzReader {
     }
 
     public static Spectrum getIndexedSpectrum(File sourcefile, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement indexElement) throws JMzReaderException {
-        RandomAccessFile access = null;
-        try {
+        try (RandomAccessFile access = new RandomAccessFile(sourcefile, "r")) {
             // read the XML from the file
-            access = new RandomAccessFile(sourcefile, "r");
 
             // create the byte buffer
             byte[] bytes = new byte[indexElement.getSize()];
@@ -366,15 +364,8 @@ public class MzXMLFile implements JMzReader {
             return new MzXMLSpectrum(scan);
         } catch (Exception e) {
             throw new JMzReaderException("Failed to read from mzXML file.", e);
-        } finally {
-            if (access != null) {
-                try {
-                    access.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
         }
+        // ignore
     }
 
     /**
@@ -391,7 +382,7 @@ public class MzXMLFile implements JMzReader {
         try {
             accessFile = new RandomAccessFile(sourcefile, "r");
         } catch (FileNotFoundException e) {
-            throw new MzXMLParsingException("Could not find mzXML file '" + sourcefile.getPath() + "'", e);
+            throw new MzXMLParsingException("Could not find mzXML file '" + sourcefile.getPath() + '\'', e);
         }
 
         return accessFile;
@@ -931,9 +922,9 @@ public class MzXMLFile implements JMzReader {
         Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> idToIndexMap =
                 new HashMap<>(numToIndexMap.size());
 
-        for (Long num : numToIndexMap.keySet()) {
-            IndexElement e = numToIndexMap.get(num);
-            idToIndexMap.put(num.toString(), new IndexElementImpl(e.getStart(), (int) (e.getStop() - e.getStart())));
+        for (Map.Entry<Long, IndexElement> longIndexElementEntry : numToIndexMap.entrySet()) {
+            IndexElement e = longIndexElementEntry.getValue();
+            idToIndexMap.put((longIndexElementEntry.getKey()).toString(), new IndexElementImpl(e.getStart(), (int) (e.getStop() - e.getStart())));
         }
 
         return idToIndexMap;

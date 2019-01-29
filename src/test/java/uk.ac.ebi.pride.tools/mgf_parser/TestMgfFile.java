@@ -422,15 +422,11 @@ public class TestMgfFile{
 
         int queryCount = 0;
 
-        try {
-            for (Ms2Query q : mgfFile.getMs2QueryIterator()) {
-                Assert.assertNotNull(q);
-                queryCount++;
-            }
-            Assert.assertEquals(10, queryCount);
-        } catch (JMzReaderException e) {
-            System.out.println(e.getMessage());
+        for (Ms2Query q : mgfFile.getMs2QueryIterator()) {
+            Assert.assertNotNull(q);
+            queryCount++;
         }
+        Assert.assertEquals(10, queryCount);
     }
 
     public void testMgfFile() {

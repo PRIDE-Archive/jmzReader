@@ -108,19 +108,19 @@ public class Ms2File implements JMzReader {
 					String[] fields = line.split("\t");
 					// every header line must have exactly three fields
 					if (fields.length < 2 || fields.length > 3)
-						throw new JMzReaderException("Invalid header line encountered: '" + line + "'");
+						throw new JMzReaderException("Invalid header line encountered: '" + line + '\'');
 					
 					// check if the field was already used
 					if (header.containsKey(fields[1])) {
 						int nNumber = 1;
 						
 						// create a unique name in the format [fieldName]_[1-n]
-						while (header.containsKey(fields[1] + "_" + nNumber)) {
+						while (header.containsKey(fields[1] + '_' + nNumber)) {
 							nNumber++;
 						}
 						
 						// set the new fieldname
-						fields[1] = fields[1] + "_" + nNumber;
+						fields[1] = fields[1] + '_' + nNumber;
 					}
 					
 					// save the header information
@@ -252,28 +252,19 @@ public class Ms2File implements JMzReader {
 		if (indexElement == null)
 			throw new JMzReaderException("Invalid spectrum index passed.");
 
-        RandomAccessFile inputFile = null;
-		try {
+		try (RandomAccessFile inputFile = new RandomAccessFile(file, "r")) {
 			// read the spectrum from the file
-			inputFile = new RandomAccessFile(file, "r");
 			inputFile.seek(indexElement.getStart());
 			byte[] bytes = new byte[indexElement.getSize()];
 			inputFile.read(bytes);
-            String spectrum = new String(bytes);
-			
+			String spectrum = new String(bytes);
+
 			// create the spectrum object
 			return new Ms2Spectrum(spectrum, specIndex + 1);
 		} catch (IOException e) {
 			throw new JMzReaderException("Failed to read from file.", e);
-		} finally {
-            if (inputFile != null) {
-                try {
-                    inputFile.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
-        }
+		}
+		// ignore
 	}
 	
 	/**
@@ -288,7 +279,7 @@ public class Ms2File implements JMzReader {
 	private class SpectrumIterator implements Iterator<Spectrum> {
 		private Ms2FileSpectrumIterator it;
 		
-		public SpectrumIterator() throws JMzReaderException{
+		public SpectrumIterator() {
 			it = new Ms2FileSpectrumIterator();
 		}
 
@@ -354,14 +345,14 @@ public class Ms2File implements JMzReader {
 		// just return 1..size
 		List<String> ids = new ArrayList<>(getSpectraCount());
 		
-		for (Integer id = 1; id <= getSpectraCount(); id++)
-			ids.add(id.toString());
+		for (int id = 1; id <= getSpectraCount(); id++)
+			ids.add(Integer.toString(id));
 		
 		return ids;
 	}
 
 	public Spectrum getSpectrumById(String id) throws JMzReaderException {
-		Integer index = Integer.parseInt(id);
+		int index = Integer.parseInt(id);
 		
 		return getSpectrum(index);
 	}
@@ -390,17 +381,13 @@ public class Ms2File implements JMzReader {
 	public Map<String, IndexElement> getIndexElementForIds() {
 		Map<String, IndexElement> idToIndexMap = new HashMap<>(index.size());
 		
-		for (Integer i = 1; i <= index.size(); i++)
-			idToIndexMap.put(i.toString(), index.get(i - 1));
+		for (int i = 1; i <= index.size(); i++)
+			idToIndexMap.put(Integer.toString(i), index.get(i - 1));
 		
 		return idToIndexMap;
 	}
 
 	public Iterator<Spectrum> getSpectrumIterator() {
-		try {
-			return new SpectrumIterator();
-		} catch (JMzReaderException e) {
-			throw new IllegalStateException(e);
-		}
+		return new SpectrumIterator();
 	}
 }

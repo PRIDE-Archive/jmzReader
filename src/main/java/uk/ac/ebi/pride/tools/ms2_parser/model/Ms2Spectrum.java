@@ -105,7 +105,7 @@ public class Ms2Spectrum implements Spectrum {
 			
 			// all two groups must be found
 			if (matcher.groupCount() != 2)
-				throw new JMzReaderException("Invalid spectrum header line encountered: '" + lines[i] + "'");
+				throw new JMzReaderException("Invalid spectrum header line encountered: '" + lines[i] + '\'');
 			
 			// the first line must be the S line
 			if (i == 0 && !matcher.group(1).equals("S"))
@@ -116,7 +116,7 @@ public class Ms2Spectrum implements Spectrum {
 				String fields[] = matcher.group(2).split("\t");
 				// every S line must have 3 fields
 				if (fields.length != 3)
-					throw new JMzReaderException("Invalid S line encountered in spectrum: '" + lines[i] + "'");
+					throw new JMzReaderException("Invalid S line encountered in spectrum: '" + lines[i] + '\'');
 				
 				// save the variables
 				lowScan 	= Integer.parseInt(fields[0]);
@@ -132,7 +132,7 @@ public class Ms2Spectrum implements Spectrum {
                     if(fields.length == 1){
                        setField(additionalInformation, fields[0], "");
                     }else{
-                        throw new JMzReaderException("Invalid I line encountered: " + lines[i] + "'");
+                        throw new JMzReaderException("Invalid I line encountered: " + lines[i] + '\'');
                     }
 
                 }else{
@@ -147,7 +147,7 @@ public class Ms2Spectrum implements Spectrum {
 				String fields[] = matcher.group(2).split("\t");
 				
 				if (fields.length != 2)
-					throw new JMzReaderException("Invalid Z line encountered: " + lines[i] + "'");
+					throw new JMzReaderException("Invalid Z line encountered: " + lines[i] + '\'');
 				
 				// save the field
 				charges.put(Integer.parseInt(fields[0]), Double.parseDouble(fields[1]));
@@ -158,7 +158,7 @@ public class Ms2Spectrum implements Spectrum {
 				String fields[] = matcher.group(2).split("\t");
 				
 				if (fields.length != 2)
-					throw new JMzReaderException("Invalid D line encountered: " + lines[i] + "'");
+					throw new JMzReaderException("Invalid D line encountered: " + lines[i] + '\'');
 				
 				// save the field
 				setField(chargeDependentData, fields[0], fields[1]);
@@ -185,7 +185,7 @@ public class Ms2Spectrum implements Spectrum {
 			// every line must contain at least two fields
 			if (fields.length < 2){
                 if(!(fields.length == 1 && fields[0].equalsIgnoreCase(""))){
-                    throw new JMzReaderException("Invalid peak line found: '" + lines[i] + "'");
+                    throw new JMzReaderException("Invalid peak line found: '" + lines[i] + '\'');
                 }
             }else{
                 // save the peak
@@ -208,11 +208,11 @@ public class Ms2Spectrum implements Spectrum {
 		if (hashMap.containsKey(fieldName)) {
 			int fieldNumber = 1;
 			
-			while (hashMap.containsKey(fieldName + "_" + fieldNumber))
+			while (hashMap.containsKey(fieldName + '_' + fieldNumber))
 				fieldNumber++;
 			
 			// set the new unique fieldName
-			fieldName = fieldName + "_" + fieldNumber;
+			fieldName = fieldName + '_' + fieldNumber;
 		}
 		
 		// store the field
@@ -319,11 +319,11 @@ public class Ms2Spectrum implements Spectrum {
 		paramGroup.addParam(new UserParam("high scan", String.format("%d", highScan)));
 		paramGroup.addParam(new UserParam("low scan", String.format("%d", lowScan)));
 		
-		for (String name : chargeDependentData.keySet())
-			paramGroup.addParam(new UserParam(name, chargeDependentData.get(name)));
+		for (Map.Entry<String, String> stringStringEntry : chargeDependentData.entrySet())
+			paramGroup.addParam(new UserParam(stringStringEntry.getKey(), stringStringEntry.getValue()));
 		
-		for (String name : additionalInformation.keySet())
-			paramGroup.addParam(new UserParam(name, additionalInformation.get(name)));
+		for (Map.Entry<String, String> stringStringEntry : additionalInformation.entrySet())
+			paramGroup.addParam(new UserParam(stringStringEntry.getKey(), stringStringEntry.getValue()));
 		
 		return paramGroup;
 	}

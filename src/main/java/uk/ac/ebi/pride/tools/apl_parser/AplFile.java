@@ -46,7 +46,7 @@ public class AplFile implements JMzReader {
      * MS2 peak lists. The index of the query in the file as key
      * and the respective query as value.
      */
-    private HashMap<Integer, PeakList> peakLists = new HashMap<>();
+    private HashMap<Integer, PeakList> peakLists;
     /**
      * Indicates whether the cache should be used
      */
@@ -57,7 +57,7 @@ public class AplFile implements JMzReader {
      * position in the file is already known.
      *
      * @param sourcefile   The APL file to load the spectrum from.
-     * @param indexElement IndexElement specifying the position of the MS2 spectrum in the MGF file.
+     * @param indexElement IndexElement specifying the position of the MS2 spectrum in the APL file.
      * @return The unmarshalled spectrum object.
      * @throws JMzReaderException
      */
@@ -73,17 +73,17 @@ public class AplFile implements JMzReader {
     }
 
     /**
-     * Default constructor generating an empty mgf file object.
+     * Default constructor generating an empty APL file object.
      */
     public AplFile() {
 
     }
 
     /**
-     * Creates the mgf file object from an existing
-     * mgf file.
+     * Creates the APL file object from an existing
+     * APL file.
      *
-     * @param file The mgf file
+     * @param file The APL file
      * @throws JMzReaderException
      */
     public AplFile(File file) throws JMzReaderException {
@@ -134,22 +134,22 @@ public class AplFile implements JMzReader {
                 //always update file pointer before continue
                 lastPosition = braf.getFilePointer();
             }
-
+            peakLists= new HashMap<>(index.size());
             braf.close();
         } catch (FileNotFoundException e) {
-            throw new JMzReaderException("MgfFile does not exist.", e);
+            throw new JMzReaderException("APLFile does not exist.", e);
         } catch (IOException e) {
-            throw new JMzReaderException("Failed to read from mgf file.", e);
+            throw new JMzReaderException("Failed to read from APL file.", e);
         }
     }
 
     /**
-     * Creates the mgf file object from an existing
-     * mgf file with a pre-parsed index of ms2 spectra.
+     * Creates the APL file object from an existing
+     * APL file with a pre-parsed index of ms2 spectra.
      * The index must hold the offsets of all "BEGIN IONS"
      * lines in the order they appear in the file.
      *
-     * @param file  The mgf file
+     * @param file  The APL file
      * @param index An ArrayList holding the
      * @throws JMzReaderException
      */
@@ -177,18 +177,19 @@ public class AplFile implements JMzReader {
                 if (line.contains("peaklist start"))
                     break;
             }
+            peakLists = new HashMap<>();
 
             reader.close();
         } catch (FileNotFoundException e) {
             throw new JMzReaderException("AplFile does not exist.", e);
         } catch (IOException e) {
-            throw new JMzReaderException("Failed to read from mgf file.", e);
+            throw new JMzReaderException("Failed to read from APL file.", e);
         }
     }
 
     /**
-     * Set the MS2 queries of the MGF file. If this object was generated
-     * from an existing MGF file the connection to this MGF file is lost.
+     * Set the MS2 queries of the APL file. If this object was generated
+     * from an existing APL file the connection to this APL file is lost.
      *
      * @param peakLists
      */
@@ -230,7 +231,7 @@ public class AplFile implements JMzReader {
 
         // make sure the index is valid
         if (nIndex < 0 || nIndex > index.size() - 1)
-            throw new JMzReaderException("MS2 query with index " + (nIndex + 1) + " does not exist in the MGF file");
+            throw new JMzReaderException("MS2 query with index " + (nIndex + 1) + " does not exist in the APL file");
 
         // load the query from the file
         PeakList query;
@@ -245,17 +246,15 @@ public class AplFile implements JMzReader {
     }
 
     /**
-     * Loads a query from the mgf file.
+     * Loads a query from the APL file.
      *
      * @param file         The file to read the query from.
      * @param indexElement The index element pointing to that specific ms2 query.
      * @return
-     * @oaram index The query's 1-based index in the MGF file. This index is stored in the returned Ms2Query object.
+     * @oaram index The query's 1-based index in the APL file. This index is stored in the returned Ms2Query object.
      */
     private static PeakList loadIndexedQueryFromFile(File file, IndexElement indexElement, int index) throws JMzReaderException {
-        RandomAccessFile accFile = null;
-        try {
-            accFile = new RandomAccessFile(file, "r");
+        try (RandomAccessFile accFile = new RandomAccessFile(file, "r")) {
 
             // read the indexed element
             byte[] byteBuffer = new byte[indexElement.getSize()];
@@ -268,22 +267,15 @@ public class AplFile implements JMzReader {
 
             return new PeakList(ms2Buffer, index);
         } catch (FileNotFoundException e) {
-            throw new JMzReaderException("MGF file could not be found.", e);
+            throw new JMzReaderException("APL file could not be found.", e);
         } catch (IOException e) {
-            throw new JMzReaderException("Failed to read from MGF file", e);
-        } finally {
-            if (accFile != null) {
-                try {
-                    accFile.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
+            throw new JMzReaderException("Failed to read from APL file", e);
         }
+        // ignore
     }
 
     /**
-     * Loads a query from the mgf file who's index was buffered.
+     * Loads a query from the APL file who's index was buffered.
      *
      * @param nQueryIndex The queries index.
      * @return
@@ -307,7 +299,7 @@ public class AplFile implements JMzReader {
             if (!peakLists.containsKey(index))
                 continue;
 
-            string.append(peakLists.get(index).toString()).append("\n");
+            string.append(peakLists.get(index).toString()).append('\n');
         }
 
         return string.toString();
@@ -318,12 +310,8 @@ public class AplFile implements JMzReader {
      *
      * @return
      */
-    public PeakListIterator getPeakListIterator() throws JMzReaderException {
-        try {
-            return new PeakListIterator();
-        } catch (FileNotFoundException e) {
-            throw new JMzReaderException("Faild to find mgf file", e);
-        }
+    public PeakListIterator getPeakListIterator() {
+        return new PeakListIterator();
     }
 
     private class SpectrumIterator implements Iterator<Spectrum> {
@@ -331,12 +319,7 @@ public class AplFile implements JMzReader {
 
         @SuppressWarnings("unchecked")
         public SpectrumIterator() {
-            try {
-                it = new PeakListIterator();
-            } catch (FileNotFoundException e) {
-                // do nothing
-                it = Collections.EMPTY_LIST.iterator();
-            }
+            it = new PeakListIterator();
         }
 
         public boolean hasNext() {
@@ -368,7 +351,7 @@ public class AplFile implements JMzReader {
          *
          * @throws java.io.FileNotFoundException
          */
-        public PeakListIterator() throws FileNotFoundException{
+        public PeakListIterator() {
 
         }
 
@@ -431,7 +414,7 @@ public class AplFile implements JMzReader {
     }
 
     /**
-     * Returns the index of ms2 queries in the mgf file.
+     * Returns the index of ms2 queries in the APL file.
      * This ArrayList contains the offsets of all "BEGIN IONS"
      * lines until the end of the "END IONS" lines
      * in the file in the order they are present.
@@ -463,16 +446,16 @@ public class AplFile implements JMzReader {
         // simply create a list of ids 1..size
         List<String> ids = new ArrayList<>(getPeakListCount());
 
-        for (Integer id = 1; id <= getPeakListCount(); id++)
-            ids.add(id.toString());
+        for (int id = 1; id <= getPeakListCount(); id++)
+            ids.add(Integer.toString(id));
 
         return ids;
     }
 
-    // ToDo PSI ID (in case of MGF) is: id = 'index=12' for the 13th spectrum
+    // ToDo PSI ID (in case of APL) is: id = 'index=12' for the 13th spectrum
     public Spectrum getSpectrumById(String id) throws JMzReaderException {
         // create an integer
-        Integer index = Integer.parseInt(id);
+        int index = Integer.parseInt(id);
 
         return getPeakList(index - 1);
     }
@@ -496,7 +479,7 @@ public class AplFile implements JMzReader {
 
     @Override
     public List<Integer> getMsLevels() {
-        // MGF files can only contain MS 2
+        // APL files can only contain MS 2
         List<Integer> msLevels = new ArrayList<>(1);
         msLevels.add(2);
 

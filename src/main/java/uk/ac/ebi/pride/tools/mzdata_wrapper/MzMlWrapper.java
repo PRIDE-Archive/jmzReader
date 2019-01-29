@@ -1,5 +1,6 @@
 package uk.ac.ebi.pride.tools.mzdata_wrapper;
 
+import psidev.psi.tools.xxindex.index.IndexElement;
 import uk.ac.ebi.jmzml.MzMLElement;
 import uk.ac.ebi.jmzml.model.mzml.*;
 import uk.ac.ebi.jmzml.xml.io.MzMLUnmarshaller;
@@ -82,7 +83,7 @@ public class MzMlWrapper implements JMzReader {
         }
     }
 
-    private void initializeSpectrumMaps() throws JMzReaderException {
+    private void initializeSpectrumMaps() {
 
         List<psidev.psi.tools.xxindex.index.IndexElement> spectra = unmarshaller.getMzMLIndexer().getIndexElements(MzMLElement.Spectrum.getXpath());
 
@@ -172,10 +173,10 @@ public class MzMlWrapper implements JMzReader {
         Map<String, uk.ac.ebi.pride.tools.jmzreader.model.IndexElement> idToIndex =
                 new HashMap<>(idToIndexElementMap.size());
 
-        for (String id : idToIndexElementMap.keySet()) {
-            psidev.psi.tools.xxindex.index.IndexElement e = idToIndexElementMap.get(id);
+        for (Map.Entry<String, IndexElement> stringIndexElementEntry : idToIndexElementMap.entrySet()) {
+            psidev.psi.tools.xxindex.index.IndexElement e = stringIndexElementEntry.getValue();
             int size = (int) (e.getStop() - e.getStart());
-            idToIndex.put(id, new IndexElementImpl(e.getStart(), size));
+            idToIndex.put(stringIndexElementEntry.getKey(), new IndexElementImpl(e.getStart(), size));
         }
 
         return idToIndex;

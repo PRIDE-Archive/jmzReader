@@ -165,20 +165,20 @@ public class PeakList implements Spectrum{
 
         // process the optional attribtues
         if (mz != null)
-            query.append("mz=").append(mz).append("\n");
+            query.append("mz=").append(mz).append('\n');
         if (fragmentation != null)
-            query.append("fragmentation=").append(fragmentation).append("\n");
+            query.append("fragmentation=").append(fragmentation).append('\n');
         if (chargeState != null)
-            query.append("charge=").append(chargeState).append("\n");
+            query.append("charge=").append(chargeState).append('\n');
         if (header != null)
-            query.append("header=").append(header).append("\n");
+            query.append("header=").append(header).append('\n');
 
         List<Double> masses = new ArrayList<>(peakList.keySet());
         Collections.sort(masses);
 
         // process the peak list
         for (Double mz : masses)
-            query.append(mz).append("\t").append(peakList.get(mz)).append("\n");
+            query.append(mz).append('\t').append(peakList.get(mz)).append('\n');
 
         query.append("peaklist end\n");
 

@@ -104,11 +104,8 @@ public class SpectrumImplementation implements Spectrum, Serializable {
 		} else if (!precursorMz.equals(other.precursorMz))
 			return false;
 		if (msLevel == null) {
-			if (other.msLevel != null)
-				return false;
-		} else if (!msLevel.equals(other.msLevel))
-			return false;
-		return true;
+            return other.msLevel == null;
+		} else return msLevel.equals(other.msLevel);
 	}
 
 	@Override

@@ -5,12 +5,12 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 public class AnySimpleTypeAdapter extends XmlAdapter<String, String> {
 
     @Override
-    public String unmarshal(String v) throws Exception {
+    public String unmarshal(String v) {
         return v;
     }
 
     @Override
-    public String marshal(String v) throws Exception {
+    public String marshal(String v) {
         if (v != null)
             return v;
         else
