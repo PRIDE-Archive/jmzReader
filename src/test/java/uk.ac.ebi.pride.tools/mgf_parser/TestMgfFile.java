@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.jmzreader.model.IndexElement;
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 import uk.ac.ebi.pride.tools.mgf_parser.model.Ms2Query;
@@ -17,30 +16,23 @@ import uk.ac.ebi.pride.tools.mgf_parser.model.PmfQuery;
 
 public class TestMgfFile{
 
-    private MgfFile mgfFile;
+    private MgfFile mgfFile = new MgfFile();
     private File sourceFile;
 
     @Before
     public void setUp() throws Exception {
-        mgfFile = new MgfFile();
+        loadTestFile();
     }
 
-    @Test
-    public void loadTestFile() {
+    private void loadTestFile() throws Exception {
         URL testFile = getClass().getClassLoader().getResource("F001257.mgf");
         Assert.assertNotNull("Error loading mgf test file", testFile);
-
-        try {
-            sourceFile = new File(testFile.toURI());
-            mgfFile = new MgfFile(sourceFile);
-        } catch (Exception e) {
-            System.out.println("Faild to load test file");
-        }
+        sourceFile = new File(testFile.toURI());
+        mgfFile = new MgfFile(sourceFile);
     }
 
     @Test
     public void testGetAccessions() {
-        loadTestFile();
         Assert.assertEquals(3, mgfFile.getAccessions().size());
         Assert.assertEquals("P12346", mgfFile.getAccessions().get(1));
         Assert.assertEquals("P12347", mgfFile.getAccessions().get(2));
@@ -51,377 +43,445 @@ public class TestMgfFile{
         ArrayList<String> accessions = new ArrayList<>();
         accessions.add("P12345");
         accessions.add("P12346");
-
-        mgfFile.setAccessions(accessions);
-
-        String mgfString = mgfFile.toString();
-
-        Assert.assertEquals("ACCESSION=\"P12345\",\"P12346\"\n", mgfString);
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setAccessions(accessions);
+        Assert.assertEquals("P12345,P12346", String.join(",", mgfFile.getAccessions()));
     }
 
     @Test
     public void testGetCharge() {
-        loadTestFile();
         Assert.assertEquals("2+,3+,4+,5+", mgfFile.getCharge());
     }
 
     @Test
     public void testSetCharge() {
-        mgfFile.setCharge("8-,5-,4-,3-");
-        Assert.assertEquals("CHARGE=8-,5-,4-,3-\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setCharge("8-,5-,4-,3-");
+        Assert.assertEquals("8-,5-,4-,3-", modifiedMgfFile.getCharge());
     }
+
+    /**
+     * Tests getting a spectrum from the test MGF file.
+     */
+    @Test
+    public void testGetSpectrum() throws Exception{
+        Ms2Query specturm;
+        List<String> allSpectra = mgfFile.getSpectraIds();
+        specturm = (Ms2Query) mgfFile.getSpectrumById(allSpectra.get(3));
+        Assert.assertNotNull(specturm);
+        Assert.assertEquals("4", specturm.getId());
+        Assert.assertEquals("PRIDE_Exp_mzData_Ac_9266.xml_id_4", specturm.getTitle());
+        Assert.assertEquals(17, specturm.getPeakList().size());
+        Assert.assertEquals(new Integer(2), specturm.getMsLevel());
+        Assert.assertEquals("2+,3+", specturm.getChargeState());
+        Assert.assertNull(specturm.getPrecursorCharge());
+        Assert.assertEquals(413.2861, specturm.getPrecursorMZ(), 0.0);
+        Assert.assertEquals(413.2861, specturm.getPeptideMass(), 0.0);
+        Assert.assertEquals(null, specturm.getPrecursorIntensity());
+        Assert.assertEquals(1, specturm.getAdditional().getCvParams().size());
+        Assert.assertNull(specturm.getComposition());
+        Assert.assertNull(specturm.getErrorTolerantTags());
+        Assert.assertNull(specturm.getInstrument());
+        Assert.assertNull(specturm.getPeptideIntensity());
+        Assert.assertNull(specturm.getRetentionTime());
+        Assert.assertNull( specturm.getScan());
+        Assert.assertNull(specturm.getSequenceQualifiers());
+        Assert.assertNull(specturm.getTags());
+        Assert.assertNull(specturm.getTolerance());
+        Assert.assertNull(specturm.getToleranceUnit());
+        Assert.assertEquals(0, specturm.getUserTags().size());
+        Assert.assertNull(specturm.getVariableModifications());
+    }
+
 
     @Test
     public void testGetEnzyme() {
-        loadTestFile();
         Assert.assertEquals("Trypsin", mgfFile.getEnzyme());
     }
 
     @Test
     public void testSetEnzyme() {
-        mgfFile.setEnzyme("Trypsin");
-        Assert.assertEquals("CLE=Trypsin\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setEnzyme("Trypsin");
+        Assert.assertEquals("Trypsin", modifiedMgfFile.getEnzyme());
     }
 
     @Test
     public void testGetSearchTitle() {
-        loadTestFile();
         Assert.assertEquals("First test experiment (values are not real)", mgfFile.getSearchTitle());
     }
 
+    @Test
     public void testSetSearchTitle() {
-        mgfFile.setSearchTitle("My first test experiment");
-        Assert.assertEquals("COM=My first test experiment\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setSearchTitle("My first test experiment");
+        Assert.assertEquals("My first test experiment", modifiedMgfFile.getSearchTitle());
     }
 
+    @Test
     public void testGetPrecursorRemoval() {
-        loadTestFile();
         Assert.assertEquals("20,120", mgfFile.getPrecursorRemoval());
     }
 
+    @Test
     public void testSetPrecursorRemoval() {
-        mgfFile.setPrecursorRemoval("10,120");
-        Assert.assertEquals("CUTOUT=10,120\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setPrecursorRemoval("10,120");
+        Assert.assertEquals("10,120", modifiedMgfFile.getPrecursorRemoval());
     }
 
+    @Test
     public void testGetDatabase() {
-        loadTestFile();
         Assert.assertEquals("SwissProt v57", mgfFile.getDatabase());
     }
 
+    @Test
     public void testSetDatabase() {
-        mgfFile.setDatabase("UniProt 1");
-        Assert.assertEquals("DB=UniProt 1\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setDatabase("UniProt 1");
+        Assert.assertEquals("UniProt 1", modifiedMgfFile.getDatabase());
     }
 
+    @Test
     public void testGetPerformDecoySearch() {
-        loadTestFile();
         Assert.assertEquals(Boolean.FALSE, mgfFile.getPerformDecoySearch());
     }
 
+    @Test
     public void testSetPerformDecoySearch() {
-        mgfFile.setPerformDecoySearch(true);
-        Assert.assertEquals("DECOY=1\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setPerformDecoySearch(true);
+        Assert.assertEquals(true, mgfFile.getPerformDecoySearch());
     }
 
+    @Test
     public void testGetIsErrorTolerant() {
-        loadTestFile();
         Assert.assertEquals(Boolean.TRUE, mgfFile.getIsErrorTolerant());
     }
 
+    @Test
     public void testSetIsErrorTolerant() {
-        mgfFile.setIsErrorTolerant(false);
-        Assert.assertEquals("ERRORTOLERANT=0\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setIsErrorTolerant(false);
+        Assert.assertEquals(false, mgfFile.getIsErrorTolerant());
     }
 
+    @Test
     public void testGetFormat() {
-        loadTestFile();
         Assert.assertEquals("Mascot generic", mgfFile.getFormat());
     }
 
+    @Test
     public void testSetFormat() {
-        mgfFile.setFormat("Sequest (.DTA)");
-        Assert.assertEquals("FORMAT=Sequest (.DTA)\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setFormat("Sequest (.DTA)");
+        Assert.assertEquals("Sequest (.DTA)", modifiedMgfFile.getFormat());
     }
 
+    @Test
     public void testGetFrames() {
-        loadTestFile();
         Assert.assertEquals(6, mgfFile.getFrames().size());
         Assert.assertEquals(new Integer(5), mgfFile.getFrames().get(4));
         Assert.assertEquals(new Integer(3), mgfFile.getFrames().get(2));
     }
 
+    @Test
     public void testSetFrames() {
         ArrayList<Integer> frames = new ArrayList<>();
         frames.add(2);
         frames.add(4);
         frames.add(5);
-
-        mgfFile.setFrames(frames);
-        Assert.assertEquals("FRAMES=2,4,5\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setFrames(frames);
+        Assert.assertEquals("[2, 4, 5]", modifiedMgfFile.getFrames().toString());
     }
 
+    @Test
     public void testGetInstrument() {
-        loadTestFile();
         Assert.assertEquals("ESI-QUAD", mgfFile.getInstrument());
     }
 
+    @Test
     public void testSetInstrument() {
-        mgfFile.setInstrument("Default");
-        Assert.assertEquals("INSTRUMENT=Default\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setInstrument("Default");
+        Assert.assertEquals("Default", modifiedMgfFile.getInstrument());
     }
 
+    @Test
     public void testGetVariableModifications() {
-        loadTestFile();
         Assert.assertEquals("Oxidation (M)", mgfFile.getVariableModifications());
     }
 
+    @Test
     public void testSetVariableModifications() {
-        mgfFile.setVariableModifications("My mod");
-        Assert.assertEquals("IT_MODS=My mod\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setVariableModifications("My mod");
+        Assert.assertEquals("My mod", modifiedMgfFile.getVariableModifications());
     }
 
+    @Test
     public void testGetFragmentIonTolerance() {
-        loadTestFile();
         Assert.assertEquals(0.5, mgfFile.getFragmentIonTolerance(), 0.0);
     }
 
+    @Test
     public void testSetFragmentIonTolerance() {
-        mgfFile.setFragmentIonTolerance(0.3);
-        Assert.assertEquals("ITOL=0.3\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setFragmentIonTolerance(0.3);
+        Assert.assertEquals(new Double(0.3), modifiedMgfFile.getFragmentIonTolerance());
     }
 
+    @Test
     public void testGetFragmentIonToleranceUnit() {
-        loadTestFile();
         Assert.assertEquals(MgfFile.FragmentToleranceUnits.DA, mgfFile.getFragmentIonToleranceUnit());
     }
 
+    @Test
     public void testSetFragmentIonToleranceUnit() {
-        mgfFile.setFragmentIonToleranceUnit(MgfFile.FragmentToleranceUnits.MMU);
-        Assert.assertEquals("ITOLU=mmu\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setFragmentIonToleranceUnit(MgfFile.FragmentToleranceUnits.MMU);
+        Assert.assertEquals(MgfFile.FragmentToleranceUnits.MMU, modifiedMgfFile.getFragmentIonToleranceUnit());
     }
 
+    @Test
     public void testGetMassType() {
-        loadTestFile();
         Assert.assertEquals(MgfFile.MassType.MONOISOTOPIC, mgfFile.getMassType());
     }
 
+    @Test
     public void testSetMassType() {
-        mgfFile.setMassType(MgfFile.MassType.AVERAGE);
-        Assert.assertEquals("MASS=Average\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setMassType(MgfFile.MassType.AVERAGE);
+        Assert.assertEquals(MgfFile.MassType.AVERAGE, modifiedMgfFile.getMassType());
     }
 
+    @Test
     public void testGetFixedMofications() {
-        loadTestFile();
         Assert.assertEquals("Carbamidomethylation (C)", mgfFile.getFixedMofications());
     }
 
+    @Test
     public void testSetFixedMofications() {
-        mgfFile.setFixedMofications("Another mod");
-        Assert.assertEquals("MODS=Another mod\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setFixedMofications("Another mod");
+        Assert.assertEquals("Another mod", modifiedMgfFile.getFixedMofications());
     }
 
+    @Test
     public void testGetPeptideIsotopeError() {
-        loadTestFile();
         Assert.assertEquals(1.3, mgfFile.getPeptideIsotopeError(), 0.0);
     }
 
+    @Test
     public void testSetPeptideIsotopeError() {
-        mgfFile.setPeptideIsotopeError(1.9);
-        Assert.assertEquals("PEP_ISOTOPE_ERROR=1.9\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setPeptideIsotopeError(1.9);
+        Assert.assertEquals(new Double(1.9), modifiedMgfFile.getPeptideIsotopeError());
     }
 
+    @Test
     public void testGetPartials() {
-        loadTestFile();
         Assert.assertEquals(new Integer(1), mgfFile.getPartials());
     }
 
+    @Test
     public void testSetPartials() {
-        mgfFile.setPartials(2);
-        Assert.assertEquals("PFA=2\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setPartials(2);
+        Assert.assertEquals(new Integer(2), modifiedMgfFile.getPartials());
     }
 
+    @Test
     public void testGetPrecursor() {
-        loadTestFile();
         Assert.assertEquals(1047.0, mgfFile.getPrecursor(),0.0);
     }
 
+    @Test
     public void testSetPrecursor() {
-        mgfFile.setPrecursor(1011.0);
-        Assert.assertEquals("PRECURSOR=1011.0\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setPrecursor(1011.0);
+        Assert.assertEquals(new Double(1011.0), modifiedMgfFile.getPrecursor());
     }
 
+    @Test
     public void testGetQuantitation() {
-        loadTestFile();
         Assert.assertEquals("iTRAQ 4plex", mgfFile.getQuantitation());
     }
 
+    @Test
     public void testSetQuantitation() {
-        mgfFile.setQuantitation("SILAC");
-        Assert.assertEquals("QUANTITATION=SILAC\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setQuantitation("SILAC");
+        Assert.assertEquals("SILAC", modifiedMgfFile.getQuantitation());
     }
 
+    @Test
     public void testGetMaxHitsToReport() {
-        loadTestFile();
         Assert.assertEquals("1500", mgfFile.getMaxHitsToReport());
     }
 
+    @Test
     public void testSetMaxHitsToReport() {
-        mgfFile.setMaxHitsToReport("Auto");
-        Assert.assertEquals("REPORT=Auto\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setMaxHitsToReport("Auto");
+        Assert.assertEquals("Auto", modifiedMgfFile.getMaxHitsToReport());
     }
 
+    @Test
     public void testGetReportType() {
-        loadTestFile();
         Assert.assertEquals(MgfFile.ReportType.PEPTIDE, mgfFile.getReportType());
     }
 
+    @Test
     public void testSetReportType() {
-        mgfFile.setReportType(MgfFile.ReportType.PROTEIN);
-        Assert.assertEquals("REPTYPE=protein\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setReportType(MgfFile.ReportType.PROTEIN);
+        Assert.assertEquals(MgfFile.ReportType.PROTEIN, modifiedMgfFile.getReportType());
     }
 
+    @Test
     public void testGetSearchType() {
-        loadTestFile();
         Assert.assertEquals(MgfFile.SearchType.MIS, mgfFile.getSearchType());
     }
 
+    @Test
     public void testSetSearchType() {
-        mgfFile.setSearchType(MgfFile.SearchType.PMF);
-        Assert.assertEquals("SEARCH=PMF\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setSearchType(MgfFile.SearchType.PMF);
+        Assert.assertEquals(MgfFile.SearchType.PMF, modifiedMgfFile.getSearchType());
     }
 
+    @Test
     public void testGetProteinMass() {
-        loadTestFile();
         Assert.assertEquals("10489", mgfFile.getProteinMass());
     }
 
+    @Test
     public void testSetProteinMass() {
-        mgfFile.setProteinMass("1010");
-        Assert.assertEquals("SEG=1010\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setProteinMass("1010");
+        Assert.assertEquals("1010", modifiedMgfFile.getProteinMass());
     }
 
+    @Test
     public void testGetTaxonomy() {
-        loadTestFile();
         Assert.assertEquals("Human 9606", mgfFile.getTaxonomy());
     }
 
+    @Test
     public void testSetTaxonomy() {
-        mgfFile.setTaxonomy("My taxon");
-        Assert.assertEquals("TAXONOMY=My taxon\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setTaxonomy("My taxon");
+        Assert.assertEquals("My taxon", modifiedMgfFile.getTaxonomy());
     }
 
+    @Test
     public void testGetPeptideMassTolerance() {
-        loadTestFile();
         Assert.assertEquals(0.2, mgfFile.getPeptideMassTolerance(), 0.0);
     }
 
+    @Test
     public void testSetPeptideMassTolerance() {
-        mgfFile.setPeptideMassTolerance(0.3);
-        Assert.assertEquals("TOL=0.3\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setPeptideMassTolerance(0.3);
+        Assert.assertEquals(new Double(0.3), modifiedMgfFile.getPeptideMassTolerance());
     }
 
+    @Test
     public void testGetPeptideMassToleranceUnit() {
-        loadTestFile();
         Assert.assertEquals(MgfFile.PeptideToleranceUnit.PPM, mgfFile.getPeptideMassToleranceUnit());
     }
 
+    @Test
     public void testSetPeptideMassToleranceUnit() {
-        mgfFile.setPeptideMassToleranceUnit(MgfFile.PeptideToleranceUnit.PERCENT);
-        Assert.assertEquals("TOLU=%\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setPeptideMassToleranceUnit(MgfFile.PeptideToleranceUnit.PERCENT);
+        Assert.assertEquals(MgfFile.PeptideToleranceUnit.PERCENT, modifiedMgfFile.getPeptideMassToleranceUnit());
     }
 
+    @Test
     public void testGetUserParameter() {
-        loadTestFile();
         Assert.assertEquals(3, mgfFile.getUserParameter().size());
         Assert.assertEquals("2nd user param", mgfFile.getUserParameter().get(1));
     }
 
+    @Test
     public void testSetUserParameter() {
         ArrayList<String> params = new ArrayList<>();
         params.add("My param");
         params.add("Another param");
-
-        mgfFile.setUserParameter(params);
-
-        Assert.assertEquals("USER00=My param\nUSER01=Another param\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setUserParameter(params);
+        Assert.assertEquals(2, modifiedMgfFile.getUserParameter().size());
     }
 
+    @Test
     public void testGetUserMail() {
-        loadTestFile();
         Assert.assertEquals("jgriss@ebi.ac.uk", mgfFile.getUserMail());
     }
 
+    @Test
     public void testSetUserMail() {
-        mgfFile.setUserMail("another@mail");
-        Assert.assertEquals("USEREMAIL=another@mail\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setUserMail("another@mail");
+        Assert.assertEquals("another@mail", modifiedMgfFile.getUserMail());
     }
 
+    @Test
     public void testGetUserName() {
-        loadTestFile();
         Assert.assertEquals("Johannes Griss", mgfFile.getUserName());
     }
 
+    @Test
     public void testSetUserName() {
-        mgfFile.setUserName("Another name");
-        Assert.assertEquals("USERNAME=Another name\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setUserName("Another name");
+        Assert.assertEquals("Another name", modifiedMgfFile.getUserName());
     }
 
+    @Test
     public void testGetPmfQueries() {
-        loadTestFile();
         Assert.assertEquals(6, mgfFile.getPmfQueries().size());
         Assert.assertEquals(1223.145, mgfFile.getPmfQueries().get(1).getMass(), 0.0);
         Assert.assertEquals(3092.0, mgfFile.getPmfQueries().get(3).getIntensity(),0.0);
     }
 
+    @Test
     public void testSetPmfQueries() {
         ArrayList<PmfQuery> queries = new ArrayList<>();
-
         queries.add(new PmfQuery(10.0, 10.0));
         queries.add(new PmfQuery(20.0, 20.0));
         queries.add(new PmfQuery(30.0, null));
-
-        mgfFile.setPmfQueries(queries);
-
-        Assert.assertEquals("10.0 10.0\n20.0 20.0\n30.0\n\n", mgfFile.toString());
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setPmfQueries(queries);
+        Assert.assertEquals(3, modifiedMgfFile.getPmfQueries().size());
     }
 
-    public void testSetMs2Queries() {
-        Ms2Query query;
-        try {
-            query = new Ms2Query("BEGIN IONS\nPEPMASS=406.283\n145.119100 8\n217.142900 75\n409.221455 11\n438.314735 46\n567.400183 24\nEND IONS\n", 1, false);
-
-            ArrayList<Ms2Query> queries = new ArrayList<>();
-            queries.add(query);
-
-            mgfFile.setMs2Queries(queries);
-
-            Assert.assertEquals("BEGIN IONS\nPEPMASS=406.283\n145.1191 8.0\n217.1429 75.0\n409.221455 11.0\n438.314735 46.0\n567.400183 24.0\nEND IONS\n\n", mgfFile.toString());
-        } catch (JMzReaderException e) {
-            e.printStackTrace();
-        }
+    @Test
+    public void testSetMs2Queries() throws Exception {
+        Ms2Query query = new Ms2Query("BEGIN IONS\nPEPMASS=406.283\n145.119100 8\n217.142900 75\n409.221455 11\n438.314735 46\n567.400183 24\nEND IONS\n", 1, false);
+        ArrayList<Ms2Query> queries = new ArrayList<>();
+        queries.add(query);
+        MgfFile modifiedMgfFile = mgfFile;
+        modifiedMgfFile.setMs2Queries(queries);
+        Assert.assertEquals(1, modifiedMgfFile.getMs2QueryCount());
+        Assert.assertEquals(query.toString(), modifiedMgfFile.getMs2Query(0).toString());
     }
 
+    @Test
     public void testGetMs2QueryCount() {
-        loadTestFile();
         Assert.assertEquals(10, mgfFile.getMs2QueryCount());
     }
 
-    public void testGetMs2Query() {
-        loadTestFile();
-
-        try {
-            Assert.assertNotNull(mgfFile.getMs2Query(7));
-        } catch (JMzReaderException e) {
-            System.out.println(e.getMessage());
-        }
+    @Test
+    public void testGetMs2Query() throws Exception{
+        Assert.assertNotNull(mgfFile.getMs2Query(7));
     }
 
-    public void testGetMs2QueryIterator() {
-        loadTestFile();
-
+    @Test
+    public void testGetMs2QueryIterator() throws Exception {
         int queryCount = 0;
-
         for (Ms2Query q : mgfFile.getMs2QueryIterator()) {
             Assert.assertNotNull(q);
             queryCount++;
@@ -429,41 +489,21 @@ public class TestMgfFile{
         Assert.assertEquals(10, queryCount);
     }
 
-    public void testMgfFile() {
-        loadTestFile();
-
-        // get the index
-        List<IndexElement> index = mgfFile.getIndex();
-
-        // create the new file
-        MgfFile newFile;
-        try {
-            newFile = new MgfFile(sourceFile, index);
-
-            Iterator<Ms2Query> it1 = mgfFile.getMs2QueryIterator();
-            Iterator<Ms2Query> it2 = newFile.getMs2QueryIterator();
-
-            while (it1.hasNext() && it2.hasNext()) {
-                Assert.assertEquals(it1.next().toString(), it2.next().toString());
-            }
-        } catch (JMzReaderException e) {
-            System.out.println(e.getMessage());
+    @Test
+    public void testMgfFile() throws Exception {
+        Iterator<Ms2Query> it1 = mgfFile.getMs2QueryIterator();
+        Iterator<Ms2Query> it2 = mgfFile.getMs2QueryIterator();
+        while (it1.hasNext() && it2.hasNext()) {
+            Assert.assertEquals(it1.next().toString(), it2.next().toString());
         }
     }
 
-    public void testGetIndex() {
-        try {
-            loadTestFile();
-            List<IndexElement> index = mgfFile.getMsNIndexes(2);
-
-            Spectrum s = mgfFile.getSpectrumByIndex(3);
-
-            Spectrum s1 = MgfFile.getIndexedSpectrum(sourceFile, index.get(2));
-
-            Assert.assertEquals(s.toString(), s1.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+    @Test
+    public void testGetIndex() throws Exception {
+        loadTestFile();
+        List<IndexElement> index = mgfFile.getMsNIndexes(2);
+        Spectrum s = mgfFile.getSpectrumByIndex(3);
+        Spectrum s1 = MgfFile.getIndexedSpectrum(sourceFile, index.get(2));
+        Assert.assertEquals(s.toString(), s1.toString());
     }
 }

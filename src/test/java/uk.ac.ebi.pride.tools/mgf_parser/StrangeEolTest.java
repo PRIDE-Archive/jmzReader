@@ -9,32 +9,22 @@ import org.junit.Test;
 
 public class StrangeEolTest {
 
-	private MgfFile mgfFile;
-	private File sourceFile;
+	private MgfFile mgfFile = new MgfFile();
 
 	@Before
 	public void setUp() throws Exception {
-		mgfFile = new MgfFile();
-	}
-
-	@Test
-	public void loadTestFile() {
-		URL testFile = getClass().getClassLoader().getResource("strange_eol.mgf");
-        Assert.assertNotNull("Error loading mgf test file", testFile);
-        
-		try {
-			sourceFile = new File(testFile.toURI());
-			
-			mgfFile = new MgfFile(sourceFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Faild to load test file");
-		}
-	}
-
-	@Test
-	public void testLoadFile() {
 		loadTestFile();
+	}
+
+	private void loadTestFile() throws Exception{
+		URL testFile = getClass().getClassLoader().getResource("strange_eol.mgf");
+		Assert.assertNotNull("Error loading mgf test file", testFile);
+		File sourceFile = new File(testFile.toURI());
+		mgfFile = new MgfFile(sourceFile);
+	}
+
+	@Test
+	public void testGetMs2QueryCount() {
 		Assert.assertEquals(5, mgfFile.getMs2QueryCount());
 	}
 }

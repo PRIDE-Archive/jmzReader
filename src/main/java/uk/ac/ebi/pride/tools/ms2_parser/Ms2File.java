@@ -270,7 +270,6 @@ public class Ms2File implements JMzReader {
 	/**
 	 * Returns an iterator over all spectra.
 	 * @return
-	 * @throws JMzReaderException 
 	 */
 	public Iterator<Ms2Spectrum> getMs2SpectrumIterator() {
 		return new Ms2FileSpectrumIterator();

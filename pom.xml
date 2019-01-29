@@ -3,7 +3,7 @@
 
 	<groupId>uk.ac.ebi.pride.tools</groupId>
 	<artifactId>jmzreader</artifactId>
-	<version>2.0.3-SNAPSHOT</version>
+	<version>2.0.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>jmzReader</name>
 
@@ -54,7 +54,6 @@
         <!-- Dependencies -->
         <uk.ac.ebi.pride.architectural-pride-xml-handling.version>1.0.3</uk.ac.ebi.pride.architectural-pride-xml-handling.version>
         <org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>0.6.3</org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>
-
     </properties>
 
     <dependencies>
