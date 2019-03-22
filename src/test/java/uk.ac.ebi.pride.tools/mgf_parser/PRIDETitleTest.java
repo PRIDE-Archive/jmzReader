@@ -22,7 +22,7 @@ public class PRIDETitleTest {
         URL testFile = getClass().getClassLoader().getResource("pride_title.mgf");
         Assert.assertNotNull("Error loading mgf test file", testFile);
         File sourceFile = new File(testFile.toURI());
-        mgfFile = new MgfFile(sourceFile, true);
+        mgfFile = new MgfFile(sourceFile, true, false);
     }
 
     @Test

@@ -1,5 +1,7 @@
 package uk.ac.ebi.pride.tools.mgf_parser.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 import uk.ac.ebi.pride.tools.jmzreader.model.impl.CvParam;
@@ -15,6 +17,8 @@ import java.util.regex.Matcher;
  * This class reads in information from an MGF file.
  */
 public class Ms2Query implements Spectrum {
+
+  public static final Logger logger = LoggerFactory.getLogger(Ms2Query.class);
 
   // Optional title of the spectrum identification
   private String title;
@@ -88,7 +92,7 @@ public class Ms2Query implements Spectrum {
    * @param disableCommentSupport true to disable comment support, false otherwise
    * @throws JMzReaderException any problems parsing the mgf part
    */
-  public Ms2Query(String mgfQuery, int index, boolean disableCommentSupport) throws JMzReaderException {
+  public Ms2Query(String mgfQuery, int index, boolean disableCommentSupport, boolean ignoreWrongPeaks) throws JMzReaderException {
     this.disableCommentSupport = disableCommentSupport;
     this.index = index;
     String[] lines = mgfQuery.trim().split("\n");
@@ -142,7 +146,10 @@ public class Ms2Query implements Spectrum {
           }
           addPeak(Double.parseDouble(firstHalf), intensity);
         } else {  // no index could be found
-          throw new JMzReaderException("Unable to parse 'mz' and 'intensity' values for " + line);
+          if(ignoreWrongPeaks){
+            logger.error("The following peaks and wronly annotated -- " + line);
+          }else
+            throw new JMzReaderException("Unable to parse 'mz' and 'intensity' values for " + line);
         }
         inAttributeSection = false;
       }

@@ -24,12 +24,12 @@ public class CustomTagTest{
         File sourceFile;
         try {
             sourceFile = new File(testFile.toURI());
-            mgfFile = new MgfFile(sourceFile, false);
+            mgfFile = new MgfFile(sourceFile, false, false);
         } catch (Exception e) {
             Assert.assertEquals(e.getMessage(), "Unknown attribute '_DISTILLER_MDRO_VERSION' encountered");
         }
         sourceFile = new File(testFile.toURI());
-        mgfFile = new MgfFile(sourceFile, true);
+        mgfFile = new MgfFile(sourceFile, true, false);
     }
 
     @Test

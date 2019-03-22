@@ -1,6 +1,7 @@
 package uk.ac.ebi.pride.tools.mgf_parser;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,6 +10,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.jmzreader.model.IndexElement;
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 import uk.ac.ebi.pride.tools.mgf_parser.model.Ms2Query;
@@ -460,13 +462,13 @@ public class TestMgfFile{
 
     @Test
     public void testSetMs2Queries() throws Exception {
-        Ms2Query query = new Ms2Query("BEGIN IONS\nPEPMASS=406.283\n145.119100 8\n217.142900 75\n409.221455 11\n438.314735 46\n567.400183 24\nEND IONS\n", 1, false);
+        Ms2Query query = new Ms2Query("BEGIN IONS\nPEPMASS=406.283\n145.119100 8\n217.142900 75\n409.221455 11\n438.314735 46\n567.400183 24\nEND IONS\n", 1, false, true);
         ArrayList<Ms2Query> queries = new ArrayList<>();
         queries.add(query);
         MgfFile modifiedMgfFile = mgfFile;
         modifiedMgfFile.setMs2Queries(queries);
         Assert.assertEquals(1, modifiedMgfFile.getMs2QueryCount());
-        Assert.assertEquals(query.toString(), modifiedMgfFile.getMs2Query(0).toString());
+        Assert.assertEquals(query.toString(), modifiedMgfFile.getMs2Query(0, false).toString());
     }
 
     @Test
@@ -476,7 +478,7 @@ public class TestMgfFile{
 
     @Test
     public void testGetMs2Query() throws Exception{
-        Assert.assertNotNull(mgfFile.getMs2Query(7));
+        Assert.assertNotNull(mgfFile.getMs2Query(7, false));
     }
 
     @Test
@@ -503,7 +505,8 @@ public class TestMgfFile{
         loadTestFile();
         List<IndexElement> index = mgfFile.getMsNIndexes(2);
         Spectrum s = mgfFile.getSpectrumByIndex(3);
-        Spectrum s1 = MgfFile.getIndexedSpectrum(sourceFile, index.get(2));
+        Spectrum s1 = MgfFile.getIndexedSpectrum(sourceFile, index.get(2), false);
         Assert.assertEquals(s.toString(), s1.toString());
     }
+
 }

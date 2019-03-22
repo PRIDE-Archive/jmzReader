@@ -144,12 +144,15 @@ public class MgfFile implements JMzReader {
      */
     private boolean allowCustomTags = DEFAULT_ALLOW_CUSTOM_TAGS;
     private static final boolean DEFAULT_ALLOW_CUSTOM_TAGS = false;
+    private static final boolean DEFAULT_IGNORE_WRONG_PEAKS = false;
     /**
      * If this option is set, comments are not removed
      * from MGF files. This speeds up parsing considerably
      * but causes problems if MGF files do contain comments.
      */
     private boolean disableCommentSupport = false;
+
+    private boolean ignoreWrongPeaks = false;
 
     /**
      * Process a given attribute line and saves the variable
@@ -264,7 +267,7 @@ public class MgfFile implements JMzReader {
         }
     }
 
-    public static Spectrum getIndexedSpectrum(File sourcefile, IndexElement indexElement, boolean disableCommentSupport) throws JMzReaderException {
+    public static Spectrum getIndexedSpectrum(File sourcefile, IndexElement indexElement, boolean disableCommentSupport, boolean ignoreWrongPeaks) throws JMzReaderException {
         // make sure the parameters are set
         if (sourcefile == null)
             throw new JMzReaderException("Required parameter sourcefile must not be null.");
@@ -272,7 +275,7 @@ public class MgfFile implements JMzReader {
             throw new JMzReaderException("Required parameter indexElement must not be null.");
 
         // load the spectrum from the file
-        return loadIndexedQueryFromFile(sourcefile, indexElement, 1, disableCommentSupport);
+        return loadIndexedQueryFromFile(sourcefile, indexElement, 1, disableCommentSupport, ignoreWrongPeaks);
     }
 
     /**
@@ -284,8 +287,8 @@ public class MgfFile implements JMzReader {
      * @return The unmarshalled spectrum object.
      * @throws JMzReaderException
      */
-    public static Spectrum getIndexedSpectrum(File sourcefile, IndexElement indexElement) throws JMzReaderException {
-        return loadIndexedQueryFromFile(sourcefile, indexElement, 1, false);
+    public static Spectrum getIndexedSpectrum(File sourcefile, IndexElement indexElement, boolean ignoreWrongPeaks) throws JMzReaderException {
+        return loadIndexedQueryFromFile(sourcefile, indexElement, 1, false, ignoreWrongPeaks);
     }
 
     /**
@@ -303,7 +306,7 @@ public class MgfFile implements JMzReader {
      * @throws JMzReaderException
      */
     public MgfFile(File file) throws JMzReaderException {
-        this(file, false);
+        this(file, false, false);
     }
 
     /**
@@ -314,9 +317,10 @@ public class MgfFile implements JMzReader {
      * @param allowCustomTags Indicates if the parser should throw an exception when encountering non-standard tags
      * @throws JMzReaderException
      */
-    public MgfFile(File file, boolean allowCustomTags) throws JMzReaderException {
+    public MgfFile(File file, boolean allowCustomTags, boolean ignoreWrongPeaks) throws JMzReaderException {
 
         setAllowCustomTags(allowCustomTags);
+        this.ignoreWrongPeaks = ignoreWrongPeaks;
 
         // open the file
         try {
@@ -423,8 +427,9 @@ public class MgfFile implements JMzReader {
      *                        Otherwise an Exception is thrown.
      * @throws JMzReaderException
      */
-    public MgfFile(File file, List<IndexElement> index, boolean allowCustomTags) throws JMzReaderException {
+    public MgfFile(File file, List<IndexElement> index, boolean allowCustomTags, boolean ignoreWrongPeaks) throws JMzReaderException {
         setAllowCustomTags(allowCustomTags);
+        this.ignoreWrongPeaks = ignoreWrongPeaks;
 
         // open the file
         try {
@@ -497,7 +502,7 @@ public class MgfFile implements JMzReader {
      * @throws JMzReaderException
      */
     public MgfFile(File file, List<IndexElement> index) throws JMzReaderException {
-        this(file, index, DEFAULT_ALLOW_CUSTOM_TAGS);
+        this(file, index, DEFAULT_ALLOW_CUSTOM_TAGS, DEFAULT_IGNORE_WRONG_PEAKS);
     }
 
     public List<String> getAccessions() {
@@ -791,7 +796,7 @@ public class MgfFile implements JMzReader {
      * @param nIndex
      * @return
      */
-    public Ms2Query getMs2Query(int nIndex) throws JMzReaderException {
+    public Ms2Query getMs2Query(int nIndex, boolean ignoreWrongPeaks) throws JMzReaderException {
         // check if the ms2 query was already loaded
         if (ms2Queries.containsKey(nIndex))
             return ms2Queries.get(nIndex);
@@ -807,7 +812,7 @@ public class MgfFile implements JMzReader {
         // load the query from the file
         Ms2Query query;
 
-        query = loadIndexedQueryFromFile(nIndex);
+        query = loadIndexedQueryFromFile(nIndex, ignoreWrongPeaks);
 
         // save the query in the HashMap
         if (useCache)
@@ -824,7 +829,7 @@ public class MgfFile implements JMzReader {
      * @return
      * @oaram index The query's 1-based index in the MGF file. This index is stored in the returned Ms2Query object.
      */
-    private static Ms2Query loadIndexedQueryFromFile(File file, IndexElement indexElement, int index, boolean disableCommentSupport) throws JMzReaderException {
+    private static Ms2Query loadIndexedQueryFromFile(File file, IndexElement indexElement, int index, boolean disableCommentSupport, boolean ignoreWrongPeaks) throws JMzReaderException {
         try (RandomAccessFile accFile = new RandomAccessFile(file, "r")) {
 
             // read the indexed element
@@ -836,7 +841,7 @@ public class MgfFile implements JMzReader {
             String ms2Buffer = new String(byteBuffer);
             // create the query
 
-            return new Ms2Query(ms2Buffer, index, disableCommentSupport);
+            return new Ms2Query(ms2Buffer, index, disableCommentSupport, ignoreWrongPeaks);
         } catch (FileNotFoundException e) {
             throw new JMzReaderException("MGF file could not be found.", e);
         } catch (IOException e) {
@@ -851,14 +856,14 @@ public class MgfFile implements JMzReader {
      * @param nQueryIndex The queries index.
      * @return
      */
-    private Ms2Query loadIndexedQueryFromFile(int nQueryIndex) throws JMzReaderException {
+    private Ms2Query loadIndexedQueryFromFile(int nQueryIndex, boolean ignoreWrongPeaks) throws JMzReaderException {
         if (nQueryIndex < 0 || nQueryIndex > index.size() - 1)
             throw new JMzReaderException("Tried to load non existing query from file");
 
         // read the indexed element
         IndexElement indexElement = index.get(nQueryIndex);
 
-        return loadIndexedQueryFromFile(sourceFile, indexElement, nQueryIndex + 1, disableCommentSupport);
+        return loadIndexedQueryFromFile(sourceFile, indexElement, nQueryIndex + 1, disableCommentSupport, ignoreWrongPeaks);
     }
 
     /**
@@ -1120,7 +1125,7 @@ public class MgfFile implements JMzReader {
                 // read the query from file
                 Ms2Query query;
                 try {
-                    query = loadIndexedQueryFromFile(currentPosition);
+                    query = loadIndexedQueryFromFile(currentPosition, ignoreWrongPeaks);
 
                     // if caching is enabled do so
                     if (useCache)
@@ -1187,11 +1192,11 @@ public class MgfFile implements JMzReader {
         // create an integer
         int index = Integer.parseInt(id);
 
-        return getMs2Query(index - 1);
+        return getMs2Query(index - 1, ignoreWrongPeaks);
     }
 
     public Spectrum getSpectrumByIndex(int index) throws JMzReaderException {
-        return getMs2Query(index - 1);
+        return getMs2Query(index - 1, ignoreWrongPeaks);
     }
 
     public Iterator<Spectrum> getSpectrumIterator() {
