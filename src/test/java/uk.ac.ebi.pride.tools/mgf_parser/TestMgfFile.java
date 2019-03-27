@@ -509,4 +509,21 @@ public class TestMgfFile{
         Assert.assertEquals(s.toString(), s1.toString());
     }
 
+    @Test
+    public void testPerformanceTime() throws Exception {
+        long time = System.currentTimeMillis();
+        URL testFile = getClass().getClassLoader().getResource("F001257.mgf");
+        Assert.assertNotNull("Error loading mgf test file", testFile);
+        File file = new File(testFile.toURI());
+        MgfFile mgfFile = new MgfFile(sourceFile);
+        for(String id: mgfFile.getSpectraIds()){
+            Spectrum spec = mgfFile.getSpectrumById(id);
+            System.out.println(spec.getId());
+        }
+        System.out.println(System.currentTimeMillis() - time);
+    }
+
+
+
+
 }

@@ -49,6 +49,7 @@ public class MgfIterableFile implements JMzIterableReader {
     private MappedByteBuffer buffer;
     private int channelCursor = 0;
     private long nextPosition = 0;
+    private long specIndex = 1;
 
     public MgfIterableFile(File file, boolean ignoreWrongPeaks, boolean disableCommentSupport, boolean allowCustomTags) throws JMzReaderException {
 
@@ -110,9 +111,11 @@ public class MgfIterableFile implements JMzIterableReader {
                 if(line.contains("BEGIN IONS")) {
                     logger.debug("Start reading the following spectrum -- ");
                     spectrum = new Ms2Query(this.disableCommentSupport);
-                }else if(line.contains("END IONS"))
+                }else if(line.contains("END IONS")) {
+                    spectrum.setId(specIndex);
+                    specIndex++;
                     return spectrum;
-                else if(spectrum != null){
+                }else if(spectrum != null){
                     /**
                      * Some files can have a lot of empty and nonsense information between Spectrums
                      */

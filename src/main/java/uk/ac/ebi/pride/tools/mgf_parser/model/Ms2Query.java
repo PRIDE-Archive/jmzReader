@@ -71,7 +71,7 @@ public class Ms2Query implements Spectrum {
   private Double peptideIntensity;
 
   // 1-based index of the spectrum in the file.
-  private Integer index;
+  private Long index;
 
   //MGF allows user tags in the format USER[NN] like USER01, USER02
   private Map<Integer, String> userTags = new HashMap<>();
@@ -94,7 +94,7 @@ public class Ms2Query implements Spectrum {
    */
   public Ms2Query(String mgfQuery, int index, boolean disableCommentSupport, boolean ignoreWrongPeaks) throws JMzReaderException {
     this.disableCommentSupport = disableCommentSupport;
-    this.index = index;
+    this.index = new Long(index);
     String[] lines = mgfQuery.trim().split("\n");
     boolean inAttributeSection = true;
     for (int nLineNumber = 0; nLineNumber < lines.length; nLineNumber++) {
@@ -472,6 +472,11 @@ public class Ms2Query implements Spectrum {
     }
     return result;
   }
+
+  public void setId(long index){
+    this.index = index;
+  }
+
 
   /**
    * Gets the precursor charge.
