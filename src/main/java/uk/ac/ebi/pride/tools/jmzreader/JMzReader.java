@@ -15,6 +15,7 @@ import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
  * public static Spectrum getIndexedSpectrum(File sourcefile, IndexElement indexElement)
  * 
  * @author jg
+ * @author ypriverol
  *
  */
 public interface JMzReader {

@@ -145,6 +145,7 @@ public class MgfFile implements JMzReader {
     private boolean allowCustomTags = DEFAULT_ALLOW_CUSTOM_TAGS;
     private static final boolean DEFAULT_ALLOW_CUSTOM_TAGS = false;
     private static final boolean DEFAULT_IGNORE_WRONG_PEAKS = false;
+
     /**
      * If this option is set, comments are not removed
      * from MGF files. This speeds up parsing considerably
@@ -152,7 +153,150 @@ public class MgfFile implements JMzReader {
      */
     private boolean disableCommentSupport = false;
 
+    /**
+     * This function helps to ignore peaks if the parser found parser errors in the peaks
+     */
     private boolean ignoreWrongPeaks = false;
+
+    /**
+     * Default constructor generating an empty mgf file object.
+     */
+    public MgfFile() {}
+
+
+    /**
+     * Creates the mgf file object from an existing
+     * mgf file. By default the following reading variables will be:
+     *
+     * - allowCustomTags : False
+     * - ignoreWrongPeaks : False
+     * - allowRandomAccess : True
+     *
+     * @param file The mgf file
+     * @throws JMzReaderException
+     */
+    public MgfFile(File file) throws JMzReaderException {
+        this(file, false, false);
+    }
+
+    /**
+     * Creates the mgf file object from an existing
+     * mgf file with a pre-parsed index of ms2 spectra.
+     * The index must hold the offsets of all "BEGIN IONS"
+     * lines in the order they appear in the file.
+     *
+     * @param file  The mgf file
+     * @param index An ArrayList holding the
+     * @throws JMzReaderException
+     */
+    public MgfFile(File file, List<IndexElement> index) throws JMzReaderException {
+        this(file, index, DEFAULT_ALLOW_CUSTOM_TAGS, DEFAULT_IGNORE_WRONG_PEAKS);
+    }
+
+    /**
+     * Creates the mgf file object from an existing
+     * mgf file.
+     *
+     * @param file            The mgf file
+     * @param allowCustomTags Indicates if the parser should throw an exception when encountering non-standard tags
+     * @throws JMzReaderException
+     */
+    public MgfFile(File file, boolean allowCustomTags, boolean ignoreWrongPeaks) throws JMzReaderException {
+
+        this.allowCustomTags = allowCustomTags;
+        this.ignoreWrongPeaks = ignoreWrongPeaks;
+
+        // open the file
+        try {
+            // save the file
+            sourceFile = file;
+
+            BufferedRandomAccessFile braf = new BufferedRandomAccessFile(sourceFile.getAbsolutePath(), "r", 1024 * 100);
+
+            // process the file line by line
+            String line;
+            boolean inHeader = true; // indicates whether we're still in the attribute section
+            boolean inMs2 = false;
+            long lastPosition = 0;
+            long beginIonsIndex = 0; // the index where the last "BEGIN IONS" was encountered
+
+            while ((line = braf.getNextLine()) != null) {
+
+                // remove any comments from the line (if the line will be processed)
+                if (!inMs2)
+                    line = line.replaceAll(mgfCommentRegex, "").trim();
+
+                // ignore empty lines
+                if (line.length() < 1) {
+
+                    //always update file pointer before continue
+                    lastPosition = braf.getFilePointer();
+                    continue;
+                }
+
+                // check if a ms2 block started
+                if (!inMs2 && line.contains("BEGIN IONS")) {
+                    // save the offset of the spectrum
+                    beginIonsIndex = lastPosition;
+                    inMs2 = true;
+                }
+                if (inMs2 && line.contains("END IONS")) {
+                    inMs2 = false;
+
+                    //index.add(new IndexElement(beginIonsIndex, reader.getFilePointer()));
+                    int size = (int) (braf.getFilePointer() - beginIonsIndex);
+                    index.add(new IndexElementImpl(beginIonsIndex, size));
+
+                    //always update file pointer before continue
+                    lastPosition = braf.getFilePointer();
+                    continue;
+                }
+
+                if (inMs2) {
+                    //always update file pointer before continue
+                    lastPosition = braf.getFilePointer();
+                    continue;
+                }
+
+                // check if it's an attribute line
+                if (inHeader && line.contains("=")) {
+                    Matcher matcher = attributePattern.matcher(line);
+
+                    if (!matcher.find())
+                        throw new JMzReaderException("Malformatted attribute encountered");
+                    if (matcher.groupCount() != 2)
+                        throw new JMzReaderException("Malformatted attribute encountered");
+
+                    // process the attribute
+                    processAttribute(matcher.group(1), matcher.group(2));
+
+                    //always update file pointer before continue
+                    lastPosition = braf.getFilePointer();
+                    continue;
+
+                } else if (!inHeader && line.contains("=")) {
+                    throw new JMzReaderException("Attribute encountered at illegal position. Attributes must all be at the beginning of the file");
+                } else {
+                    inHeader = false;
+                }
+
+                // if we're not in the header and it's not a ms2 it must be a pmf query
+                if (!inHeader) {
+                    PmfQuery query = new PmfQuery(line);
+                    pmfQueries.add(query);
+                }
+
+                //always update file pointer before continue
+                lastPosition = braf.getFilePointer();
+            }
+
+            braf.close();
+        } catch (FileNotFoundException e) {
+            throw new JMzReaderException("MgfFile does not exist.", e);
+        } catch (IOException e) {
+            throw new JMzReaderException("Failed to read from mgf file.", e);
+        }
+    }
 
     /**
      * Process a given attribute line and saves the variable
@@ -291,128 +435,7 @@ public class MgfFile implements JMzReader {
         return loadIndexedQueryFromFile(sourcefile, indexElement, 1, false, ignoreWrongPeaks);
     }
 
-    /**
-     * Default constructor generating an empty mgf file object.
-     */
-    public MgfFile() {
 
-    }
-
-    /**
-     * Creates the mgf file object from an existing
-     * mgf file.
-     *
-     * @param file The mgf file
-     * @throws JMzReaderException
-     */
-    public MgfFile(File file) throws JMzReaderException {
-        this(file, false, false);
-    }
-
-    /**
-     * Creates the mgf file object from an existing
-     * mgf file.
-     *
-     * @param file            The mgf file
-     * @param allowCustomTags Indicates if the parser should throw an exception when encountering non-standard tags
-     * @throws JMzReaderException
-     */
-    public MgfFile(File file, boolean allowCustomTags, boolean ignoreWrongPeaks) throws JMzReaderException {
-
-        setAllowCustomTags(allowCustomTags);
-        this.ignoreWrongPeaks = ignoreWrongPeaks;
-
-        // open the file
-        try {
-            // save the file
-            sourceFile = file;
-
-            BufferedRandomAccessFile braf = new BufferedRandomAccessFile(sourceFile.getAbsolutePath(), "r", 1024 * 100);
-
-            // process the file line by line
-            String line;
-            boolean inHeader = true; // indicates whether we're still in the attribute section
-            boolean inMs2 = false;
-            long lastPosition = 0;
-            long beginIonsIndex = 0; // the index where the last "BEGIN IONS" was encountered
-
-            while ((line = braf.getNextLine()) != null) {
-
-                // remove any comments from the line (if the line will be processed)
-                if (!inMs2)
-                    line = line.replaceAll(mgfCommentRegex, "").trim();
-
-                // ignore empty lines
-                if (line.length() < 1) {
-
-                    //always update file pointer before continue
-                    lastPosition = braf.getFilePointer();
-                    continue;
-                }
-
-                // check if a ms2 block started
-                if (!inMs2 && line.contains("BEGIN IONS")) {
-                    // save the offset of the spectrum
-                    beginIonsIndex = lastPosition;
-                    inMs2 = true;
-                }
-                if (inMs2 && line.contains("END IONS")) {
-                    inMs2 = false;
-
-                    //index.add(new IndexElement(beginIonsIndex, reader.getFilePointer()));
-                    int size = (int) (braf.getFilePointer() - beginIonsIndex);
-                    index.add(new IndexElementImpl(beginIonsIndex, size));
-
-                    //always update file pointer before continue
-                    lastPosition = braf.getFilePointer();
-                    continue;
-                }
-
-                if (inMs2) {
-                    //always update file pointer before continue
-                    lastPosition = braf.getFilePointer();
-                    continue;
-                }
-
-                // check if it's an attribute line
-                if (inHeader && line.contains("=")) {
-                    Matcher matcher = attributePattern.matcher(line);
-
-                    if (!matcher.find())
-                        throw new JMzReaderException("Malformatted attribute encountered");
-                    if (matcher.groupCount() != 2)
-                        throw new JMzReaderException("Malformatted attribute encountered");
-
-                    // process the attribute
-                    processAttribute(matcher.group(1), matcher.group(2));
-
-                    //always update file pointer before continue
-                    lastPosition = braf.getFilePointer();
-                    continue;
-
-                } else if (!inHeader && line.contains("=")) {
-                    throw new JMzReaderException("Attribute encountered at illegal position. Attributes must all be at the beginning of the file");
-                } else {
-                    inHeader = false;
-                }
-
-                // if we're not in the header and it's not a ms2 it must be a pmf query
-                if (!inHeader) {
-                    PmfQuery query = new PmfQuery(line);
-                    pmfQueries.add(query);
-                }
-
-                //always update file pointer before continue
-                lastPosition = braf.getFilePointer();
-            }
-
-            braf.close();
-        } catch (FileNotFoundException e) {
-            throw new JMzReaderException("MgfFile does not exist.", e);
-        } catch (IOException e) {
-            throw new JMzReaderException("Failed to read from mgf file.", e);
-        }
-    }
 
     /**
      * Creates the mgf file object from an existing
@@ -491,19 +514,6 @@ public class MgfFile implements JMzReader {
         }
     }
 
-    /**
-     * Creates the mgf file object from an existing
-     * mgf file with a pre-parsed index of ms2 spectra.
-     * The index must hold the offsets of all "BEGIN IONS"
-     * lines in the order they appear in the file.
-     *
-     * @param file  The mgf file
-     * @param index An ArrayList holding the
-     * @throws JMzReaderException
-     */
-    public MgfFile(File file, List<IndexElement> index) throws JMzReaderException {
-        this(file, index, DEFAULT_ALLOW_CUSTOM_TAGS, DEFAULT_IGNORE_WRONG_PEAKS);
-    }
 
     public List<String> getAccessions() {
         return accessions;
