@@ -6,7 +6,6 @@ import uk.ac.ebi.pride.tools.jmzreader.JMzIterableReader;
 import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 import uk.ac.ebi.pride.tools.mgf_parser.model.Ms2Query;
-import uk.ac.ebi.pride.tools.mgf_parser.model.PmfQuery;
 import uk.ac.ebi.pride.tools.utils.StringUtils;
 
 import java.io.File;
@@ -48,6 +47,8 @@ public class MgfIterableFile implements JMzIterableReader {
 
     private final FileChannel accessChannel;
     private MappedByteBuffer buffer;
+    private int channelCursor = 0;
+    private long nextPosition = 0;
 
     public MgfIterableFile(File file, boolean ignoreWrongPeaks, boolean disableCommentSupport, boolean allowCustomTags) throws JMzReaderException {
 
@@ -67,13 +68,25 @@ public class MgfIterableFile implements JMzIterableReader {
 
     @Override
     public boolean hasNext() {
-        if(buffer == null || !buffer.hasRemaining())
+        StringBuffer stringBuffer = new StringBuffer();
+        if (buffer == null)
             readBuffer();
-        int previousPosition = buffer.position();
-        buffer.get();
-        int nextPosition = buffer.position();
-        buffer.position(previousPosition);
-        return buffer.hasRemaining() && nextPosition != previousPosition;
+        char ch = '\n';
+        channelCursor = buffer.position();
+        while(buffer.hasRemaining() && (ch != '\u0000')){
+            ch = ((char) buffer.get());
+            channelCursor = buffer.position();
+            stringBuffer.append(ch);
+            if(ch == '\n'){
+                if(stringBuffer.toString().contains("BEGIN IONS")){
+                    channelCursor = channelCursor -  stringBuffer.toString().length();
+                    buffer.position(channelCursor);
+                    return true;
+                }else
+                    stringBuffer = new StringBuffer();
+            }
+        }
+        return false;
     }
 
     @Override
@@ -82,10 +95,14 @@ public class MgfIterableFile implements JMzIterableReader {
         if(buffer == null || !buffer.hasRemaining()){
             readBuffer();
         }
+
         boolean inAttributeSection = true;
         StringBuffer stringBuffer = new StringBuffer();
-        for (int i = 0; i < buffer.limit(); i++) {
+
+        while (buffer.hasRemaining()) {
             char ch = ((char) buffer.get());
+            channelCursor = buffer.position();
+
             if(ch=='\n'){
                 stringBuffer.append(ch);
                 String line = StringUtils.removeBOMString(stringBuffer.toString().trim());
@@ -147,16 +164,25 @@ public class MgfIterableFile implements JMzIterableReader {
             }else{
                 stringBuffer.append(ch);
             }
+            if(!buffer.hasRemaining())
+                readBuffer();
         }
         return spectrum;
     }
 
-    private void readBuffer(){
+    private boolean readBuffer(){
         try {
-            buffer = accessChannel.map(FileChannel.MapMode.READ_ONLY, 0, MgfUtils.BUFFER_SIZE_100MB);
-            buffer.load();
+            if(nextPosition >= accessChannel.size()) {
+                return true;
+            } else {
+                long remSize = Math.min(MgfUtils.BUFFER_SIZE_100MB, accessChannel.size() - nextPosition);
+                buffer = accessChannel.map(FileChannel.MapMode.READ_ONLY, nextPosition, remSize);
+                nextPosition += remSize;
+                return false;
+            }
         } catch (IOException e) {
             e.printStackTrace();
+            return true;
         }
     }
 
