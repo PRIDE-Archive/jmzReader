@@ -53,7 +53,7 @@
         <uk.ac.ebi.pride.jaxb-pride-jaxb.version>1.0.22</uk.ac.ebi.pride.jaxb-pride-jaxb.version>
         <!-- Dependencies -->
         <uk.ac.ebi.pride.architectural-pride-xml-handling.version>1.0.3</uk.ac.ebi.pride.architectural-pride-xml-handling.version>
-        <org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>0.6.3</org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>
+        <org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>0.14.0</org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>
     </properties>
 
     <dependencies>
@@ -89,22 +89,13 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
+            <version>2.3.1</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.activation</groupId>
-            <artifactId>javax.activation</artifactId>
-            <version>1.2.0</version>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.2</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
