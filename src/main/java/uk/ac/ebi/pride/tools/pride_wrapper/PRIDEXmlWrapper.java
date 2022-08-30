@@ -27,12 +27,12 @@ public class PRIDEXmlWrapper implements JMzReader {
     /**
      * PRIDE JAXB reader for reading pride xml file
      */
-    private PrideXmlReader prideXmlReader;
+    private final PrideXmlReader prideXmlReader;
 
     /**
      * A list of pre-loading spectrum ids
      */
-    private List<String> spectrumIds;
+    private final List<String> spectrumIds;
 
     /**
      * Spectrum id to index map
@@ -215,7 +215,7 @@ public class PRIDEXmlWrapper implements JMzReader {
         /**
          * Original PRIDE spectrum
          */
-        private uk.ac.ebi.pride.jaxb.model.Spectrum prideSpectrum;
+        private final uk.ac.ebi.pride.jaxb.model.Spectrum prideSpectrum;
 
         /**
          * The extracted precursor charge. NULL
@@ -244,12 +244,12 @@ public class PRIDEXmlWrapper implements JMzReader {
         /**
          * The spectrum's ms level.
          */
-        private int msLevel;
+        private final int msLevel;
 
         /**
          * The spectrum's id
          */
-        private Integer id;
+        private final Integer id;
 
         /**
          * Additional parameters

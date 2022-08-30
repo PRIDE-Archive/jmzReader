@@ -236,7 +236,7 @@ public class MzMlWrapper implements JMzReader {
      *
      * @author jg
      */
-    private class MzMlWrapperSpectrum implements Spectrum {
+    private static class MzMlWrapperSpectrum implements Spectrum {
 
         /**
          * The spectrum's id in the mzML file
@@ -378,13 +378,13 @@ public class MzMlWrapper implements JMzReader {
                 return Collections.emptyMap();
 
             // get the values as numbers
-            Number mzNumbers[] = mzArray.getBinaryDataAsNumberArray();
+            Number[] mzNumbers = mzArray.getBinaryDataAsNumberArray();
             ArrayList<Double> mzValues = new ArrayList<>(mzNumbers.length);
 
             for (Number n : mzNumbers)
                 mzValues.add(n.doubleValue());
 
-            Number intenNumbers[] = intenArray.getBinaryDataAsNumberArray();
+            Number[] intenNumbers = intenArray.getBinaryDataAsNumberArray();
             ArrayList<Double> intenValues = new ArrayList<>(intenNumbers.length);
 
             for (Number n : intenNumbers)

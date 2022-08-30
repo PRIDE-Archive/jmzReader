@@ -7,7 +7,7 @@ import java.io.RandomAccessFile;
 /**
  * This is an optimized version of the RandomAccessFile class as described by
  * Nick Zhang on JavaWorld.com. The article can be found at
- * http://www.javaworld.com/javaworld/javatips/jw-javatip26.html
+ * <a href="http://www.javaworld.com/javaworld/javatips/jw-javatip26.html">...</a>
  *
  * @author jg
  */
@@ -15,7 +15,7 @@ public class BufferedRandomAccessFile extends RandomAccessFile {
     /**
      * Uses a byte instead of a char buffer for efficiency reasons.
      */
-    private byte buffer[];
+    private final byte[] buffer;
     private int buf_end = 0;
     private int buf_pos = 0;
     /**
@@ -102,7 +102,7 @@ public class BufferedRandomAccessFile extends RandomAccessFile {
      * @param len Number of bytes to read into the buffer.
      * @return Number of bytes read.
      */
-    public int read(byte b[], int off, int len) throws IOException {
+    public int read(byte[] b, int off, int len) throws IOException {
         int leftover = buf_end - buf_pos;
         if (len <= leftover) {
             System.arraycopy(buffer, buf_pos, b, off, len);

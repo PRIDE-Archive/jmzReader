@@ -10,22 +10,22 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Extension of 'paramType' with an added free-text comment attribute.
- * 
+ *
  * <p>Java class for descriptionType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="descriptionType"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{}paramType"&gt;
- *       &lt;attribute name="comment" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="comment" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "descriptionType")

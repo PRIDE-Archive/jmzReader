@@ -12,33 +12,33 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="plate" maxOccurs="unbounded"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
- *                   &lt;element name="plateManufacturer" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
- *                   &lt;element name="plateModel" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                   &lt;element name="plateManufacturer" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
+ *                   &lt;element name="plateModel" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                   &lt;element name="pattern" minOccurs="0"&gt;
  *                     &lt;complexType&gt;
  *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                         &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                           &lt;sequence&gt;
- *                             &lt;element name="spottingPattern" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                             &lt;element name="spottingPattern" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                             &lt;element name="orientation"&gt;
  *                               &lt;complexType&gt;
  *                                 &lt;complexContent&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                                     &lt;attribute name="firstSpotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                                     &lt;attribute name="secondSpotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *                                   &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
+ *                                     &lt;attribute name="firstSpotID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                                     &lt;attribute name="secondSpotID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
  *                                   &lt;/restriction&gt;
  *                                 &lt;/complexContent&gt;
  *                               &lt;/complexType&gt;
@@ -51,22 +51,22 @@ import javax.xml.bind.annotation.XmlType;
  *                   &lt;element name="spot" maxOccurs="unbounded"&gt;
  *                     &lt;complexType&gt;
  *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                         &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                           &lt;sequence&gt;
- *                             &lt;element name="maldiMatrix" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                             &lt;element name="maldiMatrix" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                           &lt;/sequence&gt;
- *                           &lt;attribute name="spotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                           &lt;attribute name="spotXPosition" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                           &lt;attribute name="spotYPosition" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                           &lt;attribute name="spotDiameter" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *                           &lt;attribute name="spotID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                           &lt;attribute name="spotXPosition" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                           &lt;attribute name="spotYPosition" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                           &lt;attribute name="spotDiameter" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
  *                         &lt;/restriction&gt;
  *                       &lt;/complexContent&gt;
  *                     &lt;/complexType&gt;
  *                   &lt;/element&gt;
  *                 &lt;/sequence&gt;
- *                 &lt;attribute name="plateID" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *                 &lt;attribute name="spotXCount" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *                 &lt;attribute name="spotYCount" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *                 &lt;attribute name="plateID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *                 &lt;attribute name="spotXCount" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *                 &lt;attribute name="spotYCount" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
@@ -74,13 +74,13 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="robot" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
- *                   &lt;element name="robotManufacturer" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
- *                   &lt;element name="robotModel" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                   &lt;element name="robotManufacturer" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
+ *                   &lt;element name="robotModel" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                 &lt;/sequence&gt;
- *                 &lt;attribute name="timePerSpot" use="required" type="{http://www.w3.org/2001/XMLSchema}duration" /&gt;
- *                 &lt;attribute name="deadVolume" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
+ *                 &lt;attribute name="timePerSpot" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}duration" /&gt;
+ *                 &lt;attribute name="deadVolume" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}nonNegativeInteger" /&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
@@ -90,8 +90,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

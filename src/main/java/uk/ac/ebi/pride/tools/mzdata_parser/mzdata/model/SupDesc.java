@@ -12,26 +12,26 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Description of a supplemental data array
- * 
+ *
  * <p>Java class for supDescType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="supDescType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="supDataDesc" type="{}descriptionType" minOccurs="0"/&gt;
  *         &lt;element name="supSourceFile" type="{}sourceFileType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="supDataArrayRef" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="supDataArrayRef" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "supDescType", propOrder = {

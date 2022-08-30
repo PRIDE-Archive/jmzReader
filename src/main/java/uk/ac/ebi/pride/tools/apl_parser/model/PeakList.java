@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 
 public class PeakList implements Spectrum{
 
-    private static Pattern peakPattern = Pattern.compile("\\s*([0-9.]+)\\t([0-9.]+)\\s*");
-    private static Pattern headerPattern = Pattern.compile("\\s*RawFile: (.*) Index: ([0-9]+)\\s*");
+    private static final Pattern peakPattern = Pattern.compile("\\s*([0-9.]+)\\t([0-9.]+)\\s*");
+    private static final Pattern headerPattern = Pattern.compile("\\s*RawFile: (.*) Index: ([0-9]+)\\s*");
 
     /**
      * The spectrum's peaks
@@ -23,7 +23,7 @@ public class PeakList implements Spectrum{
     private Double mz;
     private String fragmentation;
     private String chargeState;
-    private Integer index;
+    private final Integer index;
 
     public PeakList(String mgfQuery, int index) throws JMzReaderException {
         this.index = index;

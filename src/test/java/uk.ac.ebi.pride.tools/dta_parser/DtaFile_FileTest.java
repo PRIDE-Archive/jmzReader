@@ -68,10 +68,10 @@ public class DtaFile_FileTest {
     public void testGetSpectraIds() {
         List<String> ids = dtaFile.getSpectraIds();
         Assert.assertEquals(389, ids.size());
-        for (Integer i = 0; i < 389; i++) {
+        for (int i = 0; i < 389; i++) {
             String id = ids.get(i);
-            Integer index = i + 1;
-            Assert.assertEquals(index.toString(), id);
+            int index = i + 1;
+            Assert.assertEquals(Integer.toString(index), id);
         }
     }
 

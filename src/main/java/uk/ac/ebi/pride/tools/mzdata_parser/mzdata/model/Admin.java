@@ -12,17 +12,17 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * 'Header' information - sample description, contact details, comments
- * 
+ *
  * <p>Java class for adminType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="adminType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="sampleName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="sampleName" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"/&gt;
  *         &lt;element name="sampleDescription" type="{}descriptionType" minOccurs="0"/&gt;
  *         &lt;element name="sourceFile" type="{}sourceFileType" minOccurs="0"/&gt;
  *         &lt;element name="contact" type="{}personType" maxOccurs="unbounded"/&gt;
@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "adminType", propOrder = {

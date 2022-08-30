@@ -51,11 +51,11 @@ public class Ms2Spectrum implements Spectrum {
 	/**
 	 * Pattern used to parse header lines
 	 */
-	private static Pattern headerLinePattern = Pattern.compile("([SIZD])\t(.+)");
+	private static final Pattern headerLinePattern = Pattern.compile("([SIZD])\t(.+)");
 	/**
 	 * The spectrum's 1-based index int he file.
 	 */
-	private Integer index;
+	private final Integer index;
 	
 	/**
 	 * Creates a Ms2Spectrum object by parsing
@@ -113,7 +113,7 @@ public class Ms2Spectrum implements Spectrum {
 			
 			// S line
 			if ("S".equals(matcher.group(1))) {
-				String fields[] = matcher.group(2).split("\t");
+				String[] fields = matcher.group(2).split("\t");
 				// every S line must have 3 fields
 				if (fields.length != 3)
 					throw new JMzReaderException("Invalid S line encountered in spectrum: '" + lines[i] + '\'');
@@ -126,7 +126,7 @@ public class Ms2Spectrum implements Spectrum {
 			// I line
 			else if ("I".equals(matcher.group(1))) {
 				// always field value pairs
-				String fields[] = matcher.group(2).split("\t");
+				String[] fields = matcher.group(2).split("\t");
 				
 				if (fields.length != 2){
                     if(fields.length == 1){
@@ -144,7 +144,7 @@ public class Ms2Spectrum implements Spectrum {
 			// Z line
 			else if ("Z".equals(matcher.group(1))) {
 				// always field value pairs
-				String fields[] = matcher.group(2).split("\t");
+				String[] fields = matcher.group(2).split("\t");
 				
 				if (fields.length != 2)
 					throw new JMzReaderException("Invalid Z line encountered: " + lines[i] + '\'');
@@ -155,7 +155,7 @@ public class Ms2Spectrum implements Spectrum {
 			// D line
 			else if ("D".equals(matcher.group(1))) {
 				// always field value pairs
-				String fields[] = matcher.group(2).split("\t");
+				String[] fields = matcher.group(2).split("\t");
 				
 				if (fields.length != 2)
 					throw new JMzReaderException("Invalid D line encountered: " + lines[i] + '\'');

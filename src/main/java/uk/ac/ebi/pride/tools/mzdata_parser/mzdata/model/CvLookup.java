@@ -12,25 +12,25 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Information about an ontology/CV source and a short 'lookup' tag to
  *                 refer to.
- * 
+ *
  * <p>Java class for cvLookupType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="cvLookupType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;attribute name="cvLabel" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="fullName" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="version" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="address" use="required" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
+ *       &lt;attribute name="cvLabel" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="fullName" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="version" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="address" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyURI" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "cvLookupType")

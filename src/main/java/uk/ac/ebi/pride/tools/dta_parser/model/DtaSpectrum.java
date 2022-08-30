@@ -2,9 +2,9 @@ package uk.ac.ebi.pride.tools.dta_parser.model;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,7 +65,7 @@ public class DtaSpectrum implements Spectrum {
         this.sourceFile = sourceFile;
 
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(sourceFile)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(Files.newInputStream(sourceFile.toPath())));
 
             while ((line = reader.readLine()) != null) {
                 lines.add(line);

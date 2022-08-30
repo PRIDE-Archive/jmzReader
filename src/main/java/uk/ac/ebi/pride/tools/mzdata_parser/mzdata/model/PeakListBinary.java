@@ -12,22 +12,22 @@ import javax.xml.bind.annotation.XmlValue;
 
 /**
  * Extension of binary data group for m/z and intensity values
- * 
+ *
  * <p>Java class for peakListBinaryType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="peakListBinaryType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;group ref="{}binaryDataGroup"/&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "peakListBinaryType", propOrder = {
@@ -68,16 +68,16 @@ public class PeakListBinary
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;simpleContent&gt;
-     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;base64Binary"&gt;
+     *     &lt;extension base="&lt;<a href="http://www.w3.org/2001/XMLSchema&gt;base64Binary">...</a>"&gt;
      *       &lt;attribute name="precision" use="required"&gt;
      *         &lt;simpleType&gt;
-     *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
      *             &lt;enumeration value="32"/&gt;
      *             &lt;enumeration value="64"/&gt;
      *           &lt;/restriction&gt;
@@ -85,19 +85,19 @@ public class PeakListBinary
      *       &lt;/attribute&gt;
      *       &lt;attribute name="endian" use="required"&gt;
      *         &lt;simpleType&gt;
-     *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
      *             &lt;enumeration value="big"/&gt;
      *             &lt;enumeration value="little"/&gt;
      *           &lt;/restriction&gt;
      *         &lt;/simpleType&gt;
      *       &lt;/attribute&gt;
-     *       &lt;attribute name="length" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     *       &lt;attribute name="length" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
      *     &lt;/extension&gt;
      *   &lt;/simpleContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {

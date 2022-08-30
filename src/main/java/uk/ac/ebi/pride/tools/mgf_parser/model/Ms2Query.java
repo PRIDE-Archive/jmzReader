@@ -49,9 +49,6 @@ public class Ms2Query implements Spectrum {
   // Optional scan number or range
   private String scan;
 
-  // RAW Original scan Number
-  private String rawScan;
-
   // Optional retention time or range in seconds
   private String retentionTime;
 
@@ -94,7 +91,7 @@ public class Ms2Query implements Spectrum {
    */
   public Ms2Query(String mgfQuery, int index, boolean disableCommentSupport, boolean ignoreWrongPeaks) throws JMzReaderException {
     this.disableCommentSupport = disableCommentSupport;
-    this.index = new Long(index);
+    this.index = (long) index;
     String[] lines = mgfQuery.trim().split("\n");
     boolean inAttributeSection = true;
     for (int nLineNumber = 0; nLineNumber < lines.length; nLineNumber++) {
@@ -196,7 +193,7 @@ public class Ms2Query implements Spectrum {
     } else if ("SCANS".equals(name)) {
       scan = value;
     } else if ("RAWSCANS".equals(name)) {
-      rawScan = value;
+      // RAW Original scan Number
     } else if ("RTINSECONDS".equals(name)) {
       retentionTime = value;
     } else if ("INSTRUMENT".equals(name)) {

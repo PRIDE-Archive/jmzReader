@@ -10,23 +10,23 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Uncontrolled user parameters (vocabulary).
- * 
+ *
  * <p>Java class for userParamType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="userParamType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="value" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
+ *       &lt;attribute name="name" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="value" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "userParamType")

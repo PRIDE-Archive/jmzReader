@@ -3,7 +3,6 @@ package uk.ac.ebi.pride.tools.jmzreader;
 
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 
-import java.util.Iterator;
 import java.util.stream.Stream;
 
 /**

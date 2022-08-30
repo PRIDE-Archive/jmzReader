@@ -30,7 +30,7 @@ public class MzDataFile implements JMzReader {
 	/**
 	 * The mzXML source file.
 	 */
-	private File sourcefile;
+	private final File sourcefile;
 	/**
 	 * The random access file object is
 	 * used to read the file. This object
@@ -41,10 +41,6 @@ public class MzDataFile implements JMzReader {
 	 * The actual XPath index to use.
 	 */
 	private XpathIndex index;
-	/**
-	 * The XPath access to use.
-	 */
-	private StandardXpathAccess xpathAccess;
 	/**
 	 * A Map with the ms level as key and the
 	 * list with associated index elements as
@@ -215,7 +211,7 @@ public class MzDataFile implements JMzReader {
 	private void indexFile() throws JMzReaderException {
 		try {
 			// build the xpath
-			xpathAccess = new StandardXpathAccess(sourcefile, MzDataElement.getXpaths());
+			StandardXpathAccess xpathAccess = new StandardXpathAccess(sourcefile, MzDataElement.getXpaths());
 			
 			// save the index
 			index = xpathAccess.getIndex();

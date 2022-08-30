@@ -60,18 +60,18 @@ To add all parsers to you maven project simply add the following dependencies to
         <type>jar</type>
 </dependency>
  ```
- 
- ```maven
+
+```maven
  <repository>
              <id>pst-release</id>
              <name>EBI Nexus Repository</name>
-             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+             <url>hhttps://ww.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
  </repository>
    <!-- EBI SNAPSHOT repo -->
          <repository>
              <id>pst-snapshots</id>
              <name>EBI Nexus Snapshots Repository</name>
-             <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+             <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
          </repository>
 ```
 Note: you need to change the version number to the latest version.

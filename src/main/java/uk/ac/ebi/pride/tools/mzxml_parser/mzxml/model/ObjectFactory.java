@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _SeparationTechnique_QNAME = new QName("http://sashimi.sourceforge.net/schema_revision/mzXML_3.2", "separationTechnique");
+    private final static QName _SeparationTechnique_QNAME = new QName("https://sashimi.sourceforge.net/schema_revision/mzXML_3.2", "separationTechnique");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: uk.ac.ebi.pride.tools.mzxml_parser.mzxml.model
@@ -221,7 +221,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SeparationTechnique }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://sashimi.sourceforge.net/schema_revision/mzXML_3.2", name = "separationTechnique")
+    @XmlElementDecl(namespace = "https://sashimi.sourceforge.net/schema_revision/mzXML_3.2", name = "separationTechnique")
     public JAXBElement<SeparationTechnique> createSeparationTechnique(SeparationTechnique value) {
         return new JAXBElement<>(_SeparationTechnique_QNAME, SeparationTechnique.class, null, value);
     }

@@ -16,15 +16,15 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * The structure tha captures the generation of a peak list (including
  *  the underlying acquisitions)
- * 
+ *
  * <p>Java class for spectrumType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="spectrumType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="spectrumDesc" type="{}spectrumDescType"/&gt;
  *         &lt;element name="supDesc" type="{}supDescType" maxOccurs="unbounded" minOccurs="0"/&gt;
@@ -35,13 +35,13 @@ import javax.xml.bind.annotation.XmlType;
  *           &lt;element name="supDataArray" type="{}supDataType"/&gt;
  *         &lt;/choice&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="id" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "spectrumType", propOrder = {

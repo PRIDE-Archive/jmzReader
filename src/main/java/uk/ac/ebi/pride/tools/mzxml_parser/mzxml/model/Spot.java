@@ -14,26 +14,26 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="maldiMatrix" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *         &lt;element name="maldiMatrix" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="spotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="spotXPosition" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="spotYPosition" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="spotDiameter" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *       &lt;attribute name="spotID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="spotXPosition" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="spotYPosition" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="spotDiameter" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

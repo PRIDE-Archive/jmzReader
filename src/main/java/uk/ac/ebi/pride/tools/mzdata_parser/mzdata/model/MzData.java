@@ -14,19 +14,19 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="cvLookup" type="{}cvLookupType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="description"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
  *                   &lt;element name="admin" type="{}adminType"/&gt;
  *                   &lt;element name="instrument" type="{}instrumentDescriptionType"/&gt;
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="spectrumList"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
  *                   &lt;element name="spectrum" maxOccurs="unbounded"&gt;
  *                     &lt;complexType&gt;
@@ -50,20 +50,20 @@ import javax.xml.bind.annotation.XmlType;
  *                     &lt;/complexType&gt;
  *                   &lt;/element&gt;
  *                 &lt;/sequence&gt;
- *                 &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *                 &lt;attribute name="count" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="version" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="1.05" /&gt;
- *       &lt;attribute name="accessionNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="version" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" fixed="1.05" /&gt;
+ *       &lt;attribute name="accessionNumber" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -219,13 +219,13 @@ public class MzData
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
      *       &lt;sequence&gt;
      *         &lt;element name="admin" type="{}adminType"/&gt;
      *         &lt;element name="instrument" type="{}instrumentDescriptionType"/&gt;
@@ -235,8 +235,8 @@ public class MzData
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
@@ -333,13 +333,13 @@ public class MzData
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
      *       &lt;sequence&gt;
      *         &lt;element name="spectrum" maxOccurs="unbounded"&gt;
      *           &lt;complexType&gt;
@@ -350,13 +350,13 @@ public class MzData
      *           &lt;/complexType&gt;
      *         &lt;/element&gt;
      *       &lt;/sequence&gt;
-     *       &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     *       &lt;attribute name="count" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {

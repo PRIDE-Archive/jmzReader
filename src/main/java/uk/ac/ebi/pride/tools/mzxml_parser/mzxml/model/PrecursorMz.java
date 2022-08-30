@@ -14,21 +14,21 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;simpleContent&gt;
- *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;float"&gt;
- *       &lt;attribute name="precursorScanNum" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *       &lt;attribute name="precursorIntensity" use="required" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="precursorCharge" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *       &lt;attribute name="possibleCharges" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="windowWideness" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *     &lt;extension base="&lt;<a href="http://www.w3.org/2001/XMLSchema&gt;float">...</a>"&gt;
+ *       &lt;attribute name="precursorScanNum" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *       &lt;attribute name="precursorIntensity" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="precursorCharge" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *       &lt;attribute name="possibleCharges" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="windowWideness" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
  *       &lt;attribute name="activationMethod"&gt;
  *         &lt;simpleType&gt;
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *             &lt;enumeration value="ETD"/&gt;
  *             &lt;enumeration value="ECD"/&gt;
  *             &lt;enumeration value="CID"/&gt;
@@ -41,8 +41,8 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

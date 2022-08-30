@@ -20,7 +20,7 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.model.MzXmlElement;
 public class MzXMLUnmarshallerFactory {
     private static final Logger logger = LoggerFactory.getLogger(MzXMLUnmarshallerFactory.class);
 
-    private static MzXMLUnmarshallerFactory instance = new MzXMLUnmarshallerFactory();
+    private static final MzXMLUnmarshallerFactory instance = new MzXMLUnmarshallerFactory();
     private static JAXBContext jc = null;
 
     private MzXMLUnmarshallerFactory() {
@@ -50,7 +50,7 @@ public class MzXMLUnmarshallerFactory {
         }
     }
 
-    private class MzXMLUnmarshallerImpl implements MzXMLUnmarshaller {
+    private static class MzXMLUnmarshallerImpl implements MzXMLUnmarshaller {
 
         private Unmarshaller unmarshaller = null;
 

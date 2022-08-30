@@ -18,22 +18,22 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="parentFile" maxOccurs="unbounded"&gt;
  *           &lt;complexType&gt;
  *             &lt;simpleContent&gt;
- *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;anySimpleType"&gt;
- *                 &lt;attribute name="fileName" use="required" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
+ *               &lt;extension base="&lt;<a href="http://www.w3.org/2001/XMLSchema&gt;anySimpleType">...</a>"&gt;
+ *                 &lt;attribute name="fileName" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyURI" /&gt;
  *                 &lt;attribute name="fileType" use="required"&gt;
  *                   &lt;simpleType&gt;
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *                       &lt;enumeration value="RAWData"/&gt;
  *                       &lt;enumeration value="processedData"/&gt;
  *                     &lt;/restriction&gt;
@@ -41,7 +41,7 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *                 &lt;/attribute&gt;
  *                 &lt;attribute name="fileSha1" use="required"&gt;
  *                   &lt;simpleType&gt;
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *                       &lt;length value="40"/&gt;
  *                     &lt;/restriction&gt;
  *                   &lt;/simpleType&gt;
@@ -53,36 +53,36 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *         &lt;element name="msInstrument" maxOccurs="unbounded" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
  *                   &lt;element name="msManufacturer"&gt;
  *                     &lt;complexType&gt;
  *                       &lt;complexContent&gt;
- *                         &lt;extension base="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"&gt;
+ *                         &lt;extension base="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"&gt;
  *                         &lt;/extension&gt;
  *                       &lt;/complexContent&gt;
  *                     &lt;/complexType&gt;
  *                   &lt;/element&gt;
- *                   &lt;element name="msModel" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
- *                   &lt;element name="msIonisation" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                   &lt;element name="msModel" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
+ *                   &lt;element name="msIonisation" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                   &lt;element name="msMassAnalyzer"&gt;
  *                     &lt;complexType&gt;
  *                       &lt;complexContent&gt;
- *                         &lt;extension base="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"&gt;
+ *                         &lt;extension base="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"&gt;
  *                         &lt;/extension&gt;
  *                       &lt;/complexContent&gt;
  *                     &lt;/complexType&gt;
  *                   &lt;/element&gt;
- *                   &lt;element name="msDetector" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
- *                   &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}software"/&gt;
- *                   &lt;element name="msResolution" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType" minOccurs="0"/&gt;
- *                   &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}operator" minOccurs="0"/&gt;
+ *                   &lt;element name="msDetector" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
+ *                   &lt;element ref="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}software"/&gt;
+ *                   &lt;element name="msResolution" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType" minOccurs="0"/&gt;
+ *                   &lt;element ref="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}operator" minOccurs="0"/&gt;
  *                   &lt;sequence maxOccurs="unbounded" minOccurs="0"&gt;
- *                     &lt;element name="nameValue" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/&gt;
- *                     &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *                     &lt;element name="nameValue" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}namevalueType"/&gt;
+ *                     &lt;element name="comment" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" minOccurs="0"/&gt;
  *                   &lt;/sequence&gt;
  *                 &lt;/sequence&gt;
- *                 &lt;attribute name="msInstrumentID" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *                 &lt;attribute name="msInstrumentID" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
@@ -90,19 +90,19 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *         &lt;element name="dataProcessing" maxOccurs="unbounded"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
- *                   &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}software"/&gt;
+ *                   &lt;element ref="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}software"/&gt;
  *                   &lt;sequence maxOccurs="unbounded" minOccurs="0"&gt;
- *                     &lt;element name="processingOperation" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/&gt;
- *                     &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *                     &lt;element name="processingOperation" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}namevalueType"/&gt;
+ *                     &lt;element name="comment" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" minOccurs="0"/&gt;
  *                   &lt;/sequence&gt;
  *                 &lt;/sequence&gt;
- *                 &lt;attribute name="intensityCutoff" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *                 &lt;attribute name="centroided" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *                 &lt;attribute name="deisotoped" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *                 &lt;attribute name="chargeDeconvoluted" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *                 &lt;attribute name="spotIntegration" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *                 &lt;attribute name="intensityCutoff" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *                 &lt;attribute name="centroided" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *                 &lt;attribute name="deisotoped" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *                 &lt;attribute name="chargeDeconvoluted" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *                 &lt;attribute name="spotIntegration" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
@@ -110,9 +110,9 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *         &lt;element name="separation" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
- *                   &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}separationTechnique" maxOccurs="unbounded"/&gt;
+ *                   &lt;element ref="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}separationTechnique" maxOccurs="unbounded"/&gt;
  *                 &lt;/sequence&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
@@ -121,27 +121,27 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *         &lt;element name="spotting" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
  *                   &lt;element name="plate" maxOccurs="unbounded"&gt;
  *                     &lt;complexType&gt;
  *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                         &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                           &lt;sequence&gt;
- *                             &lt;element name="plateManufacturer" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
- *                             &lt;element name="plateModel" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                             &lt;element name="plateManufacturer" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
+ *                             &lt;element name="plateModel" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                             &lt;element name="pattern" minOccurs="0"&gt;
  *                               &lt;complexType&gt;
  *                                 &lt;complexContent&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                                   &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                                     &lt;sequence&gt;
- *                                       &lt;element name="spottingPattern" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                                       &lt;element name="spottingPattern" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                                       &lt;element name="orientation"&gt;
  *                                         &lt;complexType&gt;
  *                                           &lt;complexContent&gt;
- *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                                               &lt;attribute name="firstSpotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                                               &lt;attribute name="secondSpotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *                                             &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
+ *                                               &lt;attribute name="firstSpotID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                                               &lt;attribute name="secondSpotID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
  *                                             &lt;/restriction&gt;
  *                                           &lt;/complexContent&gt;
  *                                         &lt;/complexType&gt;
@@ -154,22 +154,22 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *                             &lt;element name="spot" maxOccurs="unbounded"&gt;
  *                               &lt;complexType&gt;
  *                                 &lt;complexContent&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                                   &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                                     &lt;sequence&gt;
- *                                       &lt;element name="maldiMatrix" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                                       &lt;element name="maldiMatrix" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                                     &lt;/sequence&gt;
- *                                     &lt;attribute name="spotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                                     &lt;attribute name="spotXPosition" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                                     &lt;attribute name="spotYPosition" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                                     &lt;attribute name="spotDiameter" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *                                     &lt;attribute name="spotID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                                     &lt;attribute name="spotXPosition" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                                     &lt;attribute name="spotYPosition" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                                     &lt;attribute name="spotDiameter" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
  *                                   &lt;/restriction&gt;
  *                                 &lt;/complexContent&gt;
  *                               &lt;/complexType&gt;
  *                             &lt;/element&gt;
  *                           &lt;/sequence&gt;
- *                           &lt;attribute name="plateID" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *                           &lt;attribute name="spotXCount" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *                           &lt;attribute name="spotYCount" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
+ *                           &lt;attribute name="plateID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *                           &lt;attribute name="spotXCount" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *                           &lt;attribute name="spotYCount" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
  *                         &lt;/restriction&gt;
  *                       &lt;/complexContent&gt;
  *                     &lt;/complexType&gt;
@@ -177,13 +177,13 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *                   &lt;element name="robot" minOccurs="0"&gt;
  *                     &lt;complexType&gt;
  *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                         &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                           &lt;sequence&gt;
- *                             &lt;element name="robotManufacturer" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
- *                             &lt;element name="robotModel" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}ontologyEntryType"/&gt;
+ *                             &lt;element name="robotManufacturer" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
+ *                             &lt;element name="robotModel" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}ontologyEntryType"/&gt;
  *                           &lt;/sequence&gt;
- *                           &lt;attribute name="timePerSpot" use="required" type="{http://www.w3.org/2001/XMLSchema}duration" /&gt;
- *                           &lt;attribute name="deadVolume" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
+ *                           &lt;attribute name="timePerSpot" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}duration" /&gt;
+ *                           &lt;attribute name="deadVolume" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}nonNegativeInteger" /&gt;
  *                         &lt;/restriction&gt;
  *                       &lt;/complexContent&gt;
  *                     &lt;/complexType&gt;
@@ -193,24 +193,24 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
- *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}scan" maxOccurs="unbounded"/&gt;
+ *         &lt;element ref="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}scan" maxOccurs="unbounded"/&gt;
  *         &lt;element name="sha1" minOccurs="0"&gt;
  *           &lt;simpleType&gt;
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *             &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *               &lt;length value="40"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="scanCount" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *       &lt;attribute name="startTime" type="{http://www.w3.org/2001/XMLSchema}duration" /&gt;
- *       &lt;attribute name="endTime" type="{http://www.w3.org/2001/XMLSchema}duration" /&gt;
+ *       &lt;attribute name="scanCount" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *       &lt;attribute name="startTime" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}duration" /&gt;
+ *       &lt;attribute name="endTime" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}duration" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

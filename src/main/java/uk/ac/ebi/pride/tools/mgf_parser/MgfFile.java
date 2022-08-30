@@ -31,7 +31,7 @@ public class MgfFile implements JMzReader {
 
     public enum SearchType {
         PMF("PMF"), SQ("SQ"), MIS("MIS");
-        private String name;
+        private final String name;
 
         SearchType(String name) {
             this.name = name;
@@ -47,7 +47,7 @@ public class MgfFile implements JMzReader {
         PROTEIN("protein"), PEPTIDE("peptide"), ARCHIVE("archive"),
         CONCISE("concise"), SELECT("select"), UNASSIGNED("unassigned");
 
-        private String name;
+        private final String name;
 
         ReportType(String name) {
             this.name = name;
@@ -62,7 +62,7 @@ public class MgfFile implements JMzReader {
     public enum PeptideToleranceUnit {
         PERCENT("%"), PPM("ppm"), MMU("mmu"), DA("Da");
 
-        private String name;
+        private final String name;
 
         PeptideToleranceUnit(String name) {
             this.name = name;
@@ -134,7 +134,7 @@ public class MgfFile implements JMzReader {
      * MS2 queries. The index of the query in the file as key
      * and the respective query as value.
      */
-    private HashMap<Integer, Ms2Query> ms2Queries = new HashMap<>();
+    private final HashMap<Integer, Ms2Query> ms2Queries = new HashMap<>();
     /**
      * Indicates whether the cache should be used
      */
@@ -167,7 +167,7 @@ public class MgfFile implements JMzReader {
     /**
      * Creates the mgf file object from an existing
      * mgf file. By default the following reading variables will be:
-     *
+     * <p>
      * - allowCustomTags : False
      * - ignoreWrongPeaks : False
      * - allowRandomAccess : True
@@ -991,7 +991,7 @@ public class MgfFile implements JMzReader {
             parameters.append("IT_MODS=").append(variableModifications).append('\n');
 
         if (fragmentIonTolerance != null)
-            parameters.append("ITOL=").append(fragmentIonTolerance.toString()).append('\n');
+            parameters.append("ITOL=").append(fragmentIonTolerance).append('\n');
 
         if (fragmentIonToleranceUnit != null)
             parameters.append("ITOLU=").append((fragmentIonToleranceUnit == FragmentToleranceUnits.MMU) ? "mmu" : "Da").append('\n');
@@ -1003,13 +1003,13 @@ public class MgfFile implements JMzReader {
             parameters.append("MODS=").append(fixedMofications).append('\n');
 
         if (peptideIsotopeError != null)
-            parameters.append("PEP_ISOTOPE_ERROR=").append(peptideIsotopeError.toString()).append('\n');
+            parameters.append("PEP_ISOTOPE_ERROR=").append(peptideIsotopeError).append('\n');
 
         if (partials != null)
-            parameters.append("PFA=").append(partials.toString()).append('\n');
+            parameters.append("PFA=").append(partials).append('\n');
 
         if (precursor != null)
-            parameters.append("PRECURSOR=").append(precursor.toString()).append('\n');
+            parameters.append("PRECURSOR=").append(precursor).append('\n');
 
         if (quantitation != null)
             parameters.append("QUANTITATION=").append(quantitation).append('\n');
@@ -1018,10 +1018,10 @@ public class MgfFile implements JMzReader {
             parameters.append("REPORT=").append(maxHitsToReport).append('\n');
 
         if (reportType != null)
-            parameters.append("REPTYPE=").append(reportType.toString()).append('\n');
+            parameters.append("REPTYPE=").append(reportType).append('\n');
 
         if (searchType != null)
-            parameters.append("SEARCH=").append(searchType.toString()).append('\n');
+            parameters.append("SEARCH=").append(searchType).append('\n');
 
         if (proteinMass != null)
             parameters.append("SEG=").append(proteinMass).append('\n');
@@ -1030,10 +1030,10 @@ public class MgfFile implements JMzReader {
             parameters.append("TAXONOMY=").append(taxonomy).append('\n');
 
         if (peptideMassTolerance != null)
-            parameters.append("TOL=").append(peptideMassTolerance.toString()).append('\n');
+            parameters.append("TOL=").append(peptideMassTolerance).append('\n');
 
         if (peptideMassToleranceUnit != null)
-            parameters.append("TOLU=").append(peptideMassToleranceUnit.toString()).append('\n');
+            parameters.append("TOLU=").append(peptideMassToleranceUnit).append('\n');
 
         if (userMail != null)
             parameters.append("USEREMAIL=").append(userMail).append('\n');
@@ -1043,7 +1043,7 @@ public class MgfFile implements JMzReader {
 
         if (userParameter != null) {
             for (int i = 0; i < userParameter.size(); i++) {
-                parameters.append("USER").append((i < 10) ? "0" : "").append(Integer.toString(i)).append('=').append(userParameter.get(i)).append('\n');
+                parameters.append("USER").append((i < 10) ? "0" : "").append(i).append('=').append(userParameter.get(i)).append('\n');
             }
         }
 
@@ -1060,7 +1060,7 @@ public class MgfFile implements JMzReader {
     }
 
     private class SpectrumIterator implements Iterator<Spectrum> {
-        Iterator<Ms2Query> it;
+        final Iterator<Ms2Query> it;
 
         @SuppressWarnings("unchecked")
         public SpectrumIterator() {
@@ -1088,7 +1088,7 @@ public class MgfFile implements JMzReader {
         /**
          * A list of keys in the ms2Query HashMap
          */
-        private ArrayList<Integer> keys = new ArrayList<>(ms2Queries.keySet());
+        private final ArrayList<Integer> keys = new ArrayList<>(ms2Queries.keySet());
 
         /**
          * Creates a Ms2QueryIterator. In case a source file is

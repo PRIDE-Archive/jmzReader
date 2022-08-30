@@ -29,7 +29,7 @@ public class DtaFile implements JMzReader {
     /**
      * The sourcef file passed when creating this object
      */
-    private File sourceFile;
+    private final File sourceFile;
     /**
      * The list of files in the directory
      */
@@ -272,7 +272,7 @@ public class DtaFile implements JMzReader {
         // create the list of index elements
         List<IndexElement> index = new ArrayList<>(fileIndex.size());
 
-        for (Integer i = 1; i <= fileIndex.size(); i++)
+        for (int i = 1; i <= fileIndex.size(); i++)
             index.add(fileIndex.get(i));
 
         return index;
@@ -294,8 +294,8 @@ public class DtaFile implements JMzReader {
         // create the map of index elements
         Map<String, IndexElement> index = new HashMap<>(fileIndex.size());
 
-        for (Integer i = 1; i <= fileIndex.size(); i++)
-            index.put(i.toString(), fileIndex.get(i));
+        for (int i = 1; i <= fileIndex.size(); i++)
+            index.put(Integer.toString(i), fileIndex.get(i));
 
         return index;
     }
@@ -308,7 +308,7 @@ public class DtaFile implements JMzReader {
      * @author jg
      */
     private class SpectrumIterator implements Iterator<Spectrum> {
-        private DtaFileSpectrumIterator it = new DtaFileSpectrumIterator();
+        private final DtaFileSpectrumIterator it = new DtaFileSpectrumIterator();
 
         public boolean hasNext() {
             return it.hasNext();
@@ -374,7 +374,7 @@ public class DtaFile implements JMzReader {
         }
     }
 
-    public class DtaFileFilter implements FilenameFilter {
+    public static class DtaFileFilter implements FilenameFilter {
 
         public boolean accept(File dir, String name) {
             return name.endsWith(".dta");
