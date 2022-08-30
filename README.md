@@ -1,6 +1,6 @@
 jmzReader
 ===============
-[![Java CI with Maven](https://github.com/PRIDE-Utilities/jmzReader/actions/workflows/maven.yml/badge.svg)](https://github.com/PRIDE-Utilities/jmzReader/actions/workflows/maven.yml)
+[![Java CI with Maven](https://github.com/PRIDE-Utilities/jmzReader/actions/workflows/maven.yml/badge.svg?branch=dev)](https://github.com/PRIDE-Utilities/jmzReader/actions/workflows/maven.yml)
 
 # About jmzReader
 
