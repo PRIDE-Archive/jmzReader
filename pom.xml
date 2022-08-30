@@ -79,6 +79,12 @@
         <!--            <version>${uk.ac.ebi.pride.architectural-pride-xml-handling.version}</version>-->
         <!--        </dependency>-->
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>uk.ac.ebi.jmzml</groupId>
             <artifactId>jmzml</artifactId>
             <version>${uk.ac.ebi.jmzml-jmzml.version}</version>
@@ -162,10 +168,6 @@
                         <arg>-no-header</arg>
                     </args>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
