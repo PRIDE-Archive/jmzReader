@@ -11,26 +11,26 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Description of the source file, including location and type.
- * 
+ *
  * <p>Java class for sourceFileType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="sourceFileType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="nameOfFile" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="pathToFile" type="{http://www.w3.org/2001/XMLSchema}anyURI"/&gt;
- *         &lt;element name="fileType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="nameOfFile" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"/&gt;
+ *         &lt;element name="pathToFile" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyURI"/&gt;
+ *         &lt;element name="fileType" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "sourceFileType", propOrder = {

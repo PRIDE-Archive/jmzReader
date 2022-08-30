@@ -6,7 +6,7 @@ public class MgfUtils {
 
     public static long BUFFER_SIZE_1MB = 1024 * 1024;
     public static long BUFFER_SIZE_10MB = 1024 * 1024 * 10;
-    public static long BUFFER_SIZE_100MB = 1024 * 1024 * 100;
+    public static final long BUFFER_SIZE_100MB = 1024 * 1024 * 100;
 
     public enum FragmentToleranceUnits {DA, MMU}
 
@@ -14,7 +14,7 @@ public class MgfUtils {
 
     public enum SearchType {
         PMF("PMF"), SQ("SQ"), MIS("MIS");
-        private String name;
+        private final String name;
 
         SearchType(String name) {
             this.name = name;
@@ -30,7 +30,7 @@ public class MgfUtils {
         PROTEIN("protein"), PEPTIDE("peptide"), ARCHIVE("archive"),
         CONCISE("concise"), SELECT("select"), UNASSIGNED("unassigned");
 
-        private String name;
+        private final String name;
 
         ReportType(String name) {
             this.name = name;
@@ -45,7 +45,7 @@ public class MgfUtils {
     public enum PeptideToleranceUnit {
         PERCENT("%"), PPM("ppm"), MMU("mmu"), DA("Da");
 
-        private String name;
+        private final String name;
 
         PeptideToleranceUnit(String name) {
             this.name = name;

@@ -173,6 +173,7 @@ public class MzXMLFileTest{
 		}
 	}
 	
+	@Test
 	public void testGetScanNumbers() {
 		List<Long> scanNumbers = mzxmlFile.getScanNumbers();
 		
@@ -180,6 +181,7 @@ public class MzXMLFileTest{
 		Assert.assertEquals(6449, scanNumbers.size());
 	}
 	
+	@Test
 	public void testGetScanByNum() {
 		try {
 			Scan scan = mzxmlFile.getScanByNum((long) 2011);

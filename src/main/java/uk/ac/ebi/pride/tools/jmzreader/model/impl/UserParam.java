@@ -2,6 +2,8 @@ package uk.ac.ebi.pride.tools.jmzreader.model.impl;
 
 import uk.ac.ebi.pride.tools.jmzreader.model.Param;
 
+import java.util.Objects;
+
 public class UserParam implements Param {
 	private String name;
 	private String value;
@@ -38,7 +40,7 @@ public class UserParam implements Param {
 
         UserParam userParam = (UserParam) o;
 
-        return (name != null ? name.equals(userParam.name) : userParam.name == null) && (value != null ? value.equals(userParam.value) : userParam.value == null);
+        return (Objects.equals(name, userParam.name)) && (Objects.equals(value, userParam.value));
     }
 
     @Override

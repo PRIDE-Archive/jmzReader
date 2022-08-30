@@ -49,7 +49,7 @@ public class MzXMLFile implements JMzReader {
     /**
      * The mzXML source file.
      */
-    private File sourcefile;
+    private final File sourcefile;
     /**
      * The random access file object is
      * used to read the file. This object
@@ -61,19 +61,15 @@ public class MzXMLFile implements JMzReader {
      */
     private XpathIndex index;
     /**
-     * The XPath access to use.
-     */
-    private StandardXpathAccess xpathAccess;
-    /**
      * The indexes of all level 1
      * scans in the mzXML file.
      */
-    private List<IndexElement> level1ScanIndexes;
+    private final List<IndexElement> level1ScanIndexes;
     /**
      * The indexes of all level 2
      * scans in the mzXML file.
      */
-    private List<IndexElement> level2ScanIndexes;
+    private final List<IndexElement> level2ScanIndexes;
     /**
      * A Map with the ms level as key and the
      * list with associated index elements as
@@ -97,7 +93,7 @@ public class MzXMLFile implements JMzReader {
     /**
      * The unmarshaller to use.
      */
-    private MzXMLUnmarshaller unmarshaller;
+    private final MzXMLUnmarshaller unmarshaller;
 
     /**
      * Creates a new MzXMLFile object based
@@ -281,7 +277,7 @@ public class MzXMLFile implements JMzReader {
     private void indexFile() throws MzXMLParsingException {
         try {
             // build the xpath
-            xpathAccess = new StandardXpathAccess(sourcefile, MzXmlElement.getXpaths());
+            StandardXpathAccess xpathAccess = new StandardXpathAccess(sourcefile, MzXmlElement.getXpaths());
 
             // save the index
             index = xpathAccess.getIndex();
@@ -515,7 +511,7 @@ public class MzXMLFile implements JMzReader {
             values = new double[floats.capacity()];
 
             for (int index = 0; index < floats.capacity(); index++)
-                values[index] = (double) floats.get(index);
+                values[index] = floats.get(index);
         }
 
         // make sure there's an even number of values (2 for every peak)
@@ -779,7 +775,7 @@ public class MzXMLFile implements JMzReader {
          */
         private int currentIndex = 0;
 
-        private List<IndexElement> indexes;
+        private final List<IndexElement> indexes;
 
         /**
          * This iterator must only be created from
@@ -955,7 +951,7 @@ public class MzXMLFile implements JMzReader {
      */
     public class SpectrumIterator implements Iterator<Spectrum> {
         // just iterate over ms2 scans
-        Iterator<Long> numIterator = getScanNumbers().iterator();
+        final Iterator<Long> numIterator = getScanNumbers().iterator();
 
         @Override
         public boolean hasNext() {

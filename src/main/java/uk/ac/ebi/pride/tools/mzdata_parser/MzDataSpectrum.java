@@ -44,16 +44,16 @@ public class MzDataSpectrum implements Spectrum {
 	/**
 	 * The spectrum's ms level.
 	 */
-	private int msLevel;
+	private final int msLevel;
 	/**
 	 * The spectrum's id
 	 */
-	private Integer id;
+	private final Integer id;
 	/**
 	 * Container holding additional information about
 	 * the spectrum.
 	 */
-	private ParamGroup paramGroup;
+	private final ParamGroup paramGroup;
 	
 	public MzDataSpectrum(uk.ac.ebi.pride.tools.mzdata_parser.mzdata.model.Spectrum mzDataSpectrum) {
 		// save the id

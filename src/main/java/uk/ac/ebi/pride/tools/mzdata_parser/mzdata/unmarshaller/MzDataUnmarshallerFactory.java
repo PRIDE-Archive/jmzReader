@@ -19,7 +19,7 @@ import uk.ac.ebi.pride.tools.mzdata_parser.mzdata.model.MzDataObject;
 public class MzDataUnmarshallerFactory {
 	private static final Logger logger = LoggerFactory.getLogger(MzDataUnmarshallerFactory.class);
 
-    private static MzDataUnmarshallerFactory instance = new MzDataUnmarshallerFactory();
+    private static final MzDataUnmarshallerFactory instance = new MzDataUnmarshallerFactory();
     private static JAXBContext jc = null;
 
     private MzDataUnmarshallerFactory() {
@@ -49,7 +49,7 @@ public class MzDataUnmarshallerFactory {
         }
     }
 
-    private class MzDataUnmarshallerImpl implements MzDataUnmarshaller {
+    private static class MzDataUnmarshallerImpl implements MzDataUnmarshaller {
 
         private Unmarshaller unmarshaller = null;
 

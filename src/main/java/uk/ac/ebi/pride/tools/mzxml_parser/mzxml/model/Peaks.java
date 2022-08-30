@@ -13,25 +13,25 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;simpleContent&gt;
- *     &lt;extension base="&lt;http://sashimi.sourceforge.net/schema_revision/mzXML_3.2&gt;strictBase64Type"&gt;
+ *     &lt;extension base="&lt;<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2&gt;strictBase64Type">...</a>"&gt;
  *       &lt;attribute name="precision"&gt;
  *         &lt;simpleType&gt;
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}positiveInteger"&gt;
+ *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger"&gt;
  *             &lt;enumeration value="32"/&gt;
  *             &lt;enumeration value="64"/&gt;
  *           &lt;/restriction&gt;
  *         &lt;/simpleType&gt;
  *       &lt;/attribute&gt;
- *       &lt;attribute name="byteOrder" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="network" /&gt;
+ *       &lt;attribute name="byteOrder" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" fixed="network" /&gt;
  *       &lt;attribute name="contentType" use="required"&gt;
  *         &lt;simpleType&gt;
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *             &lt;enumeration value="m/z-int"/&gt;
  *             &lt;enumeration value="m/z"/&gt;
  *             &lt;enumeration value="m/z ruler"/&gt;
@@ -44,19 +44,19 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *       &lt;/attribute&gt;
  *       &lt;attribute name="compressionType" use="required"&gt;
  *         &lt;simpleType&gt;
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *             &lt;enumeration value="none"/&gt;
  *             &lt;enumeration value="zlib"/&gt;
  *           &lt;/restriction&gt;
  *         &lt;/simpleType&gt;
  *       &lt;/attribute&gt;
- *       &lt;attribute name="compressedLen" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="compressedLen" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
  *     &lt;/extension&gt;
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

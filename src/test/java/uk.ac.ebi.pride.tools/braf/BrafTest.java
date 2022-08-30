@@ -20,13 +20,14 @@ public class BrafTest {
         Assert.assertNotNull("Error loading mgf test file", testFile);
         
 		try {
-			sourcefile = new File(testFile.toURI());	
+			sourcefile = new File(testFile.toURI());
+			assert smallFileUrl != null;
 			smallFile = new File(smallFileUrl.toURI());
 
 			Assert.assertTrue(sourcefile.exists());
 			Assert.assertTrue(smallFile.exists());
 		} catch (Exception e) {
-			System.out.println("Faild to load test file");
+			System.out.println("Failed to load test file");
 		}
 	}
 
@@ -96,20 +97,5 @@ public class BrafTest {
 		System.out.println(System.currentTimeMillis() - timeInit);
 	}
 
-//	@Test
-//	public void testSeek() {
-//		try {
-//			BufferedRandomAccessFile reader = new BufferedRandomAccessFile(smallFile, "r", BUF_SIZE);
-//			reader.seek(9);
-//			String line = reader.readLine();
-//			Assert.assertEquals("sion=\"1.0\" encoding=\"ISO-8859-1\"?>", line);
-//			reader.seek(8);
-//			line = reader.readLine();
-//			Assert.assertEquals("rsion=\"1.0\" encoding=\"ISO-8859-1\"?>", line);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			System.out.println(e.getMessage());
-//		}
-//	}
 }
 

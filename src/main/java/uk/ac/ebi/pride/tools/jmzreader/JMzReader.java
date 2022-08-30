@@ -9,7 +9,7 @@ import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 
 /**
  * Parser for a peak list formats.
- * 
+ * <p>
  * <b>NOTE:</b> Every class implementing the JMzReader
  * interface should contain the following static function:
  * public static Spectrum getIndexedSpectrum(File sourcefile, IndexElement indexElement)

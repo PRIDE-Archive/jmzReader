@@ -13,26 +13,26 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Description of the parameters for the mass spectrometer for a given acquisition (or list of)
- * 
+ *
  * <p>Java class for spectrumSettingsType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="spectrumSettingsType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="acqSpecification" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;sequence&gt;
  *                   &lt;element name="acquisition" maxOccurs="unbounded"&gt;
  *                     &lt;complexType&gt;
  *                       &lt;complexContent&gt;
  *                         &lt;extension base="{}paramType"&gt;
- *                           &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *                           &lt;attribute name="acqNumber" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
  *                         &lt;/extension&gt;
  *                       &lt;/complexContent&gt;
  *                     &lt;/complexType&gt;
@@ -40,14 +40,14 @@ import javax.xml.bind.annotation.XmlType;
  *                 &lt;/sequence&gt;
  *                 &lt;attribute name="spectrumType" use="required"&gt;
  *                   &lt;simpleType&gt;
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *                       &lt;enumeration value="discrete"/&gt;
  *                       &lt;enumeration value="continuous"/&gt;
  *                     &lt;/restriction&gt;
  *                   &lt;/simpleType&gt;
  *                 &lt;/attribute&gt;
- *                 &lt;attribute name="methodOfCombination" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                 &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *                 &lt;attribute name="methodOfCombination" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                 &lt;attribute name="count" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
@@ -56,9 +56,9 @@ import javax.xml.bind.annotation.XmlType;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
  *               &lt;extension base="{}paramType"&gt;
- *                 &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
- *                 &lt;attribute name="mzRangeStart" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *                 &lt;attribute name="mzRangeStop" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *                 &lt;attribute name="msLevel" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
+ *                 &lt;attribute name="mzRangeStart" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *                 &lt;attribute name="mzRangeStop" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
  *               &lt;/extension&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
@@ -68,8 +68,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "spectrumSettingsType", propOrder = {
@@ -136,19 +136,19 @@ public class SpectrumSettings
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
      *       &lt;sequence&gt;
      *         &lt;element name="acquisition" maxOccurs="unbounded"&gt;
      *           &lt;complexType&gt;
      *             &lt;complexContent&gt;
      *               &lt;extension base="{}paramType"&gt;
-     *                 &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     *                 &lt;attribute name="acqNumber" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
      *               &lt;/extension&gt;
      *             &lt;/complexContent&gt;
      *           &lt;/complexType&gt;
@@ -156,20 +156,20 @@ public class SpectrumSettings
      *       &lt;/sequence&gt;
      *       &lt;attribute name="spectrumType" use="required"&gt;
      *         &lt;simpleType&gt;
-     *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
      *             &lt;enumeration value="discrete"/&gt;
      *             &lt;enumeration value="continuous"/&gt;
      *           &lt;/restriction&gt;
      *         &lt;/simpleType&gt;
      *       &lt;/attribute&gt;
-     *       &lt;attribute name="methodOfCombination" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
-     *       &lt;attribute name="count" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     *       &lt;attribute name="methodOfCombination" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+     *       &lt;attribute name="count" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
@@ -285,20 +285,20 @@ public class SpectrumSettings
 
         /**
          * <p>Java class for anonymous complex type.
-         * 
+         *
          * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
+         *
          * <pre>
          * &lt;complexType&gt;
          *   &lt;complexContent&gt;
          *     &lt;extension base="{}paramType"&gt;
-         *       &lt;attribute name="acqNumber" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+         *       &lt;attribute name="acqNumber" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
          *     &lt;/extension&gt;
          *   &lt;/complexContent&gt;
          * &lt;/complexType&gt;
          * </pre>
-         * 
-         * 
+         *
+         *
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "")
@@ -334,22 +334,22 @@ public class SpectrumSettings
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;extension base="{}paramType"&gt;
-     *       &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
-     *       &lt;attribute name="mzRangeStart" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
-     *       &lt;attribute name="mzRangeStop" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+     *       &lt;attribute name="msLevel" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
+     *       &lt;attribute name="mzRangeStart" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+     *       &lt;attribute name="mzRangeStop" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
      *     &lt;/extension&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "")

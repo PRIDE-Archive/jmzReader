@@ -2,6 +2,8 @@ package uk.ac.ebi.pride.tools.jmzreader.model.impl;
 
 import uk.ac.ebi.pride.tools.jmzreader.model.Param;
 
+import java.util.Objects;
+
 /**
  * A CvParam object. Used to report additional
  * information about objects.
@@ -64,7 +66,7 @@ public class CvParam implements Param {
 
 		CvParam cvParam = (CvParam) o;
 
-		return (accession != null ? accession.equals(cvParam.accession) : cvParam.accession == null) && (cv != null ? cv.equals(cvParam.cv) : cvParam.cv == null) && (name != null ? name.equals(cvParam.name) : cvParam.name == null) && (value != null ? value.equals(cvParam.value) : cvParam.value == null);
+		return (Objects.equals(accession, cvParam.accession)) && (Objects.equals(cv, cvParam.cv)) && (Objects.equals(name, cvParam.name)) && (Objects.equals(value, cvParam.value));
 	}
 
     @Override

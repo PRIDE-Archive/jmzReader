@@ -22,7 +22,7 @@
             <name>Johannes Griss</name>
             <email>jgriss@ebi.ac.uk</email>
             <organization>Proteomics Services Team - EBI</organization>
-            <organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
+            <organizationUrl>https://www.ebi.ac.uk/proteomics</organizationUrl>
             <timezone>0</timezone>
         </developer>
         <developer>
@@ -30,14 +30,14 @@
             <name>Yasset Perez-Riverol</name>
             <email>yperez@ebi.ac.uk</email>
             <organization>Proteomics Services Team - EBI</organization>
-            <organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
+            <organizationUrl>https://www.ebi.ac.uk/proteomics</organizationUrl>
             <timezone>0</timezone>
         </developer>
         <developer>
             <id>mbernal</id>
             <name>Manuel Bernal-Llinares</name>
             <organization>Proteomics Team, EMBL-European Bioinformatics Institute</organization>
-            <organizationUrl>http://www.ebi.ac.uk/pride</organizationUrl>
+            <organizationUrl>https://www.ebi.ac.uk/pride</organizationUrl>
             <roles>
                 <role>developer</role>
             </roles>
@@ -79,6 +79,12 @@
         <!--            <version>${uk.ac.ebi.pride.architectural-pride-xml-handling.version}</version>-->
         <!--        </dependency>-->
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>uk.ac.ebi.jmzml</groupId>
             <artifactId>jmzml</artifactId>
             <version>${uk.ac.ebi.jmzml-jmzml.version}</version>
@@ -88,16 +94,7 @@
             <artifactId>pride-jaxb</artifactId>
             <version>${uk.ac.ebi.pride.jaxb-pride-jaxb.version}</version>
         </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-xjc</artifactId>
-            <version>2.2.7</version>
-        </dependency>
+
         <dependency>
             <groupId>psidev.psi.tools</groupId>
             <artifactId>xxindex</artifactId>
@@ -107,23 +104,51 @@
         <dependency>
             <groupId>it.unimi.dsi</groupId>
             <artifactId>fastutil</artifactId>
-            <version>6.5.1</version>
+            <version>8.5.8</version>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>2.3.2</version>
-            <scope>runtime</scope>
-        </dependency>
+
+        <!-- jaxb dependencies-->
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>2.3.1</version>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-core</artifactId>
-            <version>2.3.0</version>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.4.0-b180830.0359</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-xjc</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <!-- logger -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.13</version>
         </dependency>
     </dependencies>
 
@@ -165,10 +190,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
@@ -186,23 +207,6 @@
                         <goals>
                             <goal>jar</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <!--  Prevent that nasty error from Java 8 DocLint new feature  -->
-                        <configuration>
-                            <additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

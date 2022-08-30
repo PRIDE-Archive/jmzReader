@@ -36,6 +36,7 @@ public class MzMlWrapper implements JMzReader {
         SELECTED_MZ("MS:1000744"),
         PEAK_INTENSITY("MS:1000042"),
         CHARGE_STATE("MS:1000041"),
+        SCAN_START_TIME("MS:1000016"),
         MS_LEVEL("MS:1000511");
 
         MZML_PARAMS(String accession) {
@@ -235,7 +236,7 @@ public class MzMlWrapper implements JMzReader {
      *
      * @author jg
      */
-    private class MzMlWrapperSpectrum implements Spectrum {
+    private static class MzMlWrapperSpectrum implements Spectrum {
 
         /**
          * The spectrum's id in the mzML file
@@ -310,6 +311,13 @@ public class MzMlWrapper implements JMzReader {
             peakList = convertPeakList(mzMlSpectrum.getBinaryDataArrayList());
 
             paramGroup = createParamGroup(mzMlSpectrum.getCvParam(), mzMlSpectrum.getUserParam());
+
+            ScanList scanList = mzMlSpectrum.getScanList();
+            if(scanList != null && scanList.getCount() > 0){
+                List<CVParam> params = scanList.getScan().get(0).getCvParam();
+                CVParam cv = getParamFromGroup(params, MZML_PARAMS.SCAN_START_TIME.getAccess());
+                paramGroup.addParam(new uk.ac.ebi.pride.tools.jmzreader.model.impl.CvParam(cv.getName(), cv.getValue(), cv.getCvRef(), cv.getAccession()));
+            }
         }
 
         /**
@@ -370,13 +378,13 @@ public class MzMlWrapper implements JMzReader {
                 return Collections.emptyMap();
 
             // get the values as numbers
-            Number mzNumbers[] = mzArray.getBinaryDataAsNumberArray();
+            Number[] mzNumbers = mzArray.getBinaryDataAsNumberArray();
             ArrayList<Double> mzValues = new ArrayList<>(mzNumbers.length);
 
             for (Number n : mzNumbers)
                 mzValues.add(n.doubleValue());
 
-            Number intenNumbers[] = intenArray.getBinaryDataAsNumberArray();
+            Number[] intenNumbers = intenArray.getBinaryDataAsNumberArray();
             ArrayList<Double> intenValues = new ArrayList<>(intenNumbers.length);
 
             for (Number n : intenNumbers)
@@ -434,7 +442,6 @@ public class MzMlWrapper implements JMzReader {
                 if (p.getAccession().equals(accession))
                     return p;
             }
-
             return null;
         }
 

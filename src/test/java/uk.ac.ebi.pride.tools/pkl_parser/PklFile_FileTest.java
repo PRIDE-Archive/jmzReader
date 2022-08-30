@@ -107,8 +107,8 @@ public class PklFile_FileTest {
 		
 		Assert.assertEquals(3, ids.size());
 		
-		for (Integer i = 1; i <= 3; i++)
-			Assert.assertEquals(i.toString(), ids.get(i - 1));
+		for (int i = 1; i <= 3; i++)
+			Assert.assertEquals(Integer.toString(i), ids.get(i - 1));
 	}
 
 	@Test

@@ -30,11 +30,13 @@ public class PklFile_DirTest {
 		}
 	}
 
-	public void testGetSpectraCount() {
+	@Test
+    public void testGetSpectraCount() {
 		Assert.assertEquals(16, pklFile.getSpectraCount());
 	}
 
-	public void testGetSpectrum() {
+	@Test
+    public void testGetSpectrum() {
 		PklSpectrum s;
 		try {
 			s = pklFile.getSpectrum("110208A.1708.1708.0.pkl");

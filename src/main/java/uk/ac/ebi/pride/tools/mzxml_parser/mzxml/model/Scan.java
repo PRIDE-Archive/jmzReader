@@ -19,26 +19,26 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="scanOrigin" maxOccurs="unbounded" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *                 &lt;attribute name="parentFileID" use="required"&gt;
  *                   &lt;simpleType&gt;
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *                       &lt;length value="40"/&gt;
  *                     &lt;/restriction&gt;
  *                   &lt;/simpleType&gt;
  *                 &lt;/attribute&gt;
- *                 &lt;attribute name="num" use="required" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
+ *                 &lt;attribute name="num" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}nonNegativeInteger" /&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
@@ -46,15 +46,15 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *         &lt;element name="precursorMz" maxOccurs="unbounded" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;simpleContent&gt;
- *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;float"&gt;
- *                 &lt;attribute name="precursorScanNum" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *                 &lt;attribute name="precursorIntensity" use="required" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *                 &lt;attribute name="precursorCharge" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *                 &lt;attribute name="possibleCharges" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                 &lt;attribute name="windowWideness" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *               &lt;extension base="&lt;<a href="http://www.w3.org/2001/XMLSchema&gt;float">...</a>"&gt;
+ *                 &lt;attribute name="precursorScanNum" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *                 &lt;attribute name="precursorIntensity" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *                 &lt;attribute name="precursorCharge" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *                 &lt;attribute name="possibleCharges" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                 &lt;attribute name="windowWideness" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
  *                 &lt;attribute name="activationMethod"&gt;
  *                   &lt;simpleType&gt;
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *                       &lt;enumeration value="ETD"/&gt;
  *                       &lt;enumeration value="ECD"/&gt;
  *                       &lt;enumeration value="CID"/&gt;
@@ -70,13 +70,13 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *         &lt;element name="maldi" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                 &lt;attribute name="plateID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                 &lt;attribute name="spotID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *                 &lt;attribute name="laserShootCount" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *                 &lt;attribute name="laserFrequency" type="{http://www.w3.org/2001/XMLSchema}duration" /&gt;
- *                 &lt;attribute name="laserIntensity" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *                 &lt;attribute name="collisionGas" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *               &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
+ *                 &lt;attribute name="plateID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                 &lt;attribute name="spotID" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *                 &lt;attribute name="laserShootCount" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *                 &lt;attribute name="laserFrequency" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}duration" /&gt;
+ *                 &lt;attribute name="laserIntensity" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *                 &lt;attribute name="collisionGas" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
@@ -84,19 +84,19 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *         &lt;element name="peaks" maxOccurs="unbounded"&gt;
  *           &lt;complexType&gt;
  *             &lt;simpleContent&gt;
- *               &lt;extension base="&lt;http://sashimi.sourceforge.net/schema_revision/mzXML_3.2&gt;strictBase64Type"&gt;
+ *               &lt;extension base="&lt;<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2&gt;strictBase64Type">...</a>"&gt;
  *                 &lt;attribute name="precision"&gt;
  *                   &lt;simpleType&gt;
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}positiveInteger"&gt;
+ *                     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger"&gt;
  *                       &lt;enumeration value="32"/&gt;
  *                       &lt;enumeration value="64"/&gt;
  *                     &lt;/restriction&gt;
  *                   &lt;/simpleType&gt;
  *                 &lt;/attribute&gt;
- *                 &lt;attribute name="byteOrder" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="network" /&gt;
+ *                 &lt;attribute name="byteOrder" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" fixed="network" /&gt;
  *                 &lt;attribute name="contentType" use="required"&gt;
  *                   &lt;simpleType&gt;
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *                       &lt;enumeration value="m/z-int"/&gt;
  *                       &lt;enumeration value="m/z"/&gt;
  *                       &lt;enumeration value="m/z ruler"/&gt;
@@ -109,29 +109,29 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *                 &lt;/attribute&gt;
  *                 &lt;attribute name="compressionType" use="required"&gt;
  *                   &lt;simpleType&gt;
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *                       &lt;enumeration value="none"/&gt;
  *                       &lt;enumeration value="zlib"/&gt;
  *                     &lt;/restriction&gt;
  *                   &lt;/simpleType&gt;
  *                 &lt;/attribute&gt;
- *                 &lt;attribute name="compressedLen" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *                 &lt;attribute name="compressedLen" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
  *               &lt;/extension&gt;
  *             &lt;/simpleContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
  *         &lt;sequence maxOccurs="unbounded" minOccurs="0"&gt;
- *           &lt;element name="nameValue" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/&gt;
- *           &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *           &lt;element name="nameValue" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}namevalueType"/&gt;
+ *           &lt;element name="comment" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" minOccurs="0"/&gt;
  *         &lt;/sequence&gt;
- *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}scan" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element ref="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}scan" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="num" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *       &lt;attribute name="msLevel" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" /&gt;
- *       &lt;attribute name="peaksCount" use="required" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
+ *       &lt;attribute name="num" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *       &lt;attribute name="msLevel" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}positiveInteger" /&gt;
+ *       &lt;attribute name="peaksCount" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}nonNegativeInteger" /&gt;
  *       &lt;attribute name="polarity"&gt;
  *         &lt;simpleType&gt;
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *             &lt;enumeration value="+"/&gt;
  *             &lt;enumeration value="-"/&gt;
  *             &lt;enumeration value="any"/&gt;
@@ -140,7 +140,7 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *       &lt;/attribute&gt;
  *       &lt;attribute name="scanType"&gt;
  *         &lt;simpleType&gt;
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *           &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"&gt;
  *             &lt;enumeration value="Full"/&gt;
  *             &lt;enumeration value="zoom"/&gt;
  *             &lt;enumeration value="SIM"/&gt;
@@ -151,29 +151,29 @@ import uk.ac.ebi.pride.tools.mzxml_parser.mzxml.xml.util.NonNegativeIntegerAdapt
  *           &lt;/restriction&gt;
  *         &lt;/simpleType&gt;
  *       &lt;/attribute&gt;
- *       &lt;attribute name="filterLine" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="centroided" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *       &lt;attribute name="deisotoped" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *       &lt;attribute name="chargeDeconvoluted" type="{http://www.w3.org/2001/XMLSchema}boolean" default="0" /&gt;
- *       &lt;attribute name="retentionTime" type="{http://www.w3.org/2001/XMLSchema}duration" /&gt;
- *       &lt;attribute name="ionisationEnergy" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="collisionEnergy" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="cidGasPressure" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="startMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="endMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="lowMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="highMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="basePeakMz" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="basePeakIntensity" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="totIonCurrent" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="msInstrumentID" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
- *       &lt;attribute name="compensationVoltage" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
+ *       &lt;attribute name="filterLine" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" /&gt;
+ *       &lt;attribute name="centroided" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *       &lt;attribute name="deisotoped" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *       &lt;attribute name="chargeDeconvoluted" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" default="0" /&gt;
+ *       &lt;attribute name="retentionTime" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}duration" /&gt;
+ *       &lt;attribute name="ionisationEnergy" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="collisionEnergy" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="cidGasPressure" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="startMz" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="endMz" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="lowMz" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="highMz" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="basePeakMz" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="basePeakIntensity" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="totIonCurrent" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="msInstrumentID" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
+ *       &lt;attribute name="compensationVoltage" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

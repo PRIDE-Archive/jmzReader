@@ -1,7 +1,6 @@
 package uk.ac.ebi.pride.tools.mgf_parser;
 
 import java.io.File;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,7 +9,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.jmzreader.model.IndexElement;
 import uk.ac.ebi.pride.tools.jmzreader.model.Spectrum;
 import uk.ac.ebi.pride.tools.mgf_parser.model.Ms2Query;
@@ -79,7 +77,7 @@ public class TestMgfFile{
         Assert.assertNull(specturm.getPrecursorCharge());
         Assert.assertEquals(413.2861, specturm.getPrecursorMZ(), 0.0);
         Assert.assertEquals(413.2861, specturm.getPeptideMass(), 0.0);
-        Assert.assertEquals(null, specturm.getPrecursorIntensity());
+        Assert.assertNull(specturm.getPrecursorIntensity());
         Assert.assertEquals(1, specturm.getAdditional().getCvParams().size());
         Assert.assertNull(specturm.getComposition());
         Assert.assertNull(specturm.getErrorTolerantTags());

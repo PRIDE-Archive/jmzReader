@@ -16,37 +16,37 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Data type for additional data vectors (beyond m/z and intensity).
- * 
+ *
  * <p>Java class for supDataType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="supDataType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arrayName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="arrayName" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"/&gt;
  *         &lt;choice&gt;
- *           &lt;element name="float" type="{http://www.w3.org/2001/XMLSchema}float" maxOccurs="unbounded"/&gt;
- *           &lt;element name="double" type="{http://www.w3.org/2001/XMLSchema}double" maxOccurs="unbounded"/&gt;
- *           &lt;element name="int" type="{http://www.w3.org/2001/XMLSchema}int" maxOccurs="unbounded"/&gt;
- *           &lt;element name="boolean" type="{http://www.w3.org/2001/XMLSchema}boolean" maxOccurs="unbounded"/&gt;
- *           &lt;element name="string" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/&gt;
- *           &lt;element name="time" type="{http://www.w3.org/2001/XMLSchema}float" maxOccurs="unbounded"/&gt;
- *           &lt;element name="URI" type="{http://www.w3.org/2001/XMLSchema}anyURI" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="float" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="double" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}double" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="int" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="boolean" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="string" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="time" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" maxOccurs="unbounded"/&gt;
+ *           &lt;element name="URI" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyURI" maxOccurs="unbounded"/&gt;
  *         &lt;/choice&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
- *       &lt;attribute name="length" use="required" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
- *       &lt;attribute name="indexed" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *       &lt;attribute name="offset" type="{http://www.w3.org/2001/XMLSchema}int" default="0" /&gt;
+ *       &lt;attribute name="id" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
+ *       &lt;attribute name="length" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" /&gt;
+ *       &lt;attribute name="indexed" use="required" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *       &lt;attribute name="offset" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}int" default="0" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "supDataType", propOrder = {

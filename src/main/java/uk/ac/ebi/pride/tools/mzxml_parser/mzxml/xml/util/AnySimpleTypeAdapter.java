@@ -11,9 +11,6 @@ public class AnySimpleTypeAdapter extends XmlAdapter<String, String> {
 
     @Override
     public String marshal(String v) {
-        if (v != null)
-            return v;
-        else
-            return null;
+        return v;
     }
 }

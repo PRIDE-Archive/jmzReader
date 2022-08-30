@@ -14,31 +14,31 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element ref="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}software"/&gt;
+ *         &lt;element ref="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}software"/&gt;
  *         &lt;sequence maxOccurs="unbounded" minOccurs="0"&gt;
- *           &lt;element name="processingOperation" type="{http://sashimi.sourceforge.net/schema_revision/mzXML_3.2}namevalueType"/&gt;
- *           &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *           &lt;element name="processingOperation" type="{<a href="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">...</a>}namevalueType"/&gt;
+ *           &lt;element name="comment" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" minOccurs="0"/&gt;
  *         &lt;/sequence&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="intensityCutoff" type="{http://www.w3.org/2001/XMLSchema}float" /&gt;
- *       &lt;attribute name="centroided" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *       &lt;attribute name="deisotoped" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *       &lt;attribute name="chargeDeconvoluted" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
- *       &lt;attribute name="spotIntegration" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="intensityCutoff" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}float" /&gt;
+ *       &lt;attribute name="centroided" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *       &lt;attribute name="deisotoped" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *       &lt;attribute name="chargeDeconvoluted" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
+ *       &lt;attribute name="spotIntegration" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}boolean" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

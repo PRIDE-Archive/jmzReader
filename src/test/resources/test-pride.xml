@@ -31,13 +31,13 @@
 			</ProtocolSteps>
 		</Protocol>
 		<mzData version="1.05" accessionNumber="0">
-			<cvLookup cvLabel="PSI" fullName="The PSI Ontology" version="1.0.0" address="http://psidev.sourceforge.net/ontology/" />
+			<cvLookup cvLabel="PSI" fullName="The PSI Ontology" version="1.0.0" address="https://psidev.sourceforge.net/ontology/" />
 			<description>
 				<admin>
 					<sampleName>Example Sample Set</sampleName>
                     <sourceFile>
 						<nameOfFile>MadeUpFile</nameOfFile>
-						<pathToFile>http://www.madeupdata.com/MadeUpFile</pathToFile>
+						<pathToFile>https://www.madeupdata.com/MadeUpFile</pathToFile>
 						<fileType>Text</fileType>
 					</sourceFile>
 					<contact>

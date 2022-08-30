@@ -40,7 +40,7 @@ public class PRIDEXmlWrapperTest {
 
     @Test
     public void testGetSpectraCount() throws Exception {
-        Assert.assertTrue("The number of spectrum should be 100", wrapper.getSpectraCount() == 100);
+        Assert.assertEquals("The number of spectrum should be 100", 100, wrapper.getSpectraCount());
     }
 
     @Test

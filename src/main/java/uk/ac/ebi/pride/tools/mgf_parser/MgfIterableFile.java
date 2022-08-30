@@ -26,8 +26,6 @@ public class MgfIterableFile implements JMzIterableReader {
 
     public static final Logger logger = LoggerFactory.getLogger(MgfIterableFile.class);
 
-    private boolean allowCustomTags = MgfUtils.DEFAULT_ALLOW_CUSTOM_TAGS;
-
     /**
      * If this option is set, comments are not removed
      * from MGF files. This speeds up parsing considerably
@@ -43,7 +41,7 @@ public class MgfIterableFile implements JMzIterableReader {
     /**
      * Source File containing all the spectra.
      */
-    private File sourceFile;
+    private final File sourceFile;
 
     private final FileChannel accessChannel;
     private MappedByteBuffer buffer;
@@ -55,7 +53,6 @@ public class MgfIterableFile implements JMzIterableReader {
 
         this.ignoreWrongPeaks = ignoreWrongPeaks;
         this.disableCommentSupport = disableCommentSupport;
-        this.allowCustomTags = allowCustomTags;
         this.sourceFile = file;
 
         try {
@@ -69,7 +66,7 @@ public class MgfIterableFile implements JMzIterableReader {
 
     @Override
     public boolean hasNext() {
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         if (buffer == null)
             readBuffer();
         char ch = '\n';
@@ -84,7 +81,7 @@ public class MgfIterableFile implements JMzIterableReader {
                     buffer.position(channelCursor);
                     return true;
                 }else
-                    stringBuffer = new StringBuffer();
+                    stringBuffer = new StringBuilder();
             }
         }
         return false;
@@ -98,7 +95,7 @@ public class MgfIterableFile implements JMzIterableReader {
         }
 
         boolean inAttributeSection = true;
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
 
         while (buffer.hasRemaining()) {
             char ch = ((char) buffer.get());
@@ -116,9 +113,6 @@ public class MgfIterableFile implements JMzIterableReader {
                     specIndex++;
                     return spectrum;
                 }else if(spectrum != null){
-                    /**
-                     * Some files can have a lot of empty and nonsense information between Spectrums
-                     */
                     if (!disableCommentSupport)
                         line = line.replaceAll(MgfFile.mgfCommentRegex, line);
                     if (line.length() < 1) { // ignore empty lines
@@ -162,7 +156,7 @@ public class MgfIterableFile implements JMzIterableReader {
 
                 }
 
-                stringBuffer = new StringBuffer();
+                stringBuffer = new StringBuilder();
 
             }else{
                 stringBuffer.append(ch);

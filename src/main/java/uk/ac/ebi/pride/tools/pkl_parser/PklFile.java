@@ -30,7 +30,7 @@ public class PklFile implements JMzReader {
 	/**
 	 * The sourcefile passed when creating this object
 	 */
-	private File sourceFile;
+	private final File sourceFile;
 	/**
 	 * The list of files in the directory
 	 */
@@ -249,7 +249,7 @@ public class PklFile implements JMzReader {
 	}
 	
 	private class SpectrumIterator implements Iterator<Spectrum> {
-		private PklFileSpectrumIterator it = new PklFileSpectrumIterator();
+		private final PklFileSpectrumIterator it = new PklFileSpectrumIterator();
 
 		public boolean hasNext() {
 			return it.hasNext();
@@ -315,7 +315,7 @@ public class PklFile implements JMzReader {
 		}
 	}
 	
-	public class PklFileFilter implements FilenameFilter {
+	public static class PklFileFilter implements FilenameFilter {
 
 		public boolean accept(File dir, String name) {
 			return name.endsWith(".pkl");

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import uk.ac.ebi.pride.tools.jmzreader.model.IndexElement;
 import uk.ac.ebi.pride.tools.mzdata_parser.mzdata.model.CvLookup;
@@ -41,6 +42,7 @@ public class MzDataFileTest{
 		}
 	}
 
+	@Test
 	public void testGetMzDataAttributes() {
 		Map<String, String> attr = mzDataFile.getMzDataAttributes();
 		
@@ -49,6 +51,7 @@ public class MzDataFileTest{
 		Assert.assertEquals("8869", attr.get("accessionNumber"));
 	}
 
+	@Test
 	public void testGetCvLookups() {
 		List<CvLookup> cvs;
 		try {
@@ -64,6 +67,7 @@ public class MzDataFileTest{
 		}
 	}
 
+	@Test
 	public void testGetDescription() {
 		try {
 			Description description = mzDataFile.getDescription();
@@ -86,19 +90,22 @@ public class MzDataFileTest{
 		}
 	}
 
+	@Test
 	public void testGetSpectraCount() {
 		Assert.assertEquals(2139, mzDataFile.getSpectraCount());
 	}
 
+	@Test
 	public void testGetSpectraIds() {
 		List<String> ids = mzDataFile.getSpectraIds();
 		
 		Assert.assertEquals(2139, ids.size());
 		
-		for (Integer i = 1; i <= 2139; i++)
-			Assert.assertEquals(i.toString(), ids.get(i - 1));
+		for (int i = 1; i <= 2139; i++)
+			Assert.assertEquals(Integer.toString(i), ids.get(i - 1));
 	}
 
+	@Test
 	public void testGetMzDataSpectrumById() {
 		try {
 			Spectrum s = mzDataFile.getMzDataSpectrumById(3);
@@ -112,6 +119,7 @@ public class MzDataFileTest{
 		}
 	}
 
+	@Test
 	public void testGetSpectrumById() {
 		try {
 			uk.ac.ebi.pride.tools.jmzreader.model.Spectrum s = mzDataFile.getSpectrumById("3");			
@@ -127,6 +135,7 @@ public class MzDataFileTest{
 		}
 	}
 
+	@Test
 	public void testGetMzDataSpectrumByIndex() {
 		try {
 			Spectrum s = mzDataFile.getMzDataSpectrumByIndex(3);
@@ -140,6 +149,7 @@ public class MzDataFileTest{
 		}
 	}
 
+	@Test
 	public void testGetSpectrumByIndex() {
 		try {
 			uk.ac.ebi.pride.tools.jmzreader.model.Spectrum s = mzDataFile.getSpectrumByIndex(3);
@@ -154,6 +164,7 @@ public class MzDataFileTest{
 		}
 	}
 
+	@Test
 	public void testGetSpectrumIterator() {
 		Iterator<uk.ac.ebi.pride.tools.jmzreader.model.Spectrum> it = mzDataFile.getSpectrumIterator();
 		
@@ -171,6 +182,7 @@ public class MzDataFileTest{
 		Assert.assertEquals(2139, count);
 	}
 
+	@Test
 	public void testGetMzDataSpectrumIterator() {
 		Iterator<Spectrum> it = mzDataFile.getMzDataSpectrumIterator();
 		
@@ -199,6 +211,7 @@ public class MzDataFileTest{
 		Assert.assertEquals(2139, count);
 	}
 
+	@Test
 	public void testGetIndexedSpectrum() {
 		try {
 			List<IndexElement> index = mzDataFile.getMsNIndexes(2);

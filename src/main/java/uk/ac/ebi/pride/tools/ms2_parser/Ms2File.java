@@ -28,7 +28,7 @@ public class Ms2File implements JMzReader {
 	/**
 	 * The sourcefile this class represents.
 	 */
-	private File sourcefile;
+	private final File sourcefile;
 	/**
 	 * An array holding the position of every
 	 * ms2 spectrum in the file.
@@ -93,7 +93,7 @@ public class Ms2File implements JMzReader {
 			
 			// parse the file line by line
 			String line; // the current line
-			Long lineOffset = 0L; // the offset of the current line
+			long lineOffset = 0L; // the offset of the current line
 			Long lastSpecOffset = null; // the offset of the spectrum the iterator is in
 			boolean inHeader= true; // indicates whether we're still in the header section
 			
@@ -276,7 +276,7 @@ public class Ms2File implements JMzReader {
 	}
 	
 	private class SpectrumIterator implements Iterator<Spectrum> {
-		private Ms2FileSpectrumIterator it;
+		private final Ms2FileSpectrumIterator it;
 		
 		public SpectrumIterator() {
 			it = new Ms2FileSpectrumIterator();

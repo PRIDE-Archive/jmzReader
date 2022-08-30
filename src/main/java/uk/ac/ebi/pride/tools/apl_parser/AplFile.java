@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 /**
  * This class implement the JmzReader Interface to provide the information of
  * apl spectra.
- *
+ * <p>
  * Created by neuhause on 11/02/14.
  *
  */
@@ -50,7 +50,7 @@ public class AplFile implements JMzReader {
     /**
      * Indicates whether the cache should be used
      */
-    private boolean useCache = false;
+    private final boolean useCache = false;
 
     /**
      * Loads a (MS2) spectrum from an  APL file who's
@@ -315,7 +315,7 @@ public class AplFile implements JMzReader {
     }
 
     private class SpectrumIterator implements Iterator<Spectrum> {
-        Iterator<PeakList> it;
+        final Iterator<PeakList> it;
 
         @SuppressWarnings("unchecked")
         public SpectrumIterator() {
@@ -343,7 +343,7 @@ public class AplFile implements JMzReader {
         /**
          * A list of keys in the ms2Query HashMap
          */
-        private ArrayList<Integer> keys = new ArrayList<>(peakLists.keySet());
+        private final ArrayList<Integer> keys = new ArrayList<>(peakLists.keySet());
 
         /**
          * Creates a Ms2QueryIterator. In case a source file is

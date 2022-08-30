@@ -20,7 +20,7 @@ public class MzXMLSpectrum implements Spectrum {
 	/**
 	 * The run's num attribute
 	 */
-	private Long num;
+	private final Long num;
 	/**
 	 * The spectrum's charge
 	 */
@@ -36,16 +36,16 @@ public class MzXMLSpectrum implements Spectrum {
 	/**
 	 * The actual peak list
 	 */
-	private Map<Double, Double> peakList;
+	private final Map<Double, Double> peakList;
 	/**
 	 * ParamGroup holding additional information
 	 * about the spectrum.
 	 */
-	private ParamGroup paramGroup;
+	private final ParamGroup paramGroup;
 	/**
 	 * The spectrum's ms level
 	 */
-	private Long msLevel;
+	private final Long msLevel;
 
 	/**
 	 * Create a new MzXMLSpectrum object wrapping

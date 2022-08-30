@@ -53,10 +53,6 @@ public class PmfQuery {
 	}
 
 	@Override
-	/**
-	 * Returns the PmfQuery as it is present in the
-	 * mgf file.
-	 */
 	public String toString() {
 		return mass.toString() + ((intensity != null) ? ' ' + intensity.toString() : "");
 	}	

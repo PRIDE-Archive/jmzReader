@@ -14,27 +14,27 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * Software information (the software that produced the peak list).
- * 
+ *
  * <p>Java class for softwareType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="softwareType"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;restriction base="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="version" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="comments" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="name" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"/&gt;
+ *         &lt;element name="version" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string"/&gt;
+ *         &lt;element name="comments" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="completionTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" /&gt;
+ *       &lt;attribute name="completionTime" type="{<a href="http://www.w3.org/2001/XMLSchema">...</a>}dateTime" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "softwareType", propOrder = {

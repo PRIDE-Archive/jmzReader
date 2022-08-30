@@ -2,6 +2,7 @@ package uk.ac.ebi.pride.tools.jmzreader.model.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import uk.ac.ebi.pride.tools.jmzreader.model.Param;
 
@@ -12,8 +13,8 @@ import uk.ac.ebi.pride.tools.jmzreader.model.Param;
  *
  */
 public class ParamGroup {
-	private List<CvParam> cvParams;
-	private List<UserParam> userParams;
+	private final List<CvParam> cvParams;
+	private final List<UserParam> userParams;
 	
 	public ParamGroup() {
 		cvParams 	= new ArrayList<>();
@@ -58,7 +59,7 @@ public class ParamGroup {
 
         ParamGroup that = (ParamGroup) o;
 
-        return (cvParams != null ? cvParams.equals(that.cvParams) : that.cvParams == null) && (userParams != null ? userParams.equals(that.userParams) : that.userParams == null);
+        return (Objects.equals(cvParams, that.cvParams)) && (Objects.equals(userParams, that.userParams));
     }
 
     @Override
