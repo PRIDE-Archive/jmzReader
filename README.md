@@ -1,5 +1,7 @@
 jmzReader
 ===============
+[![Java CI with Maven](https://github.com/PRIDE-Utilities/jmzReader/actions/workflows/maven.yml/badge.svg)](https://github.com/PRIDE-Utilities/jmzReader/actions/workflows/maven.yml)
+
 # About jmzReader
 
 The jmzReader library is a collection of Java APIs to parse the most commonly used MS peak list formats. Currently, the library contains parsers for
