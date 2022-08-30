@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>uk.ac.ebi.pride.tools</groupId>
-	<artifactId>jmzreader</artifactId>
-	<version>2.0.7-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<name>jmzReader</name>
+    <groupId>uk.ac.ebi.pride.tools</groupId>
+    <artifactId>jmzreader</artifactId>
+    <version>2.0.7-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>jmzReader</name>
 
     <description>The jmzReader library is a collection of parsers to process the most commonly used Mass Spectrometry text and xml based file formats using a single interface.</description>
-	<url>https://github.com/PRIDE-Utilities/jmzReader</url>
+    <url>https://github.com/PRIDE-Utilities/jmzReader</url>
 
     <parent>
         <groupId>uk.ac.ebi.pride.architectural</groupId>
@@ -16,15 +16,15 @@
         <version>1.0.1</version>
     </parent>
 
-	<developers>
-		<developer>
-			<id>jgriss</id>
-			<name>Johannes Griss</name>
-			<email>jgriss@ebi.ac.uk</email>
-			<organization>Proteomics Services Team - EBI</organization>
-			<organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
-			<timezone>0</timezone>
-		</developer>
+    <developers>
+        <developer>
+            <id>jgriss</id>
+            <name>Johannes Griss</name>
+            <email>jgriss@ebi.ac.uk</email>
+            <organization>Proteomics Services Team - EBI</organization>
+            <organizationUrl>http://www.ebi.ac.uk/proteomics</organizationUrl>
+            <timezone>0</timezone>
+        </developer>
         <developer>
             <id>yperez</id>
             <name>Yasset Perez-Riverol</name>
@@ -43,39 +43,41 @@
             </roles>
             <timezone>Europe/London</timezone>
         </developer>
-	</developers>
+    </developers>
 
-	<properties>
+    <properties>
         <!-- Logging capabilities -->
         <uk.ac.ebi.pride.architectural-pride-logging.version>1.0.0</uk.ac.ebi.pride.architectural-pride-logging.version>
         <uk.ac.ebi.pride.architectural-pride-tdd.version>1.0.3</uk.ac.ebi.pride.architectural-pride-tdd.version>
         <uk.ac.ebi.jmzml-jmzml.version>1.7.11</uk.ac.ebi.jmzml-jmzml.version>
         <uk.ac.ebi.pride.jaxb-pride-jaxb.version>1.0.22</uk.ac.ebi.pride.jaxb-pride-jaxb.version>
         <!-- Dependencies -->
+        <psidev.psi.tools-xxindex.version>0.23</psidev.psi.tools-xxindex.version>
         <uk.ac.ebi.pride.architectural-pride-xml-handling.version>1.0.3</uk.ac.ebi.pride.architectural-pride-xml-handling.version>
         <org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>0.14.0</org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>uk.ac.ebi.pride.architectural</groupId>
-            <artifactId>pride-logging</artifactId>
-            <type>pom</type>
-            <version>${uk.ac.ebi.pride.architectural-pride-logging.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>uk.ac.ebi.pride.architectural</groupId>
-            <artifactId>pride-tdd</artifactId>
-            <type>pom</type>
-            <version>${uk.ac.ebi.pride.architectural-pride-tdd.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>uk.ac.ebi.pride.architectural</groupId>
-            <artifactId>pride-xml-handling</artifactId>
-            <type>pom</type>
-            <version>${uk.ac.ebi.pride.architectural-pride-xml-handling.version}</version>
-        </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>uk.ac.ebi.pride.architectural</groupId>-->
+        <!--            <artifactId>pride-logging</artifactId>-->
+        <!--            <type>pom</type>-->
+        <!--            <version>${uk.ac.ebi.pride.architectural-pride-logging.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>uk.ac.ebi.pride.architectural</groupId>-->
+        <!--            <artifactId>pride-tdd</artifactId>-->
+        <!--            <type>pom</type>-->
+        <!--            <version>${uk.ac.ebi.pride.architectural-pride-tdd.version}</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>uk.ac.ebi.pride.architectural</groupId>-->
+        <!--            <artifactId>pride-xml-handling</artifactId>-->
+        <!--            <type>pom</type>-->
+        <!--            <version>${uk.ac.ebi.pride.architectural-pride-xml-handling.version}</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>uk.ac.ebi.jmzml</groupId>
             <artifactId>jmzml</artifactId>
@@ -92,10 +94,36 @@
             <version>2.3.1</version>
         </dependency>
         <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-xjc</artifactId>
+            <version>2.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>psidev.psi.tools</groupId>
+            <artifactId>xxindex</artifactId>
+            <version>${psidev.psi.tools-xxindex.version}</version>
+        </dependency>
+        <!--  needed for EscapingXMLStreamWriter to cope with ASCII control characters that are not properly escaped in JAXB  -->
+        <dependency>
+            <groupId>it.unimi.dsi</groupId>
+            <artifactId>fastutil</artifactId>
+            <version>6.5.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.2</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0</version>
         </dependency>
     </dependencies>
 
@@ -113,7 +141,7 @@
                  -->
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>${org.jvnet.jaxb2.maven2-maven-jaxb2-plugin.version}</version>
+                <version>0.14.0</version>
                 <configuration>
                     <extension>true</extension>
                     <schemaDirectory>src/main/resources</schemaDirectory>
@@ -139,8 +167,85 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-source</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <!--  Prevent that nasty error from Java 8 DocLint new feature  -->
+                        <configuration>
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+    <!--  Repos and distribution  -->
+
+    <repositories>
+        <!-- EBI repo -->
+        <repository>
+            <id>pst-release</id>
+            <name>EBI Nexus Repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+        </repository>
+        <!-- EBI SNAPSHOT repo -->
+        <repository>
+            <id>pst-snapshots</id>
+            <name>EBI Nexus Snapshots Repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+        </repository>
+        <repository>
+            <id>sonatype-release</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <repository>
+            <id>sonatype-snapshopt</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>pst-release</id>
+            <name>EBI Nexus Repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>pst-snapshots</id>
+            <name>EBI Nexus Snapshots Repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <scm>
         <connection>scm:git:https://github.com/PRIDE-Utilities/jmzReader.git</connection>
